@@ -26,8 +26,11 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 py-4 md:px-8">
         {/* Logo & Navigation */}
         <div className="flex items-center gap-8">
-          <Link to="/" className="text-red-600 text-2xl md:text-3xl font-bold">
-            STREAMIFY
+          <Link
+            to="/"
+            className="text-[#FAD502] text-2xl md:text-3xl font-bold"
+          >
+            VEERTRI
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
