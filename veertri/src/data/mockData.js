@@ -14,6 +14,8 @@ export const educationalVideos = [
       "Explore the mysteries of the universe, from black holes to the big bang, in this comprehensive introduction to astrophysics.",
     instructor: "Dr. Neil Tyson",
     featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
   },
   {
     id: 2,
@@ -30,6 +32,8 @@ export const educationalVideos = [
       "Journey back in time to explore the rise and fall of the world's greatest ancient civilizations, from Egypt to Rome.",
     instructor: "Prof. Mary Beard",
     featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
   },
   {
     id: 3,
@@ -46,6 +50,8 @@ export const educationalVideos = [
       "Master the fundamentals of calculus with intuitive explanations and real-world examples.",
     instructor: "Prof. Steven Strogatz",
     featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
   },
   {
     id: 4,
@@ -62,6 +68,8 @@ export const educationalVideos = [
       "Start your coding journey with Python. Learn variables, loops, functions, and build your first application.",
     instructor: "Guido van Rossum",
     featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
   },
   {
     id: 5,
@@ -78,6 +86,8 @@ export const educationalVideos = [
       "Unlock your creativity and learn the techniques of storytelling, character development, and world-building.",
     instructor: "Neil Gaiman",
     featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
   },
 ];
 
@@ -98,6 +108,8 @@ export const courses = [
       "Become a full-stack web developer with this comprehensive bootcamp covering HTML, CSS, JavaScript, React, and Node.js.",
     instructor: "Dr. Angela Yu",
     featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
   },
   {
     id: 102,
@@ -115,6 +127,8 @@ export const courses = [
       "Dive into the world of AI and Machine Learning. Master algorithms, data preprocessing, and model evaluation.",
     instructor: "Andrew Ng",
     featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
   },
   {
     id: 103,
@@ -132,6 +146,8 @@ export const courses = [
       "Learn how to manage your money, invest wisely, and plan for a secure financial future.",
     instructor: "Warren Buffett",
     featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
   },
   {
     id: 104,
@@ -149,6 +165,8 @@ export const courses = [
       "Take stunning photos with any camera. Learn composition, lighting, editing, and more.",
     instructor: "Annie Leibovitz",
     featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
   },
 ];
 

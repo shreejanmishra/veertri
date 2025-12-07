@@ -20,14 +20,14 @@ const CategoryRow = ({ title, items, isLarge = false }) => {
       {/* Scroll Buttons */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-r-md opacity-0 group-hover:opacity-100 transition-opacity"
+        className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-r-md opacity-0 group-hover:opacity-100 transition-opacity"
       >
         <ChevronLeft size={32} />
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-l-md opacity-0 group-hover:opacity-100 transition-opacity"
+        className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-l-md opacity-0 group-hover:opacity-100 transition-opacity"
       >
         <ChevronRight size={32} />
       </button>

@@ -38,7 +38,7 @@ const VideoDetail = () => {
       <div className="relative">
         {isPlaying ? (
           <VideoPlayer
-            videoUrl="https://www.w3schools.com/html/mov_bbb.mp4"
+            videoUrl={content.videoUrl}
             thumbnail={content.backdrop}
             title={content.title}
           />
@@ -51,33 +51,33 @@ const VideoDetail = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
 
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-16">
-              <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
+            <div className="absolute bottom-0 left-0 right-0 p-4 md:p-16">
+              <h1 className="text-white text-3xl md:text-6xl font-bold mb-4">
                 {content.title}
               </h1>
 
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex flex-wrap items-center gap-4 mb-6">
                 <button
                   onClick={() => setIsPlaying(true)}
-                  className="bg-white hover:bg-gray-200 text-black font-semibold px-8 py-3 rounded-md flex items-center gap-2 transition"
+                  className="bg-[#FAD502] hover:bg-[#FAD502]/80 text-[#090D0E] font-semibold px-6 md:px-8 py-2 md:py-3 rounded-md flex items-center gap-2 transition"
                 >
                   <Play size={24} fill="currentColor" />
                   <span>Play</span>
                 </button>
 
-                <button className="bg-gray-500/70 hover:bg-gray-500/50 text-white rounded-full p-3 transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-3 transition">
                   <Plus size={24} />
                 </button>
 
-                <button className="bg-gray-500/70 hover:bg-gray-500/50 text-white rounded-full p-3 transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-3 transition">
                   <ThumbsUp size={24} />
                 </button>
 
-                <button className="bg-gray-500/70 hover:bg-gray-500/50 text-white rounded-full p-3 transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-3 transition">
                   <ThumbsDown size={24} />
                 </button>
 
-                <button className="bg-gray-500/70 hover:bg-gray-500/50 text-white rounded-full p-3 transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-3 transition">
                   <Share2 size={24} />
                 </button>
               </div>

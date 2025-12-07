@@ -32,19 +32,19 @@ const MovieCard = ({ item, isLarge = false }) => {
 
               {/* Action buttons */}
               <div className="flex items-center gap-2 mb-2">
-                <button className="bg-white hover:bg-gray-200 text-black rounded-full p-2 transition">
+                <button className="bg-[#FAD502] hover:bg-[#FAD502]/80 text-[#090D0E] rounded-full p-2 transition">
                   <Play size={16} fill="currentColor" />
                 </button>
 
-                <button className="bg-transparent border-2 border-gray-400 hover:border-white text-white rounded-full p-2 transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-2 transition">
                   <Plus size={16} />
                 </button>
 
-                <button className="bg-transparent border-2 border-gray-400 hover:border-white text-white rounded-full p-2 transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-2 transition">
                   <ThumbsUp size={16} />
                 </button>
 
-                <button className="bg-transparent border-2 border-gray-400 hover:border-white text-white rounded-full p-2 ml-auto transition">
+                <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-2 ml-auto transition">
                   <ChevronDown size={16} />
                 </button>
               </div>

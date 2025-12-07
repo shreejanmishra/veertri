@@ -65,7 +65,7 @@ export default function Scholarship() {
                   </div>
                 </div>
 
-                <button className="w-full mt-6 bg-black text-white py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200">
+                <button className="w-full mt-6 bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#FAD502]/80 transition-colors duration-200">
                   View Details
                 </button>
               </div>

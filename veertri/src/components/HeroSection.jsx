@@ -42,25 +42,25 @@ const HeroSection = ({ content }) => {
           </div>
 
           {/* Description */}
-          <p className="text-white text-lg mb-8 line-clamp-3 max-w-xl">
+          <p className="text-white text-base md:text-lg mb-8 line-clamp-3 max-w-xl">
             {content.description}
           </p>
 
           {/* Buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-4">
             <Link
               to={`/watch/${content.id}`}
-              className="bg-white hover:bg-gray-200 text-black font-semibold px-8 py-3 rounded-md flex items-center gap-2 transition"
+              className="bg-[#FAD502] hover:bg-[#FAD502]/80 text-[#090D0E] font-semibold px-6 md:px-8 py-2 md:py-3 rounded-md flex items-center gap-2 transition text-sm md:text-base"
             >
-              <Play size={24} fill="currentColor" />
+              <Play size={20} className="md:w-6 md:h-6" fill="currentColor" />
               <span>Play</span>
             </Link>
 
             <Link
               to={`/watch/${content.id}`}
-              className="bg-gray-500/70 hover:bg-gray-500/50 text-white font-semibold px-8 py-3 rounded-md flex items-center gap-2 transition"
+              className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] font-semibold px-6 md:px-8 py-2 md:py-3 rounded-md flex items-center gap-2 transition text-sm md:text-base"
             >
-              <Info size={24} />
+              <Info size={20} className="md:w-6 md:h-6" />
               <span>More Info</span>
             </Link>
           </div>
