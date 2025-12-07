@@ -1,6 +1,10 @@
 import HeroSection from "../components/HeroSection";
 import CategoryRow from "../components/CategoryRow";
-import { getFeaturedContent, educationalVideos, courses } from "../data/mockData";
+import {
+  getFeaturedContent,
+  educationalVideos,
+  courses,
+} from "../data/mockData";
 import { useEffect, useState } from "react";
 
 const HomePage = () => {

@@ -1,5 +1,10 @@
 import HeroSection from "../components/HeroSection";
-import { getFeaturedContent, categories, getContentBySubjectAndClass } from "../data/mockData";
+import {
+  categories,
+  getContentBySubjectAndClass,
+  getFeaturedContent,
+  getContentById,
+} from "../data/mockData";
 import { useEffect, useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import MovieCard from "../components/MovieCard";
@@ -18,7 +23,7 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
   return (
     <div className="relative px-4 md:px-16 mb-8 group">
       <h2 className="text-white text-xl font-bold mb-4">Select Class</h2>
-      
+
       <button
         onClick={() => scroll("left")}
         className="hidden md:block absolute left-4 top-[60%] -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
@@ -110,39 +115,48 @@ const SubjectContentRow = ({ title, selectedClass }) => {
 };
 
 const Subjects = () => {
-  const [featuredContent, setFeaturedContent] = useState(null);
   const [selectedClass, setSelectedClass] = useState(10); // Default to Class 10
+  const [heroContent, setHeroContent] = useState(null);
 
   useEffect(() => {
-    setFeaturedContent(getFeaturedContent());
+    const lastViewedId = localStorage.getItem("lastViewedVideoId");
+    let content = null;
+    if (lastViewedId) {
+      content = getContentById(parseInt(lastViewedId));
+    }
+
+    if (!content) {
+      content = getFeaturedContent();
+    }
+
+    setHeroContent(content);
   }, []);
 
   return (
     <div className="bg-black min-h-screen">
-      {/* Hero Section */}
-      <HeroSection content={featuredContent} />
+      <HeroSection content={heroContent} />
 
       <div className="relative -mt-32 z-10 pb-20">
         {/* Class Selector Carousel */}
-        <ClassSelector 
-          selectedClass={selectedClass} 
-          onSelectClass={setSelectedClass} 
+        <ClassSelector
+          selectedClass={selectedClass}
+          onSelectClass={setSelectedClass}
         />
 
         {/* Subject Rows */}
         <div className="mt-8">
           {categories.map((category) => (
-            <SubjectContentRow 
-              key={category.id} 
-              title={category.name} 
+            <SubjectContentRow
+              key={category.id}
+              title={category.name}
               selectedClass={selectedClass}
             />
           ))}
-          
+
           {/* Empty State Message if no content found for any subject */}
-           <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">
-             <p>Showing curriculum for Class {selectedClass}</p>
-           </div>
+          <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">
+            <p>Showing curriculum for Class {selectedClass}</p>
+          </div>
         </div>
       </div>
     </div>

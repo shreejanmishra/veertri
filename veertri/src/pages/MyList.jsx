@@ -170,9 +170,7 @@ const MyList = () => {
                     </div>
                     <div className="flex items-center text-gray-700">
                       <Clock size={18} className="text-blue-600 mr-2" />
-                      <span>
-                        {item.duration || `${item.modules} Modules`}
-                      </span>
+                      <span>{item.duration || `${item.modules} Modules`}</span>
                     </div>
                   </div>
 

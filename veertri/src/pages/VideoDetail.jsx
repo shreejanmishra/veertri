@@ -14,6 +14,11 @@ const VideoDetail = () => {
     const item = getContentById(id);
     setContent(item);
 
+    // Save to last viewed
+    if (item) {
+      localStorage.setItem("lastViewedVideoId", item.id);
+    }
+
     // Get similar content (same genre)
     if (item) {
       const all = [...educationalVideos, ...courses];
