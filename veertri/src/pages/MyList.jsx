@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Trash2, Play } from "lucide-react";
+import { Trash2, Play, Clock, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { educationalVideos, courses } from "../data/mockData";
 
@@ -15,70 +15,93 @@ const MyList = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen pt-20 px-4 md:px-16">
-      <div className="max-w-7xl mx-auto py-8">
-        {/* Header */}
-        <h1 className="text-white text-4xl font-bold mb-8">My List</h1>
+    <div className="min-h-screen bg-gray-50 pt-24 px-4 md:px-16 pb-12">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">My List</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Your curated collection of educational content.
+          </p>
+        </div>
 
-        {/* List Content */}
         {myList.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-400 text-xl mb-4">Your list is empty</p>
+            <p className="text-gray-600 text-xl mb-4">Your list is empty</p>
             <Link
               to="/browse"
-              className="text-white underline hover:text-gray-300 transition"
+              className="text-[#090D0E] underline hover:text-[#FAD502] transition"
             >
               Browse content to add to your list
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {myList.map((item) => (
-              <div key={item.id} className="relative group">
-                {/* Thumbnail */}
-                <Link to={`/watch/${item.id}`} className="block">
-                  <div className="relative rounded-md overflow-hidden mb-2">
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
+              <div
+                key={item.id}
+                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full relative group"
+              >
+                {/* Remove Button */}
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    removeFromList(item.id);
+                  }}
+                  className="absolute top-4 left-4 z-10 bg-white/90 p-2 rounded-full text-red-500 hover:bg-red-50 transition-colors shadow-sm"
+                  title="Remove from list"
+                >
+                  <Trash2 size={18} />
+                </button>
 
-                    {/* Play overlay on hover */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <div className="bg-white rounded-full p-3">
-                        <Play
-                          size={24}
-                          fill="currentColor"
-                          className="text-black"
-                        />
-                      </div>
-                    </div>
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute top-4 right-4 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#FAD502] shadow-sm">
+                    {item.genre}
                   </div>
-                </Link>
+                </div>
 
-                {/* Info */}
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex-1">
-                    <h3 className="text-white font-semibold text-sm mb-1">
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="mb-4">
+                    <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
                       {item.title}
-                    </h3>
-                    <div className="flex items-center gap-2 text-xs text-gray-400">
-                      <span className="text-green-500 font-semibold">
-                        {item.rating}
+                    </h2>
+                    <p className="text-sm text-gray-500 font-medium">
+                      Instructor: {item.instructor || "Veertri Expert"}
+                    </p>
+                  </div>
+
+                  <p className="text-gray-600 mb-6 line-clamp-3 flex-1">
+                    {item.description}
+                  </p>
+
+                  <div className="space-y-3 border-t border-gray-100 pt-4">
+                    <div className="flex items-center text-gray-700">
+                      <Star size={18} className="text-yellow-500 mr-2" />
+                      <span className="font-semibold">
+                        {item.rating} Rating
                       </span>
+                    </div>
+                    <div className="flex items-center text-gray-700">
+                      <Clock size={18} className="text-blue-600 mr-2" />
+                      <span>{item.duration || `${item.modules} Modules`}</span>
+                    </div>
+                    <div className="flex items-center text-gray-700">
+                      <Calendar size={18} className="text-purple-600 mr-2" />
                       <span>{item.year}</span>
                     </div>
                   </div>
 
-                  {/* Remove button */}
-                  <button
-                    onClick={() => removeFromList(item.id)}
-                    className="text-gray-400 hover:text-red-500 transition"
-                    title="Remove from list"
+                  <Link
+                    to={`/watch/${item.id}`}
+                    className="w-full mt-6 bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#FAD502]/80 transition-colors duration-200 flex items-center justify-center gap-2"
                   >
-                    <Trash2 size={18} />
-                  </button>
+                    <Play size={18} />
+                    Watch Now
+                  </Link>
                 </div>
               </div>
             ))}

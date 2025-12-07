@@ -7,20 +7,23 @@ const Profile = () => {
   const profiles = [
     {
       id: 1,
-      name: "John Doe",
-      avatar: "https://i.pravatar.cc/150?img=1",
+      name: "Lorem Ipsum",
+      avatar:
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
       isKids: false,
     },
     {
       id: 2,
-      name: "Jane Doe",
-      avatar: "https://i.pravatar.cc/150?img=2",
-      isKids: false,
+      name: "Raman Kumar",
+      avatar:
+        "https://media.istockphoto.com/id/1496936271/photo/headshot-of-smiling-young-boy.jpg?s=612x612&w=0&k=20&c=ngNkmXo__U_NOtN5BhGAOEaZgaSFdoNAJppxK5zAvRQ=",
+      isKids: true,
     },
     {
       id: 3,
-      name: "Kids",
-      avatar: "https://i.pravatar.cc/150?img=3",
+      name: "John",
+      avatar:
+        "https://media.istockphoto.com/id/1316451950/photo/smiling-young-boy-of-indian-origin.jpg?s=2048x2048&w=is&k=20&c=P3mJa9BlMxAhoErSmpcaWyv9kQdnQyzXb4uNBew6c6I=",
       isKids: true,
     },
   ];
@@ -75,7 +78,7 @@ const Profile = () => {
                   <Mail className="text-gray-400" size={24} />
                   <div>
                     <h3 className="text-white font-semibold mb-1">Email</h3>
-                    <p className="text-gray-400">john.doe@example.com</p>
+                    <p className="text-gray-400">lorem.ipsum@example.com</p>
                   </div>
                 </div>
                 <button className="text-blue-500 hover:text-blue-400 transition">
@@ -155,7 +158,7 @@ const Profile = () => {
                     <img
                       src={profile.avatar}
                       alt={profile.name}
-                      className="w-32 h-32 rounded-md mx-auto group-hover:ring-4 ring-white transition"
+                      className="w-32 h-32 rounded-md mx-auto group-hover:ring-4 ring-white transition object-cover"
                     />
                     {profile.isKids && (
                       <span className="absolute top-2 right-2 bg-yellow-500 text-black text-xs px-2 py-1 rounded">
@@ -198,7 +201,7 @@ const Profile = () => {
                     <p className="text-gray-400">Premium - 4K + HDR</p>
                   </div>
                 </div>
-                <span className="text-white text-xl font-bold">$15.99/mo</span>
+                <span className="text-white text-xl font-bold">₹499.99/mo</span>
               </div>
               <div className="text-gray-400 text-sm space-y-2">
                 <p>✓ Watch on 4 devices at once</p>
@@ -234,15 +237,15 @@ const Profile = () => {
               <div className="space-y-3 text-gray-400 text-sm">
                 <div className="flex justify-between">
                   <span>December 1, 2025</span>
-                  <span>$15.99</span>
+                  <span>₹499.99/mo</span>
                 </div>
                 <div className="flex justify-between">
                   <span>November 1, 2025</span>
-                  <span>$15.99</span>
+                  <span>₹499.99/mo</span>
                 </div>
                 <div className="flex justify-between">
                   <span>October 1, 2025</span>
-                  <span>$15.99</span>
+                  <span>₹199.99/mo</span>
                 </div>
               </div>
             </div>
