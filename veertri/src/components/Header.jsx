@@ -39,10 +39,10 @@ const Header = () => {
               Home
             </Link>
             <Link
-              to="/browse"
+              to="/subjects"
               className="text-white hover:text-gray-300 transition"
             >
-              Browse
+              Subjects
             </Link>
             <Link
               to="/my-list"
@@ -115,11 +115,11 @@ const Header = () => {
             Home
           </Link>
           <Link
-            to="/browse"
+            to="/subjects"
             className="text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Browse
+            Subjects
           </Link>
           <Link
             to="/my-list"

@@ -35,7 +35,7 @@ const MyList = () => {
             <div className="text-center py-10 bg-white rounded-xl shadow-sm border border-gray-100">
               <p className="text-gray-600 text-xl mb-4">Your list is empty</p>
               <Link
-                to="/browse"
+                to="/subjects"
                 className="text-[#090D0E] underline hover:text-[#FAD502] transition"
               >
                 Browse content to add to your list

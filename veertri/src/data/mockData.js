@@ -16,6 +16,7 @@ export const educationalVideos = [
     featured: true,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    classLevel: 11,
   },
   {
     id: 2,
@@ -34,6 +35,7 @@ export const educationalVideos = [
     featured: false,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 9,
   },
   {
     id: 3,
@@ -52,6 +54,7 @@ export const educationalVideos = [
     featured: true,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    classLevel: 12,
   },
   {
     id: 4,
@@ -70,6 +73,7 @@ export const educationalVideos = [
     featured: false,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 10,
   },
   {
     id: 5,
@@ -88,6 +92,7 @@ export const educationalVideos = [
     featured: false,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    classLevel: 8,
   },
 ];
 
@@ -110,6 +115,7 @@ export const courses = [
     featured: true,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    classLevel: 12,
   },
   {
     id: 102,
@@ -129,6 +135,7 @@ export const courses = [
     featured: false,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    classLevel: 11,
   },
   {
     id: 103,
@@ -148,6 +155,7 @@ export const courses = [
     featured: false,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+    classLevel: 10,
   },
   {
     id: 104,
@@ -167,6 +175,7 @@ export const courses = [
     featured: false,
     videoUrl:
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    classLevel: 9,
   },
 ];
 
@@ -241,42 +250,39 @@ export const scholarships = [
 export const categories = [
   {
     id: 1,
-    name: "Popular Courses",
-    items: [...educationalVideos.slice(0, 3), ...courses.slice(0, 2)],
-  },
-  {
-    id: 2,
-    name: "Science & Tech",
-    items: [
-      ...educationalVideos.filter(
-        (m) => m.genre === "Science" || m.genre === "Technology"
-      ),
-      ...courses.filter(
-        (t) => t.genre === "Science" || t.genre === "Technology"
-      ),
-    ],
-  },
-  {
-    id: 3,
-    name: "History & Arts",
-    items: [
-      ...educationalVideos.filter(
-        (m) => m.genre === "History" || m.genre === "Arts"
-      ),
-      ...courses.filter((t) => t.genre === "History" || t.genre === "Arts"),
-    ],
-  },
-  {
-    id: 4,
     name: "Mathematics",
     items: educationalVideos.filter((m) => m.genre === "Mathematics"),
   },
   {
-    id: 5,
-    name: "Top Rated",
+    id: 2,
+    name: "Science (Physics, Chemistry, Biology)",
     items: [
-      ...educationalVideos.filter((m) => parseFloat(m.rating) >= 4.8),
-      ...courses.filter((t) => parseFloat(t.rating) >= 4.8),
+      ...educationalVideos.filter((m) => m.genre === "Science"),
+      ...courses.filter((t) => t.genre === "Science"),
+    ],
+  },
+  {
+    id: 3,
+    name: "Social Science",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "History"),
+      ...courses.filter((t) => t.genre === "History"),
+    ],
+  },
+  {
+    id: 4,
+    name: "Computer Science",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "Technology"),
+      ...courses.filter((t) => t.genre === "Technology"),
+    ],
+  },
+  {
+    id: 5,
+    name: "English",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "Arts"),
+      ...courses.filter((t) => t.genre === "Arts"),
     ],
   },
 ];
@@ -286,6 +292,30 @@ export const getFeaturedContent = () => {
     (item) => item.featured
   );
   return featured[Math.floor(Math.random() * featured.length)];
+};
+
+export const getContentBySubjectAndClass = (subject, classLevel) => {
+  const allContent = [...educationalVideos, ...courses];
+  return allContent.filter((item) => {
+    // Match genre/subject
+    const subjectMatch =
+      subject === "Science (Physics, Chemistry, Biology)"
+        ? item.genre === "Science"
+        : subject === "Social Science"
+        ? item.genre === "History"
+        : subject === "Computer Science"
+        ? item.genre === "Technology"
+        : subject === "English"
+        ? item.genre === "Arts"
+        : item.genre === subject;
+
+    // Match class level (if item has one, otherwise include it for now or exclude)
+    // For demo purposes, if item has no classLevel, we might want to show it in all or none.
+    // Let's assume we only show items with matching classLevel.
+    // Since we only added classLevel to a few items, we might need to be lenient or add classLevel to all.
+    // For now, strict match.
+    return subjectMatch && item.classLevel === parseInt(classLevel);
+  });
 };
 
 export const getContentById = (id) => {
