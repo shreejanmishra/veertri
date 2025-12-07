@@ -10,7 +10,6 @@ import Browse from "./pages/Browse";
 import VideoDetail from "./pages/VideoDetail";
 import MyList from "./pages/MyList";
 import Profile from "./pages/Profile";
-import Edutainment from "./pages/Edutainment";
 import Scholarship from "./pages/Scholarship";
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/browse" replace />} />
           <Route path="/browse" element={<Browse />} />
-          <Route path="/education" element={<Edutainment />} />
           <Route path="/scholarship" element={<Scholarship />} />
           <Route path="/watch/:id" element={<VideoDetail />} />
           <Route path="/my-list" element={<MyList />} />
