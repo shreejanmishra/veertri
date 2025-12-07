@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Play, Plus, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
 import VideoPlayer from "../components/VideoPlayer";
-import { getContentById, movies, tvShows } from "../data/mockData";
+import { getContentById, educationalVideos, courses } from "../data/mockData";
 
 const VideoDetail = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const VideoDetail = () => {
 
     // Get similar content (same genre)
     if (item) {
-      const all = [...movies, ...tvShows];
+      const all = [...educationalVideos, ...courses];
       const similar = all
         .filter((c) => c.genre === item.genre && c.id !== item.id)
         .slice(0, 6);
@@ -97,7 +97,7 @@ const VideoDetail = () => {
               </span>
               <span className="text-lg">{content.year}</span>
               <span className="text-lg">
-                {content.duration || `${content.seasons} Seasons`}
+                {content.duration || `${content.modules} Modules`}
               </span>
               <span className="border border-gray-400 px-2 py-1 text-sm">
                 HD

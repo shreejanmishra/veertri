@@ -36,7 +36,7 @@ const HeroSection = ({ content }) => {
             </span>
             <span className="text-lg">{content.year}</span>
             <span className="text-lg">
-              {content.duration || `${content.seasons} Seasons`}
+              {content.duration || `${content.modules} Modules`}
             </span>
             <span className="border border-gray-400 px-2 py-1 text-sm">HD</span>
           </div>

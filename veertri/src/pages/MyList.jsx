@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Trash2, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import { movies, tvShows } from "../data/mockData";
+import { educationalVideos, courses } from "../data/mockData";
 
 const MyList = () => {
   // In a real app, this would come from user's saved data
   const [myList, setMyList] = useState([
-    ...movies.slice(0, 3),
-    ...tvShows.slice(0, 2),
+    ...educationalVideos.slice(0, 3),
+    ...courses.slice(0, 2),
   ]);
 
   const removeFromList = (id) => {
