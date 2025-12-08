@@ -69,6 +69,22 @@ const VideoPlayer = ({ videoUrl, thumbnail, title }) => {
     }
   };
 
+  const isYoutube = videoUrl && videoUrl.includes("youtube.com/embed");
+
+  if (isYoutube) {
+    return (
+      <div className="relative w-full aspect-video bg-black flex items-center justify-center">
+        <iframe
+          src={`${videoUrl}?autoplay=1&rel=0`}
+          title={title}
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+    );
+  }
+
   return (
     <div
       className="relative w-full aspect-video bg-black group"

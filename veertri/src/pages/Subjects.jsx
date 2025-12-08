@@ -40,7 +40,7 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
 
       <div
         ref={rowRef}
-        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth pb-4"
+        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth p-4"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {classes.map((classNum) => (
@@ -103,11 +103,15 @@ const SubjectContentRow = ({ title, selectedClass }) => {
 
       <div
         ref={rowRef}
-        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth"
+        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-8 -mx-4 px-6 md:-mx-8 md:px-10"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {items.map((item) => (
-          <MovieCard key={item.id} item={item} />
+          <MovieCard
+            key={item.id}
+            item={item}
+            className="w-[calc((100%-16px)/2)] md:w-[calc((100%-48px)/4)]"
+          />
         ))}
       </div>
     </div>
@@ -132,6 +136,70 @@ const Subjects = () => {
     setHeroContent(content);
   }, []);
 
+  const getSubjectsForClass = (classNum) => {
+    if (classNum >= 1 && classNum <= 5) {
+      return [
+        { name: "Maths" },
+        { name: "English" },
+        { name: "Hindi" },
+        { name: "EVS" },
+      ];
+    } else if (classNum >= 6 && classNum <= 10) {
+      return [
+        { name: "Maths" },
+        { name: "English" },
+        { name: "Hindi" },
+        { name: "Science" },
+        { name: "Computer" },
+        { name: "History" },
+        { name: "Civics" },
+        { name: "Geography" },
+      ];
+    } else if (classNum >= 11 && classNum <= 12) {
+      return [
+        {
+          title: "Science",
+          subjects: ["Maths", "Biology", "Physics", "Chemistry"],
+        },
+        {
+          title: "Commerce",
+          subjects: ["Accountancy", "Economics", "Business Studies", "Maths"],
+        },
+        {
+          title: "Arts",
+          subjects: [
+            "History",
+            "Geography",
+            "Economics",
+            "Political Science",
+            "Sociology",
+            "Psychology",
+            "Philosophy",
+          ],
+        },
+        {
+          title: "Additional Subjects",
+          subjects: [
+            "English",
+            "Hindi",
+            "Computer Science",
+            "Engineering Graphics",
+            "Informatics Practices",
+            "Fine Arts",
+            "Physical Education",
+            "Fashion Studies",
+            "Multimedia & Web Technology",
+            "Entrepreneurship",
+            "Home Science",
+            "Psychology",
+            "Sociology",
+          ],
+        },
+      ];
+    }
+    return [];
+  };
+
   return (
     <div className="bg-black min-h-screen">
       <HeroSection content={heroContent} />
@@ -145,13 +213,35 @@ const Subjects = () => {
 
         {/* Subject Rows */}
         <div className="mt-8">
-          {categories.map((category) => (
-            <SubjectContentRow
-              key={category.id}
-              title={category.name}
-              selectedClass={selectedClass}
-            />
-          ))}
+          {(() => {
+            const subjects = getSubjectsForClass(selectedClass);
+            // Check if it's the grouped structure (has title and subjects array)
+            if (subjects.length > 0 && subjects[0].subjects) {
+              return subjects.map((group, index) => (
+                <div key={index} className="mb-12">
+                  <h2 className="text-[#FAD502] text-3xl font-bold px-4 md:px-16 mb-6 border-b border-gray-800 pb-2">
+                    {group.title}
+                  </h2>
+                  {group.subjects.map((subject) => (
+                    <SubjectContentRow
+                      key={subject}
+                      title={subject}
+                      selectedClass={selectedClass}
+                    />
+                  ))}
+                </div>
+              ));
+            } else {
+              // Flat structure
+              return subjects.map((subject) => (
+                <SubjectContentRow
+                  key={subject.name}
+                  title={subject.name}
+                  selectedClass={selectedClass}
+                />
+              ));
+            }
+          })()}
 
           {/* Empty State Message if no content found for any subject */}
           <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">

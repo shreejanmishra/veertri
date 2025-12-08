@@ -1,3 +1,5 @@
+import { curriculumData } from "./curriculumData";
+
 export const educationalVideos = [
   {
     id: 1,
@@ -294,32 +296,221 @@ export const getFeaturedContent = () => {
   return featured[Math.floor(Math.random() * featured.length)];
 };
 
-export const getContentBySubjectAndClass = (subject, classLevel) => {
-  const allContent = [...educationalVideos, ...courses];
-  return allContent.filter((item) => {
-    // Match genre/subject
-    const subjectMatch =
-      subject === "Science (Physics, Chemistry, Biology)"
-        ? item.genre === "Science"
-        : subject === "Social Science"
-        ? item.genre === "History"
-        : subject === "Computer Science"
-        ? item.genre === "Technology"
-        : subject === "English"
-        ? item.genre === "Arts"
-        : item.genre === subject;
+const subjectImageMap = {
+  math: [
+    "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80",
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+    "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800&q=80",
+  ],
+  nature: [
+    "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5763?w=800&q=80",
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+  ],
+  book: [
+    "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80",
+    "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80",
+    "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
+  ],
+  "india culture": [
+    "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=800&q=80",
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80",
+  ],
+  "science laboratory": [
+    "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80",
+    "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80",
+  ],
+  "geometry algebra": [
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+    "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80",
+  ],
+  "history map": [
+    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+    "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=800&q=80",
+  ],
+  "computer code": [
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+  ],
+  "literature book": [
+    "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?w=800&q=80",
+    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80",
+  ],
+  "hindi language": [
+    "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&q=80",
+  ],
+  "physics experiment": [
+    "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=800&q=80",
+    "https://images.unsplash.com/photo-1605559424843-9e4c2287f38d?w=800&q=80",
+  ],
+  "chemistry lab": [
+    "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&q=80",
+    "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80",
+  ],
+  "biology cell": [
+    "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80",
+    "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80",
+  ],
+  "calculus math": [
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+  ],
+  accounting: [
+    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+  ],
+  "business office": [
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+  ],
+  "economics graph": [
+    "https://images.unsplash.com/photo-1611974765270-ca1258634369?w=800&q=80",
+    "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
+  ],
+  "history ancient": [
+    "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3?w=800&q=80",
+    "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=800&q=80",
+  ],
+  "politics voting": [
+    "https://images.unsplash.com/photo-1529101091760-6149d4c46b29?w=800&q=80",
+  ],
+  "society people": [
+    "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80",
+  ],
+  "brain psychology": [
+    "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+  ],
+  "philosophy statue": [
+    "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=800&q=80",
+  ],
+  "geography earth": [
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+  ],
+  default: [
+    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+  ],
+};
 
-    // Match class level (if item has one, otherwise include it for now or exclude)
-    // For demo purposes, if item has no classLevel, we might want to show it in all or none.
-    // Let's assume we only show items with matching classLevel.
-    // Since we only added classLevel to a few items, we might need to be lenient or add classLevel to all.
-    // For now, strict match.
-    return subjectMatch && item.classLevel === parseInt(classLevel);
+// Map of subject keywords to YouTube Video IDs (Educational Content)
+const subjectVideoMap = {
+  math: ["8mve0UOuCsU", "ZcT04t59I-4", "MJy6-4WGe10", "NybHckSEQBI"], // Khan Academy
+  nature: ["T75j9Co3aJg", "7w57_P9DZJ4", "s-33i2b17G8", "W_K4hK-6tQo"], // SciShow
+  book: ["47xRmU4778E", "H2Z4p0au1yk", "L9AWrJnhsRI", "hD9arFNqafM"], // English
+  "india culture": ["vKttI_Jkhls", "6e9p1k58bXU", "8Nn5uqE3C9w"], // History
+  "science laboratory": ["T75j9Co3aJg", "7w57_P9DZJ4", "s-33i2b17G8"],
+  "geometry algebra": ["8mve0UOuCsU", "ZcT04t59I-4"],
+  "history map": ["vKttI_Jkhls", "6e9p1k58bXU"],
+  "computer code": ["N7dTqgpTJqQ", "rfscVS0vtbw", "bJzb-RuUcMU"], // CS
+  "literature book": ["47xRmU4778E", "H2Z4p0au1yk"],
+  "hindi language": ["47xRmU4778E"], // Placeholder
+  "physics experiment": ["T75j9Co3aJg", "7w57_P9DZJ4"],
+  "chemistry lab": ["T75j9Co3aJg", "7w57_P9DZJ4"],
+  "biology cell": ["T75j9Co3aJg", "7w57_P9DZJ4"],
+  "calculus math": ["8mve0UOuCsU", "ZcT04t59I-4"],
+  accounting: ["y2d36l0d9kI", "M8B5t68f1w4"], // Accounting
+  "business office": ["M8B5t68f1w4"],
+  "economics graph": ["M8B5t68f1w4"],
+  "history ancient": ["vKttI_Jkhls"],
+  "politics voting": ["vKttI_Jkhls"],
+  "society people": ["vKttI_Jkhls"],
+  "brain psychology": ["vo4pMVb0R6M"],
+  "philosophy statue": ["1A_CAkYt3GY"],
+  "geography earth": ["W_K4hK-6tQo"],
+  default: ["8mve0UOuCsU"],
+};
+
+export const getContentBySubjectAndClass = (subject, classLevel) => {
+  // Determine the group
+  let group = "";
+  if (classLevel >= 1 && classLevel <= 5) group = "Class 1-5";
+  else if (classLevel >= 6 && classLevel <= 10) group = "Class 6-10";
+  else if (classLevel >= 11 && classLevel <= 12) group = "Class 11-12";
+
+  // Look up curriculum data
+  const groupData = curriculumData[group];
+  if (!groupData) return [];
+
+  const subjectData = groupData[subject];
+  if (!subjectData) return [];
+
+  // Look up specific class topics, or fallback to "General" or first available class
+  const className = `Class ${classLevel}`;
+  let topics = subjectData.classes[className];
+
+  if (!topics) {
+    topics = subjectData.classes["General"];
+  }
+
+  // If still no topics, try to find any topics from other classes in the same subject to avoid empty state
+  if (!topics) {
+    const availableClasses = Object.keys(subjectData.classes);
+    if (availableClasses.length > 0) {
+      topics = subjectData.classes[availableClasses[0]];
+    }
+  }
+
+  if (!topics) return [];
+
+  // Generate mock items for these topics
+  return topics.map((topic, index) => {
+    // Get image from map
+    const imageKeyword = subjectData.imageKeyword || "default";
+    const images = subjectImageMap[imageKeyword] || subjectImageMap["default"];
+    // Pick an image based on index to keep it consistent but varied
+    const imageUrl = images[index % images.length];
+
+    // Get video ID from map
+    const videoIds =
+      subjectVideoMap[imageKeyword] || subjectVideoMap["default"];
+    const videoId = videoIds[index % videoIds.length];
+    const youtubeUrl = `https://www.youtube.com/embed/${videoId}`;
+
+    return {
+      id: `${classLevel}-${subject}-${index}`,
+      title: topic,
+      thumbnail: imageUrl,
+      backdrop: imageUrl,
+      genre: subject,
+      year: 2024,
+      duration: "45m", // Mock duration
+      rating: (4 + Math.random()).toFixed(1), // Mock rating 4.0-5.0
+      description: `Learn about ${topic} in this comprehensive module designed for Class ${classLevel}.`,
+      instructor: "Veertri Faculty",
+      featured: Math.random() > 0.8,
+      videoUrl: youtubeUrl, // Use YouTube Embed URL
+      classLevel: parseInt(classLevel),
+    };
   });
 };
 
 export const getContentById = (id) => {
+  // Check if ID is a dynamic string ID (e.g., "10-Science-0")
+  if (typeof id === "string" && id.includes("-")) {
+    const parts = id.split("-");
+    // We expect at least 3 parts: classLevel, subject, index
+    // But subject might contain dashes? No, our subjects in keys don't have dashes usually, but let's be careful.
+    // Actually, the ID generation was: `${classLevel}-${subject}-${index}`
+    // If subject has dashes, this split will be wrong.
+    // Let's assume subject doesn't have dashes for now, or handle it.
+    // The subjects we used are keys in curriculumData.
+    // "Class 1-5", "Class 6-10" are groups.
+    // Subjects are "Maths", "EVS", "Science", "Social Science", "Physics", etc.
+    // None of them seem to have dashes. "Computer Code" has space.
+    
+    if (parts.length >= 3) {
+      const classLevel = parseInt(parts[0]);
+      const index = parseInt(parts[parts.length - 1]);
+      // Subject is everything in between
+      const subject = parts.slice(1, parts.length - 1).join("-");
+
+      const items = getContentBySubjectAndClass(subject, classLevel);
+      if (items && items[index]) {
+        return items[index];
+      }
+    }
+  }
+
   return [...educationalVideos, ...courses].find(
-    (item) => item.id === parseInt(id)
+    (item) => item.id == id // Use loose equality to match string/number
   );
 };
