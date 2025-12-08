@@ -9,7 +9,7 @@ const MovieCard = ({ item, isLarge = false, className = "" }) => {
     <Link
       to={`/watch/${item.id}`}
       className={`relative flex-shrink-0 cursor-pointer transition-transform duration-300 ${
-        className ? className : isLarge ? "w-72" : "w-48"
+        className ? className : isLarge ? "w-64 md:w-80" : "w-36 md:w-56"
       } ${isHovered ? "scale-110 z-10" : ""}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

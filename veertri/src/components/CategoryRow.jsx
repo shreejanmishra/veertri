@@ -13,9 +13,9 @@ const CategoryRow = ({ title, items, isLarge = false }) => {
   };
 
   return (
-    <div className="px-4 md:px-16 mb-8 relative group">
+    <div className="px-4 md:px-16 mb-6 md:mb-10 relative group">
       {/* Category Title */}
-      <h2 className="text-white text-2xl font-bold mb-4">{title}</h2>
+      <h2 className="text-white text-lg md:text-2xl font-bold mb-3 md:mb-4">{title}</h2>
 
       {/* Scroll Buttons */}
       <button
