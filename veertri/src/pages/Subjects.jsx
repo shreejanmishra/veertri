@@ -125,8 +125,9 @@ const Subjects = () => {
   useEffect(() => {
     const lastViewedId = localStorage.getItem("lastViewedVideoId");
     let content = null;
-    if (lastViewedId) {
-      content = getContentById(parseInt(lastViewedId));
+    // Only use last viewed if it is a subject video (has dash in ID)
+    if (lastViewedId && lastViewedId.includes("-")) {
+      content = getContentById(lastViewedId);
     }
 
     if (!content) {
