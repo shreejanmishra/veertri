@@ -5,6 +5,7 @@ import { useState } from "react";
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Add scroll listener
   useState(() => {
@@ -26,8 +27,11 @@ const Header = () => {
       <div className="flex items-center justify-between px-4 py-4 md:px-8">
         {/* Logo & Navigation */}
         <div className="flex items-center gap-8">
-          <Link to="/" className="text-red-600 text-2xl md:text-3xl font-bold">
-            STREAMIFY
+          <Link
+            to="/"
+            className="text-[#FAD502] text-2xl md:text-3xl font-bold"
+          >
+            VEERTRI
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">
@@ -35,16 +39,16 @@ const Header = () => {
               Home
             </Link>
             <Link
-              to="/browse"
+              to="/subjects"
               className="text-white hover:text-gray-300 transition"
             >
-              Browse
+              Education
             </Link>
             <Link
               to="/my-list"
               className="text-white hover:text-gray-300 transition"
             >
-              My List
+              My Corner
             </Link>
             <Link
               to="/scholarship"
@@ -90,12 +94,56 @@ const Header = () => {
             <User size={20} />
           </Link>
 
-          {/* Mobile Menu */}
-          <button className="md:hidden text-white hover:text-gray-300 transition">
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white hover:text-gray-300 transition z-50"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             <Menu size={24} />
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-8 md:hidden">
+          <Link
+            to="/"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            to="/subjects"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Subjects
+          </Link>
+          <Link
+            to="/my-list"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            My List
+          </Link>
+          <Link
+            to="/scholarship"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Scholarship
+          </Link>
+          <Link
+            to="/profile"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            My Profile
+          </Link>
+        </div>
+      )}
     </header>
   );
 };

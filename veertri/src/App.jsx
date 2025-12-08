@@ -6,11 +6,12 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
-import Browse from "./pages/Browse";
+import HomePage from "./pages/HomePage";
+import Subjects from "./pages/Subjects";
+import ClassCurriculum from "./pages/ClassCurriculum";
 import VideoDetail from "./pages/VideoDetail";
 import MyList from "./pages/MyList";
 import Profile from "./pages/Profile";
-import Edutainment from "./pages/Edutainment";
 import Scholarship from "./pages/Scholarship";
 
 function App() {
@@ -19,9 +20,12 @@ function App() {
       <div className="min-h-screen bg-black">
         <Header />
         <Routes>
-          <Route path="/" element={<Navigate to="/browse" replace />} />
-          <Route path="/browse" element={<Browse />} />
-          <Route path="/education" element={<Edutainment />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/subjects" element={<Subjects />} />
+          <Route
+            path="/subjects/:subject/class/:classId"
+            element={<ClassCurriculum />}
+          />
           <Route path="/scholarship" element={<Scholarship />} />
           <Route path="/watch/:id" element={<VideoDetail />} />
           <Route path="/my-list" element={<MyList />} />

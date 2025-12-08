@@ -1,152 +1,544 @@
-export const movies = [
+import { curriculumData } from "./curriculumData";
+
+export const educationalVideos = [
   {
     id: 1,
-    title: "Inception",
-    thumbnail: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1920&h=1080&fit=crop",
-    genre: "Sci-Fi",
-    year: 2010,
-    duration: "2h 28m",
-    rating: "8.8",
-    description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-    cast: ["Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"],
-    director: "Christopher Nolan",
-    featured: true
+    title: "Introduction to Astrophysics",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2023,
+    duration: "45m",
+    rating: "4.9",
+    description:
+      "Explore the mysteries of the universe, from black holes to the big bang, in this comprehensive introduction to astrophysics.",
+    instructor: "Dr. Neil Tyson",
+    featured: true,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    classLevel: 11,
   },
   {
     id: 2,
-    title: "The Dark Knight",
-    thumbnail: "https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?w=1920&h=1080&fit=crop",
-    genre: "Action",
-    year: 2008,
-    duration: "2h 32m",
-    rating: "9.0",
-    description: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests.",
-    cast: ["Christian Bale", "Heath Ledger", "Aaron Eckhart"],
-    director: "Christopher Nolan",
-    featured: false
+    title: "World History: Ancient Civilizations",
+    thumbnail:
+      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2022,
+    duration: "1h 15m",
+    rating: "4.8",
+    description:
+      "Journey back in time to explore the rise and fall of the world's greatest ancient civilizations, from Egypt to Rome.",
+    instructor: "Prof. Mary Beard",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 9,
   },
   {
     id: 3,
-    title: "Interstellar",
-    thumbnail: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1920&h=1080&fit=crop",
-    genre: "Sci-Fi",
-    year: 2014,
-    duration: "2h 49m",
-    rating: "8.6",
-    description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    cast: ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"],
-    director: "Christopher Nolan",
-    featured: true
+    title: "Calculus Made Easy",
+    thumbnail:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&h=1080&fit=crop",
+    genre: "Mathematics",
+    year: 2023,
+    duration: "50m",
+    rating: "4.7",
+    description:
+      "Master the fundamentals of calculus with intuitive explanations and real-world examples.",
+    instructor: "Prof. Steven Strogatz",
+    featured: true,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    classLevel: 12,
   },
   {
     id: 4,
-    title: "Parasite",
-    thumbnail: "https://images.unsplash.com/photo-1574267432644-f02b5e2c8dd3?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1574267432644-f02b5e2c8dd3?w=1920&h=1080&fit=crop",
-    genre: "Thriller",
-    year: 2019,
-    duration: "2h 12m",
-    rating: "8.6",
-    description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-    cast: ["Song Kang-ho", "Lee Sun-kyun", "Cho Yeo-jeong"],
-    director: "Bong Joon-ho",
-    featured: false
+    title: "Python Programming for Beginners",
+    thumbnail:
+      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2024,
+    duration: "1h 30m",
+    rating: "4.9",
+    description:
+      "Start your coding journey with Python. Learn variables, loops, functions, and build your first application.",
+    instructor: "Guido van Rossum",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 10,
   },
   {
     id: 5,
-    title: "Dune",
-    thumbnail: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1920&h=1080&fit=crop",
-    genre: "Sci-Fi",
+    title: "The Art of Creative Writing",
+    thumbnail:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&h=1080&fit=crop",
+    genre: "Arts",
     year: 2021,
-    duration: "2h 35m",
-    rating: "8.1",
-    description: "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset.",
-    cast: ["Timothée Chalamet", "Rebecca Ferguson", "Zendaya"],
-    director: "Denis Villeneuve",
-    featured: false
-  }
+    duration: "40m",
+    rating: "4.6",
+    description:
+      "Unlock your creativity and learn the techniques of storytelling, character development, and world-building.",
+    instructor: "Neil Gaiman",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    classLevel: 8,
+  },
 ];
 
-export const tvShows = [
+export const courses = [
   {
     id: 101,
-    title: "Breaking Bad",
-    thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
-    genre: "Drama",
-    year: 2008,
-    seasons: 5,
-    episodes: 62,
-    rating: "9.5",
-    description: "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine.",
-    cast: ["Bryan Cranston", "Aaron Paul", "Anna Gunn"],
-    creator: "Vince Gilligan",
-    featured: true
+    title: "Complete Web Development Bootcamp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2023,
+    modules: 12,
+    lessons: 150,
+    rating: "5.0",
+    description:
+      "Become a full-stack web developer with this comprehensive bootcamp covering HTML, CSS, JavaScript, React, and Node.js.",
+    instructor: "Dr. Angela Yu",
+    featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    classLevel: 12,
   },
   {
     id: 102,
-    title: "Stranger Things",
-    thumbnail: "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=1920&h=1080&fit=crop",
-    genre: "Sci-Fi",
-    year: 2016,
-    seasons: 4,
-    episodes: 34,
-    rating: "8.7",
-    description: "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces.",
-    cast: ["Millie Bobby Brown", "Finn Wolfhard", "Winona Ryder"],
-    creator: "The Duffer Brothers",
-    featured: false
+    title: "Machine Learning A-Z",
+    thumbnail:
+      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2022,
+    modules: 10,
+    lessons: 80,
+    rating: "4.8",
+    description:
+      "Dive into the world of AI and Machine Learning. Master algorithms, data preprocessing, and model evaluation.",
+    instructor: "Andrew Ng",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    classLevel: 11,
   },
   {
     id: 103,
-    title: "The Crown",
-    thumbnail: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1920&h=1080&fit=crop",
-    genre: "Drama",
-    year: 2016,
-    seasons: 6,
-    episodes: 60,
-    rating: "8.6",
-    description: "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the 20th century.",
-    cast: ["Claire Foy", "Olivia Colman", "Imelda Staunton"],
-    creator: "Peter Morgan",
-    featured: false
+    title: "Financial Literacy 101",
+    thumbnail:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
+    genre: "Finance",
+    year: 2023,
+    modules: 5,
+    lessons: 25,
+    rating: "4.9",
+    description:
+      "Learn how to manage your money, invest wisely, and plan for a secure financial future.",
+    instructor: "Warren Buffett",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+    classLevel: 10,
   },
   {
     id: 104,
-    title: "The Mandalorian",
-    thumbnail: "https://images.unsplash.com/photo-1608889335941-32ac5f2041b9?w=500&h=750&fit=crop",
-    backdrop: "https://images.unsplash.com/photo-1608889335941-32ac5f2041b9?w=1920&h=1080&fit=crop",
-    genre: "Sci-Fi",
-    year: 2019,
-    seasons: 3,
-    episodes: 24,
-    rating: "8.7",
-    description: "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
-    cast: ["Pedro Pascal", "Giancarlo Esposito", "Carl Weathers"],
-    creator: "Jon Favreau",
-    featured: false
-  }
+    title: "Digital Photography Masterclass",
+    thumbnail:
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1920&h=1080&fit=crop",
+    genre: "Arts",
+    year: 2021,
+    modules: 8,
+    lessons: 40,
+    rating: "4.7",
+    description:
+      "Take stunning photos with any camera. Learn composition, lighting, editing, and more.",
+    instructor: "Annie Leibovitz",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    classLevel: 9,
+  },
+];
+
+export const scholarships = [
+  {
+    id: 1,
+    title: "PM Yasasvi Scholarship Scheme",
+    provider: "Ministry of Social Justice & Empowerment",
+    amount: "₹75,000 - ₹1,25,000",
+    deadline: "2025-08-31",
+    category: "Merit-cum-Means",
+    description:
+      "Financial assistance for OBC, EBC, and DNT students studying in top-class schools and colleges across India.",
+    eligibility: "Class 9-12 students, Family income < ₹2.5L",
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop",
+  },
+  {
+    id: 2,
+    title: "Tata Trusts Medical and Healthcare Scholarship",
+    provider: "Tata Trusts",
+    amount: "₹50,000 - ₹1,00,000",
+    deadline: "2025-06-30",
+    category: "Medical",
+    description:
+      "Supporting meritorious students pursuing undergraduate and postgraduate degrees in Medical and Healthcare sciences.",
+    eligibility: "Medical/Healthcare students with > 60% marks",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=300&fit=crop",
+  },
+  {
+    id: 3,
+    title: "Santoor Women's Scholarship",
+    provider: "Wipro Cares",
+    amount: "₹24,000/year",
+    deadline: "2025-09-15",
+    category: "Women Empowerment",
+    description:
+      "Empowering young women from underprivileged backgrounds to pursue higher education after Class 12.",
+    eligibility: "Girls who passed Class 12 from govt schools",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop",
+  },
+  {
+    id: 4,
+    title: "HDFC Bank Parivartan's ECSS",
+    provider: "HDFC Bank",
+    amount: "Up to ₹75,000",
+    deadline: "2025-07-31",
+    category: "Crisis Support",
+    description:
+      "Educational Crisis Scholarship Support for students facing personal or family crises that threaten their education.",
+    eligibility: "Students facing financial crisis",
+    image:
+      "https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&h=300&fit=crop",
+  },
+  {
+    id: 5,
+    title: "INSPIRE Scholarship",
+    provider: "Department of Science & Technology",
+    amount: "₹80,000/year",
+    deadline: "2025-10-31",
+    category: "Science & Research",
+    description:
+      "Innovation in Science Pursuit for Inspired Research (INSPIRE) for students pursuing courses in Natural and Basic Sciences.",
+    eligibility: "Top 1% in Class 12 or JEE/NEET rank holders",
+    image:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=300&fit=crop",
+  },
 ];
 
 export const categories = [
-  { id: 1, name: "Trending Now", items: [...movies.slice(0, 3), ...tvShows.slice(0, 2)] },
-  { id: 2, name: "Sci-Fi", items: [...movies.filter(m => m.genre === "Sci-Fi"), ...tvShows.filter(t => t.genre === "Sci-Fi")] },
-  { id: 3, name: "Action", items: movies.filter(m => m.genre === "Action") },
-  { id: 4, name: "Drama", items: [...movies.filter(m => m.genre === "Drama"), ...tvShows.filter(t => t.genre === "Drama")] },
-  { id: 5, name: "Top Rated", items: [...movies.filter(m => parseFloat(m.rating) >= 8.5), ...tvShows.filter(t => parseFloat(t.rating) >= 8.5)] }
+  {
+    id: 1,
+    name: "Mathematics",
+    items: educationalVideos.filter((m) => m.genre === "Mathematics"),
+  },
+  {
+    id: 2,
+    name: "Science (Physics, Chemistry, Biology)",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "Science"),
+      ...courses.filter((t) => t.genre === "Science"),
+    ],
+  },
+  {
+    id: 3,
+    name: "Social Science",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "History"),
+      ...courses.filter((t) => t.genre === "History"),
+    ],
+  },
+  {
+    id: 4,
+    name: "Computer Science",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "Technology"),
+      ...courses.filter((t) => t.genre === "Technology"),
+    ],
+  },
+  {
+    id: 5,
+    name: "English",
+    items: [
+      ...educationalVideos.filter((m) => m.genre === "Arts"),
+      ...courses.filter((t) => t.genre === "Arts"),
+    ],
+  },
 ];
 
 export const getFeaturedContent = () => {
-  const featured = [...movies, ...tvShows].filter(item => item.featured);
+  const featured = [...educationalVideos, ...courses].filter(
+    (item) => item.featured
+  );
   return featured[Math.floor(Math.random() * featured.length)];
 };
 
+const subjectImageMap = {
+  math: [
+    "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80",
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+    "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800&q=80",
+  ],
+  nature: [
+    "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5763?w=800&q=80",
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80",
+    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800&q=80",
+  ],
+  book: [
+    "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=800&q=80",
+    "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80",
+    "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
+  ],
+  "india culture": [
+    "https://images.unsplash.com/photo-1532375810709-75b1da00537c?w=800&q=80",
+    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80",
+  ],
+  "science laboratory": [
+    "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80",
+    "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80",
+  ],
+  "geometry algebra": [
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+    "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&q=80",
+  ],
+  "history map": [
+    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+    "https://images.unsplash.com/photo-1461360370896-922624d12aa1?w=800&q=80",
+  ],
+  "computer code": [
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+  ],
+  "literature book": [
+    "https://images.unsplash.com/photo-1474932430478-367dbb6832c1?w=800&q=80",
+    "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80",
+  ],
+  "hindi language": [
+    "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&q=80",
+  ],
+  "physics experiment": [
+    "https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=800&q=80",
+    "https://images.unsplash.com/photo-1605559424843-9e4c2287f38d?w=800&q=80",
+  ],
+  "chemistry lab": [
+    "https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?w=800&q=80",
+    "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80",
+  ],
+  "biology cell": [
+    "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80",
+    "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80",
+  ],
+  "calculus math": [
+    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80",
+  ],
+  accounting: [
+    "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80",
+    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+  ],
+  "business office": [
+    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+  ],
+  "economics graph": [
+    "https://images.unsplash.com/photo-1611974765270-ca1258634369?w=800&q=80",
+    "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&q=80",
+  ],
+  "history ancient": [
+    "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3?w=800&q=80",
+    "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=800&q=80",
+  ],
+  "politics voting": [
+    "https://images.unsplash.com/photo-1529101091760-6149d4c46b29?w=800&q=80",
+  ],
+  "society people": [
+    "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&q=80",
+  ],
+  "brain psychology": [
+    "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=800&q=80",
+  ],
+  "philosophy statue": [
+    "https://images.unsplash.com/photo-1535905557558-afc4877a26fc?w=800&q=80",
+  ],
+  "geography earth": [
+    "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
+  ],
+  default: [
+    "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+  ],
+};
+
+// Map of subject keywords to YouTube Video IDs (Educational Content)
+const subjectVideoMap = {
+  math: ["LDVXKYFunQA"], // Khan Academy
+  nature: ["T75j9Co3aJg", "7w57_P9DZJ4", "s-33i2b17G8", "W_K4hK-6tQo"], // SciShow
+  book: ["47xRmU4778E", "H2Z4p0au1yk", "L9AWrJnhsRI", "hD9arFNqafM"], // English
+  "india culture": ["vKttI_Jkhls", "6e9p1k58bXU", "8Nn5uqE3C9w"], // History
+  "science laboratory": ["T75j9Co3aJg", "7w57_P9DZJ4", "s-33i2b17G8"],
+  "geometry algebra": ["8mve0UOuCsU", "ZcT04t59I-4"],
+  "history map": ["vKttI_Jkhls", "6e9p1k58bXU"],
+  "computer code": ["N7dTqgpTJqQ", "rfscVS0vtbw", "bJzb-RuUcMU"], // CS
+  "literature book": ["47xRmU4778E", "H2Z4p0au1yk"],
+  "hindi language": ["47xRmU4778E"], // Placeholder
+  "physics experiment": ["T75j9Co3aJg", "7w57_P9DZJ4"],
+  "chemistry lab": ["T75j9Co3aJg", "7w57_P9DZJ4"],
+  "biology cell": ["T75j9Co3aJg", "7w57_P9DZJ4"],
+  "calculus math": ["8mve0UOuCsU", "ZcT04t59I-4"],
+  accounting: ["y2d36l0d9kI", "M8B5t68f1w4"], // Accounting
+  "business office": ["M8B5t68f1w4"],
+  "economics graph": ["M8B5t68f1w4"],
+  "history ancient": ["vKttI_Jkhls"],
+  "politics voting": ["vKttI_Jkhls"],
+  "society people": ["vKttI_Jkhls"],
+  "brain psychology": ["vo4pMVb0R6M"],
+  "philosophy statue": ["1A_CAkYt3GY"],
+  "geography earth": ["W_K4hK-6tQo"],
+  default: ["8mve0UOuCsU"],
+};
+
+// Map of specific topic titles to YouTube Video IDs
+const topicVideoMap = {
+  "Chemical Reactions and Equations": "6nsucLqXC9Q",
+  "Acids, Bases and Salts": "j3IGjkNDmQM",
+  "Metals and Non-metals": "V67eJZ5YFsQ",
+  "Carbon and its Compounds": "aRk9XHSIW9U",
+  "Life Processes": "e0KhpV6V9YY",
+  "Control and Coordination": "wGW8hcpIWMc",
+  "How do Organisms Reproduce?": "a12g-nTzgXw",
+  "Light – Reflection and Refraction": "gV-7L1Oguwc",
+  "Real Numbers": "8v-RddLy5RQ",
+  Polynomials: "iLV5p7feIo0",
+  "Pair of Linear Equations in Two Variables": "Sn3iXEoTQso",
+  "Quadratic Equations": "IlRUWMLAtvQ",
+  "Arithmetic Progressions": "HpXFzUTx7OA",
+  Triangles: "vvJNmUtKWiY",
+  "Coordinate Geometry": "_K-DkxxE-X0",
+  "Introduction to Trigonometry": "q5L9Y-oj9bU",
+  "Shapes and Space": "RkEP-1JXKqc",
+  "Numbers from One to Nine": "pQq4PfUJ544",
+  "Addition & Subtraction": "OgOZ5rLX_n0",
+};
+
+export const getContentBySubjectAndClass = (subject, classLevel) => {
+  // Determine the group
+  let group = "";
+  if (classLevel >= 1 && classLevel <= 5) group = "Class 1-5";
+  else if (classLevel >= 6 && classLevel <= 10) group = "Class 6-10";
+  else if (classLevel >= 11 && classLevel <= 12) group = "Class 11-12";
+
+  // Look up curriculum data
+  const groupData = curriculumData[group];
+  if (!groupData) return [];
+
+  const subjectData = groupData[subject];
+  if (!subjectData) return [];
+
+  // Look up specific class topics, or fallback to "General" or first available class
+  const className = `Class ${classLevel}`;
+  let topics = subjectData.classes[className];
+
+  if (!topics) {
+    topics = subjectData.classes["General"];
+  }
+
+  // If still no topics, try to find any topics from other classes in the same subject to avoid empty state
+  if (!topics) {
+    const availableClasses = Object.keys(subjectData.classes);
+    if (availableClasses.length > 0) {
+      topics = subjectData.classes[availableClasses[0]];
+    }
+  }
+
+  if (!topics) return [];
+
+  // Generate mock items for these topics
+  return topics.map((topic, index) => {
+    // Get image from map
+    const imageKeyword = subjectData.imageKeyword || "default";
+    const images = subjectImageMap[imageKeyword] || subjectImageMap["default"];
+    // Pick an image based on index to keep it consistent but varied
+    const imageUrl = images[index % images.length];
+
+    // Get video ID from topic map first, then fallback to subject map
+    let videoId = topicVideoMap[topic];
+
+    if (!videoId) {
+      const videoIds =
+        subjectVideoMap[imageKeyword] || subjectVideoMap["default"];
+      videoId = videoIds[index % videoIds.length];
+    }
+
+    const youtubeUrl = `https://www.youtube.com/embed/${videoId}`;
+
+    return {
+      id: `${classLevel}-${subject}-${index}`,
+      title: topic,
+      thumbnail: imageUrl,
+      backdrop: imageUrl,
+      genre: subject,
+      year: 2024,
+      duration: "45m", // Mock duration
+      rating: (4 + Math.random()).toFixed(1), // Mock rating 4.0-5.0
+      description: `Learn about ${topic} in this comprehensive module designed for Class ${classLevel}.`,
+      instructor: "Veertri Faculty",
+      featured: Math.random() > 0.8,
+      videoUrl: youtubeUrl, // Use YouTube Embed URL
+      classLevel: parseInt(classLevel),
+    };
+  });
+};
+
 export const getContentById = (id) => {
-  return [...movies, ...tvShows].find(item => item.id === parseInt(id));
+  // Check if ID is a dynamic string ID (e.g., "10-Science-0")
+  if (typeof id === "string" && id.includes("-")) {
+    const parts = id.split("-");
+    // We expect at least 3 parts: classLevel, subject, index
+    // But subject might contain dashes? No, our subjects in keys don't have dashes usually, but let's be careful.
+    // Actually, the ID generation was: `${classLevel}-${subject}-${index}`
+    // If subject has dashes, this split will be wrong.
+    // Let's assume subject doesn't have dashes for now, or handle it.
+    // The subjects we used are keys in curriculumData.
+    // "Class 1-5", "Class 6-10" are groups.
+    // Subjects are "Maths", "EVS", "Science", "Social Science", "Physics", etc.
+    // None of them seem to have dashes. "Computer Code" has space.
+
+    if (parts.length >= 3) {
+      const classLevel = parseInt(parts[0]);
+      const index = parseInt(parts[parts.length - 1]);
+      // Subject is everything in between
+      const subject = parts.slice(1, parts.length - 1).join("-");
+
+      const items = getContentBySubjectAndClass(subject, classLevel);
+      if (items && items[index]) {
+        return items[index];
+      }
+    }
+  }
+
+  return [...educationalVideos, ...courses].find(
+    (item) => item.id == id // Use loose equality to match string/number
+  );
 };
