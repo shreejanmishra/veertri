@@ -17,7 +17,7 @@ export const educationalVideos = [
     instructor: "Dr. Neil Tyson",
     featured: true,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     classLevel: 11,
   },
   {
@@ -36,7 +36,7 @@ export const educationalVideos = [
     instructor: "Prof. Mary Beard",
     featured: false,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     classLevel: 9,
   },
   {
@@ -55,7 +55,7 @@ export const educationalVideos = [
     instructor: "Prof. Steven Strogatz",
     featured: true,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
     classLevel: 12,
   },
   {
@@ -74,7 +74,7 @@ export const educationalVideos = [
     instructor: "Guido van Rossum",
     featured: false,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     classLevel: 10,
   },
   {
@@ -93,7 +93,7 @@ export const educationalVideos = [
     instructor: "Neil Gaiman",
     featured: false,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     classLevel: 8,
   },
 ];
@@ -393,7 +393,7 @@ const subjectImageMap = {
 
 // Map of subject keywords to YouTube Video IDs (Educational Content)
 const subjectVideoMap = {
-  math: ["8mve0UOuCsU", "ZcT04t59I-4", "MJy6-4WGe10", "NybHckSEQBI"], // Khan Academy
+  math: ["LDVXKYFunQA"], // Khan Academy
   nature: ["T75j9Co3aJg", "7w57_P9DZJ4", "s-33i2b17G8", "W_K4hK-6tQo"], // SciShow
   book: ["47xRmU4778E", "H2Z4p0au1yk", "L9AWrJnhsRI", "hD9arFNqafM"], // English
   "india culture": ["vKttI_Jkhls", "6e9p1k58bXU", "8Nn5uqE3C9w"], // History
@@ -417,6 +417,29 @@ const subjectVideoMap = {
   "philosophy statue": ["1A_CAkYt3GY"],
   "geography earth": ["W_K4hK-6tQo"],
   default: ["8mve0UOuCsU"],
+};
+
+// Map of specific topic titles to YouTube Video IDs
+const topicVideoMap = {
+  "Chemical Reactions and Equations": "6nsucLqXC9Q",
+  "Acids, Bases and Salts": "j3IGjkNDmQM",
+  "Metals and Non-metals": "V67eJZ5YFsQ",
+  "Carbon and its Compounds": "aRk9XHSIW9U",
+  "Life Processes": "e0KhpV6V9YY",
+  "Control and Coordination": "wGW8hcpIWMc",
+  "How do Organisms Reproduce?": "a12g-nTzgXw",
+  "Light – Reflection and Refraction": "gV-7L1Oguwc",
+  "Real Numbers": "8v-RddLy5RQ",
+  Polynomials: "iLV5p7feIo0",
+  "Pair of Linear Equations in Two Variables": "Sn3iXEoTQso",
+  "Quadratic Equations": "IlRUWMLAtvQ",
+  "Arithmetic Progressions": "HpXFzUTx7OA",
+  Triangles: "vvJNmUtKWiY",
+  "Coordinate Geometry": "_K-DkxxE-X0",
+  "Introduction to Trigonometry": "q5L9Y-oj9bU",
+  "Shapes and Space": "RkEP-1JXKqc",
+  "Numbers from One to Nine": "pQq4PfUJ544",
+  "Addition & Subtraction": "OgOZ5rLX_n0",
 };
 
 export const getContentBySubjectAndClass = (subject, classLevel) => {
@@ -459,10 +482,15 @@ export const getContentBySubjectAndClass = (subject, classLevel) => {
     // Pick an image based on index to keep it consistent but varied
     const imageUrl = images[index % images.length];
 
-    // Get video ID from map
-    const videoIds =
-      subjectVideoMap[imageKeyword] || subjectVideoMap["default"];
-    const videoId = videoIds[index % videoIds.length];
+    // Get video ID from topic map first, then fallback to subject map
+    let videoId = topicVideoMap[topic];
+
+    if (!videoId) {
+      const videoIds =
+        subjectVideoMap[imageKeyword] || subjectVideoMap["default"];
+      videoId = videoIds[index % videoIds.length];
+    }
+
     const youtubeUrl = `https://www.youtube.com/embed/${videoId}`;
 
     return {
@@ -496,7 +524,7 @@ export const getContentById = (id) => {
     // "Class 1-5", "Class 6-10" are groups.
     // Subjects are "Maths", "EVS", "Science", "Social Science", "Physics", etc.
     // None of them seem to have dashes. "Computer Code" has space.
-    
+
     if (parts.length >= 3) {
       const classLevel = parseInt(parts[0]);
       const index = parseInt(parts[parts.length - 1]);

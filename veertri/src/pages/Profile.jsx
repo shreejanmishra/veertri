@@ -237,15 +237,15 @@ const Profile = () => {
               <div className="space-y-3 text-gray-400 text-sm">
                 <div className="flex justify-between">
                   <span>December 1, 2025</span>
-                  <span>₹499.99/mo</span>
+                  <span>₹49.99/mo</span>
                 </div>
                 <div className="flex justify-between">
                   <span>November 1, 2025</span>
-                  <span>₹499.99/mo</span>
+                  <span>₹49.99/mo</span>
                 </div>
                 <div className="flex justify-between">
                   <span>October 1, 2025</span>
-                  <span>₹199.99/mo</span>
+                  <span>₹19.99/mo</span>
                 </div>
               </div>
             </div>

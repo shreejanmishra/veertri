@@ -42,13 +42,13 @@ const Header = () => {
               to="/subjects"
               className="text-white hover:text-gray-300 transition"
             >
-              Subjects
+              Education
             </Link>
             <Link
               to="/my-list"
               className="text-white hover:text-gray-300 transition"
             >
-              My List
+              My Corner
             </Link>
             <Link
               to="/scholarship"
