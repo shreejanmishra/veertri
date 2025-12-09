@@ -1,4 +1,5 @@
 import HeroSection from "../components/HeroSection";
+import bgImage from "../assets/bgImage2.jpg";
 import {
   categories,
   getContentBySubjectAndClass,
@@ -328,51 +329,56 @@ const Subjects = () => {
   };
 
   return (
-    <div className="dark:bg-black bg-gray-50 min-h-screen transition-colors duration-300">
-      <HeroSection content={heroContent} isCompact={true} />
+    <div
+      className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="min-h-screen dark:bg-black/80 dark:backdrop-blur-sm transition-colors duration-300">
+        <HeroSection content={heroContent} isCompact={true} />
 
-      <div className="relative mt-8 z-10 pb-20">
-        {/* Class Selector Carousel */}
-        <ClassSelector
-          selectedClass={selectedClass}
-          onSelectClass={setSelectedClass}
-        />
+        <div className="relative mt-8 z-10 pb-20">
+          {/* Class Selector Carousel */}
+          <ClassSelector
+            selectedClass={selectedClass}
+            onSelectClass={setSelectedClass}
+          />
 
-        {/* Subject Rows */}
-        <div className="mt-8">
-          {(() => {
-            const subjects = getSubjectsForClass(selectedClass);
-            // Check if it's the grouped structure (has title and subjects array)
-            if (subjects.length > 0 && subjects[0].subjects) {
-              return subjects.map((group, index) => (
-                <div key={index} className="mb-12">
-                  <h2 className="text-[#FAD502] text-3xl font-bold px-4 md:px-16 mb-6 border-b dark:border-gray-800 border-gray-200 pb-2 transition-colors duration-300">
-                    {group.title}
-                  </h2>
-                  {group.subjects.map((subject) => (
-                    <SubjectContentRow
-                      key={subject}
-                      title={subject}
-                      selectedClass={selectedClass}
-                    />
-                  ))}
-                </div>
-              ));
-            } else {
-              // Flat structure
-              return subjects.map((subject) => (
-                <SubjectContentRow
-                  key={subject.name}
-                  title={subject.name}
-                  selectedClass={selectedClass}
-                />
-              ));
-            }
-          })()}
+          {/* Subject Rows */}
+          <div className="mt-8">
+            {(() => {
+              const subjects = getSubjectsForClass(selectedClass);
+              // Check if it's the grouped structure (has title and subjects array)
+              if (subjects.length > 0 && subjects[0].subjects) {
+                return subjects.map((group, index) => (
+                  <div key={index} className="mb-12">
+                    <h2 className="text-[#FAD502] text-3xl font-bold px-4 md:px-16 mb-6 border-b dark:border-gray-800 border-gray-200 pb-2 transition-colors duration-300">
+                      {group.title}
+                    </h2>
+                    {group.subjects.map((subject) => (
+                      <SubjectContentRow
+                        key={subject}
+                        title={subject}
+                        selectedClass={selectedClass}
+                      />
+                    ))}
+                  </div>
+                ));
+              } else {
+                // Flat structure
+                return subjects.map((subject) => (
+                  <SubjectContentRow
+                    key={subject.name}
+                    title={subject.name}
+                    selectedClass={selectedClass}
+                  />
+                ));
+              }
+            })()}
 
-          {/* Empty State Message if no content found for any subject */}
-          <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">
-            <p>Showing curriculum for Class {selectedClass}</p>
+            {/* Empty State Message if no content found for any subject */}
+            <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">
+              <p>Showing curriculum for Class {selectedClass}</p>
+            </div>
           </div>
         </div>
       </div>

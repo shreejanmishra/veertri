@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { scholarships } from "../data/mockData";
+import scholarshipImage from "../assets/scholarshipImage.jpg";
 import {
   Calendar,
   IndianRupee,
@@ -12,6 +13,7 @@ import {
   AlertCircle,
   X,
   Upload,
+  Download,
 } from "lucide-react";
 
 const EligibilityModal = ({ scholarship, onClose, onSubmit }) => {
@@ -253,7 +255,7 @@ const BankDetailsModal = ({ isOpen, onClose, onSubmit }) => {
               Confirm Account Number
             </label>
             <input
-              type="text"
+              type="password"
               name="confirmAccountNumber"
               required
               value={formData.confirmAccountNumber}
@@ -415,10 +417,34 @@ export default function Scholarship() {
     );
   }, []);
 
+  const handleDownloadReceipt = (app) => {
+    const receiptContent = `
+VEERTRI SCHOLARSHIP RECEIPT
+---------------------------
+Scholarship: ${app.title}
+Provider: ${app.provider}
+Amount: ${app.amount}
+Date: ${new Date().toLocaleDateString()}
+Status: Disbursed
+
+Thank you for using Veertri.
+    `;
+
+    const blob = new Blob([receiptContent], { type: "text/plain" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `Receipt_${app.id}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+  };
+
   const getStatusColor = (status) => {
     switch (status) {
       case "Approved":
-        return "text-green-500 bg-green-500/10 border-green-500/20";
+        return "text-green-600 bg-green-500/10 border-green-800/20";
       case "Rejected":
         return "text-red-500 bg-red-500/10 border-red-500/20";
       case "In Review":
@@ -444,14 +470,24 @@ export default function Scholarship() {
   return (
     <div className="min-h-screen dark:bg-black bg-gray-50 pt-24 px-4 md:px-16 pb-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold dark:text-white text-gray-900 mb-4 transition-colors duration-300">
-            Scholarship Opportunities
-          </h1>
-          <p className="text-xl dark:text-gray-300 text-gray-600 max-w-2xl mx-auto transition-colors duration-300">
-            Explore funding opportunities to support your educational journey.
-            Find scholarships that match your profile and aspirations.
-          </p>
+        <div
+          className="relative rounded-2xl overflow-hidden mb-12 text-left py-16 px-8 md:px-12"
+          style={{
+            backgroundImage: `url(${scholarshipImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="relative z-10">
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Scholarship Opportunities
+            </h1>
+            <p className="text-xl text-gray-200 max-w-2xl">
+              Explore funding opportunities to support your educational journey.
+              Find scholarships that match your profile and aspirations.
+            </p>
+          </div>
         </div>
 
         {/* Section 1: Application Tracker */}
@@ -515,16 +551,25 @@ export default function Scholarship() {
 
                         {app.examStatus === "passed" && (
                           <div className="mt-3 space-y-2">
-                            <div className="w-full bg-green-500/10 border border-green-500/20 text-green-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
+                            <div className="w-full bg-green-500/10 border border-green-800/20 text-green-600 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
                               <CheckCircle size={16} />
                               Exam Passed
                             </div>
 
                             {app.bankDetailsSubmitted ? (
                               app.disbursed ? (
-                                <div className="w-full bg-green-500/10 border border-green-500/20 text-green-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
-                                  <IndianRupee size={16} />
-                                  Scholarship Disbursed
+                                <div className="space-y-2">
+                                  <div className="w-full bg-green-500/10 border border-green-800/20 text-green-600 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
+                                    <IndianRupee size={16} />
+                                    Scholarship Disbursed
+                                  </div>
+                                  <button
+                                    onClick={() => handleDownloadReceipt(app)}
+                                    className="w-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white py-2 rounded-lg font-bold text-sm hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
+                                  >
+                                    <Download size={16} />
+                                    Download Receipt
+                                  </button>
                                 </div>
                               ) : (
                                 <div className="w-full bg-blue-500/10 border border-blue-500/20 text-blue-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
