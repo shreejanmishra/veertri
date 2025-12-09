@@ -386,6 +386,10 @@ const subjectImageMap = {
     "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
     "https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80",
   ],
+  arts: [
+    "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&q=80",
+    "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=800&q=80",
+  ],
   default: [
     "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
   ],
@@ -398,6 +402,7 @@ const subjectVideoMap = {
   book: ["47xRmU4778E", "H2Z4p0au1yk", "L9AWrJnhsRI", "hD9arFNqafM"], // English
   "india culture": ["vKttI_Jkhls", "6e9p1k58bXU", "8Nn5uqE3C9w"], // History
   "science laboratory": ["T75j9Co3aJg", "7w57_P9DZJ4", "s-33i2b17G8"],
+  arts: ["L9AWrJnhsRI"], // Placeholder
   "geometry algebra": ["8mve0UOuCsU", "ZcT04t59I-4"],
   "history map": ["vKttI_Jkhls", "6e9p1k58bXU"],
   "computer code": ["N7dTqgpTJqQ", "rfscVS0vtbw", "bJzb-RuUcMU"], // CS
@@ -445,7 +450,8 @@ const topicVideoMap = {
 export const getContentBySubjectAndClass = (subject, classLevel) => {
   // Determine the group
   let group = "";
-  if (classLevel >= 1 && classLevel <= 5) group = "Class 1-5";
+  if (classLevel === "Pre-school") group = "Pre-school";
+  else if (classLevel >= 1 && classLevel <= 5) group = "Class 1-5";
   else if (classLevel >= 6 && classLevel <= 10) group = "Class 6-10";
   else if (classLevel >= 11 && classLevel <= 12) group = "Class 11-12";
 
@@ -457,7 +463,8 @@ export const getContentBySubjectAndClass = (subject, classLevel) => {
   if (!subjectData) return [];
 
   // Look up specific class topics, or fallback to "General" or first available class
-  const className = `Class ${classLevel}`;
+  const className =
+    classLevel === "Pre-school" ? "Pre-school" : `Class ${classLevel}`;
   let topics = subjectData.classes[className];
 
   if (!topics) {
@@ -506,7 +513,8 @@ export const getContentBySubjectAndClass = (subject, classLevel) => {
       instructor: "Veertri Faculty",
       featured: Math.random() > 0.8,
       videoUrl: youtubeUrl, // Use YouTube Embed URL
-      classLevel: parseInt(classLevel),
+      classLevel:
+        classLevel === "Pre-school" ? "Pre-school" : parseInt(classLevel),
     };
   });
 };
@@ -526,10 +534,17 @@ export const getContentById = (id) => {
     // None of them seem to have dashes. "Computer Code" has space.
 
     if (parts.length >= 3) {
-      const classLevel = parseInt(parts[0]);
-      const index = parseInt(parts[parts.length - 1]);
-      // Subject is everything in between
-      const subject = parts.slice(1, parts.length - 1).join("-");
+      let classLevel;
+      let subject;
+      let index = parseInt(parts[parts.length - 1]);
+
+      if (parts[0] === "Pre" && parts[1] === "school") {
+        classLevel = "Pre-school";
+        subject = parts.slice(2, parts.length - 1).join("-");
+      } else {
+        classLevel = parseInt(parts[0]);
+        subject = parts.slice(1, parts.length - 1).join("-");
+      }
 
       const items = getContentBySubjectAndClass(subject, classLevel);
       if (items && items[index]) {
@@ -541,4 +556,25 @@ export const getContentById = (id) => {
   return [...educationalVideos, ...courses].find(
     (item) => item.id == id // Use loose equality to match string/number
   );
+};
+
+export const getSubjectHeaderImage = (subject, classLevel) => {
+  // Determine the group
+  let group = "";
+  if (classLevel === "Pre-school") group = "Pre-school";
+  else if (classLevel >= 1 && classLevel <= 5) group = "Class 1-5";
+  else if (classLevel >= 6 && classLevel <= 10) group = "Class 6-10";
+  else if (classLevel >= 11 && classLevel <= 12) group = "Class 11-12";
+
+  const groupData = curriculumData[group];
+  if (!groupData) return null;
+
+  const subjectData = groupData[subject];
+  if (!subjectData) return null;
+
+  const imageKeyword = subjectData.imageKeyword || "default";
+  const images = subjectImageMap[imageKeyword] || subjectImageMap["default"];
+
+  // Return the first image as the header background
+  return images[0];
 };

@@ -42,12 +42,12 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="dark:bg-black bg-gray-50 min-h-screen transition-colors duration-300">
       {/* Hero Section */}
       <HeroSection content={featuredContent} />
 
       {/* Category Rows */}
-      <div className="relative -mt-32 z-10 pb-20">
+      <div className="relative -mt-20 md:-mt-32 z-10 pb-20 space-y-8 md:space-y-12">
         {homeCategories.map((category) => (
           <CategoryRow
             key={category.id}
