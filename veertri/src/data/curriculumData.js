@@ -1,4 +1,64 @@
 export const curriculumData = {
+  "Pre-school": {
+    Rhymes: {
+      imageKeyword: "nature",
+      classes: {
+        "Pre-school": [
+          "Twinkle Twinkle Little Star",
+          "Baa Baa Black Sheep",
+          "Humpty Dumpty",
+          "Jack and Jill",
+          "Johny Johny Yes Papa",
+        ],
+      },
+    },
+    Stories: {
+      imageKeyword: "book",
+      classes: {
+        "Pre-school": [
+          "The Thirsty Crow",
+          "The Lion and the Mouse",
+          "The Hare and the Tortoise",
+          "The Fox and the Grapes",
+        ],
+      },
+    },
+    Alphabets: {
+      imageKeyword: "literature book",
+      classes: {
+        "Pre-school": [
+          "A for Apple",
+          "B for Ball",
+          "C for Cat",
+          "D for Dog",
+          "Vowels and Consonants",
+        ],
+      },
+    },
+    Numbers: {
+      imageKeyword: "math",
+      classes: {
+        "Pre-school": [
+          "Counting 1 to 10",
+          "Counting 1 to 20",
+          "Shapes",
+          "Colors",
+          "Big and Small",
+        ],
+      },
+    },
+    Drawing: {
+      imageKeyword: "arts",
+      classes: {
+        "Pre-school": [
+          "Coloring Fruits",
+          "Coloring Animals",
+          "Drawing Shapes",
+          "Connect the Dots",
+        ],
+      },
+    },
+  },
   "Class 1-5": {
     Maths: {
       imageKeyword: "math",

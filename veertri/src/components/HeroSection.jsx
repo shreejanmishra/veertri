@@ -2,13 +2,17 @@ import { Play, Info, Volume2, VolumeX } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const HeroSection = ({ content }) => {
+const HeroSection = ({ content, isCompact = false }) => {
   const [isMuted, setIsMuted] = useState(true);
 
   if (!content) return null;
 
   return (
-    <div className="relative h-[80vh] md:h-screen w-full">
+    <div
+      className={`relative w-full ${
+        isCompact ? "h-[50vh] md:h-[60vh]" : "h-[80vh] md:h-screen"
+      }`}
+    >
       {/* Background Image/Video */}
       <div className="absolute inset-0">
         <img
@@ -35,10 +39,10 @@ const HeroSection = ({ content }) => {
               {content.rating}
             </span>
             <span>{content.year}</span>
-            <span>
-              {content.duration || `${content.modules} Modules`}
+            <span>{content.duration || `${content.modules} Modules`}</span>
+            <span className="border border-gray-400 px-1.5 py-0.5 text-xs md:text-sm rounded">
+              HD
             </span>
-            <span className="border border-gray-400 px-1.5 py-0.5 text-xs md:text-sm rounded">HD</span>
           </div>
 
           {/* Description */}
@@ -78,7 +82,11 @@ const HeroSection = ({ content }) => {
         onClick={() => setIsMuted(!isMuted)}
         className="absolute bottom-24 md:bottom-32 right-4 md:right-8 bg-transparent border border-white/50 hover:bg-white/10 text-white rounded-full p-2 md:p-3 transition z-20"
       >
-        {isMuted ? <VolumeX size={20} className="md:w-6 md:h-6" /> : <Volume2 size={20} className="md:w-6 md:h-6" />}
+        {isMuted ? (
+          <VolumeX size={20} className="md:w-6 md:h-6" />
+        ) : (
+          <Volume2 size={20} className="md:w-6 md:h-6" />
+        )}
       </button>
     </div>
   );

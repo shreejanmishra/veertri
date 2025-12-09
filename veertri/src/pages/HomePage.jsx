@@ -42,7 +42,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="dark:bg-black bg-gray-50 min-h-screen transition-colors duration-300">
       {/* Hero Section */}
       <HeroSection content={featuredContent} />
 

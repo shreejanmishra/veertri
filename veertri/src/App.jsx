@@ -13,6 +13,7 @@ import VideoDetail from "./pages/VideoDetail";
 import MyList from "./pages/MyList";
 import Profile from "./pages/Profile";
 import Scholarship from "./pages/Scholarship";
+import ScholarshipExam from "./pages/ScholarshipExam";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             element={<ClassCurriculum />}
           />
           <Route path="/scholarship" element={<Scholarship />} />
+          <Route path="/scholarship/exam/:id" element={<ScholarshipExam />} />
           <Route path="/watch/:id" element={<VideoDetail />} />
           <Route path="/my-list" element={<MyList />} />
           <Route path="/profile" element={<Profile />} />

@@ -17,26 +17,30 @@ const MyList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-24 px-4 md:px-16 pb-12">
+    <div className="min-h-screen dark:bg-black bg-gray-50 pt-24 px-4 md:px-16 pb-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">My Library</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-4xl font-bold dark:text-white text-gray-900 mb-4 transition-colors duration-300">
+            My Library
+          </h1>
+          <p className="text-xl dark:text-gray-300 text-gray-600 max-w-2xl mx-auto transition-colors duration-300">
             Your curated collection of educational content and subscriptions.
           </p>
         </div>
 
         {/* My List Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">
+          <h2 className="text-2xl font-bold dark:text-white text-gray-900 mb-6 border-b pb-2 dark:border-gray-800 border-gray-200 transition-colors duration-300">
             My List
           </h2>
           {myList.length === 0 ? (
-            <div className="text-center py-10 bg-white rounded-xl shadow-sm border border-gray-100">
-              <p className="text-gray-600 text-xl mb-4">Your list is empty</p>
+            <div className="text-center py-10 dark:bg-gray-900 bg-white rounded-xl shadow-sm border dark:border-gray-800 border-gray-100 transition-colors duration-300">
+              <p className="dark:text-gray-300 text-gray-600 text-xl mb-4 transition-colors duration-300">
+                Your list is empty
+              </p>
               <Link
                 to="/subjects"
-                className="text-[#090D0E] underline hover:text-[#FAD502] transition"
+                className="dark:text-white text-[#090D0E] underline hover:text-[#FAD502] transition"
               >
                 Browse content to add to your list
               </Link>
@@ -46,7 +50,7 @@ const MyList = () => {
               {myList.map((item) => (
                 <div
                   key={item.id}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full relative group"
+                  className="dark:bg-gray-900 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
                 >
                   {/* Remove Button */}
                   <button
@@ -73,32 +77,32 @@ const MyList = () => {
 
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="mb-4">
-                      <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                      <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-2 line-clamp-2 transition-colors duration-300">
                         {item.title}
                       </h2>
-                      <p className="text-sm text-gray-500 font-medium">
+                      <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
                         Instructor: {item.instructor || "Veertri Expert"}
                       </p>
                     </div>
 
-                    <p className="text-gray-600 mb-6 line-clamp-3 flex-1">
+                    <p className="dark:text-gray-300 text-gray-600 mb-6 line-clamp-3 flex-1 transition-colors duration-300">
                       {item.description}
                     </p>
 
-                    <div className="space-y-3 border-t border-gray-100 pt-4">
-                      <div className="flex items-center text-gray-700">
+                    <div className="space-y-3 border-t dark:border-gray-800 border-gray-100 pt-4 transition-colors duration-300">
+                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
                         <Star size={18} className="text-yellow-500 mr-2" />
                         <span className="font-semibold">
                           {item.rating} Rating
                         </span>
                       </div>
-                      <div className="flex items-center text-gray-700">
+                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
                         <Clock size={18} className="text-blue-600 mr-2" />
                         <span>
                           {item.duration || `${item.modules} Modules`}
                         </span>
                       </div>
-                      <div className="flex items-center text-gray-700">
+                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
                         <Calendar size={18} className="text-purple-600 mr-2" />
                         <span>{item.year}</span>
                       </div>
@@ -120,14 +124,14 @@ const MyList = () => {
 
         {/* My Subscriptions Section */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 border-gray-200">
+          <h2 className="text-2xl font-bold dark:text-white text-gray-900 mb-6 border-b pb-2 dark:border-gray-800 border-gray-200 transition-colors duration-300">
             My Subscriptions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mySubscriptions.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col h-full relative group"
+                className="dark:bg-gray-900 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
               >
                 <div
                   className="absolute top-4 left-4 z-10 bg-green-100 p-2 rounded-full text-green-600 shadow-sm"
@@ -149,32 +153,32 @@ const MyList = () => {
 
                 <div className="p-6 flex-1 flex flex-col">
                   <div className="mb-4">
-                    <h2 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                    <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-2 line-clamp-2 transition-colors duration-300">
                       {item.title}
                     </h2>
-                    <p className="text-sm text-gray-500 font-medium">
+                    <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
                       Instructor: {item.instructor || "Veertri Expert"}
                     </p>
                   </div>
 
-                  <p className="text-gray-600 mb-6 line-clamp-3 flex-1">
+                  <p className="dark:text-gray-300 text-gray-600 mb-6 line-clamp-3 flex-1 transition-colors duration-300">
                     {item.description}
                   </p>
 
-                  <div className="space-y-3 border-t border-gray-100 pt-4">
-                    <div className="flex items-center text-gray-700">
+                  <div className="space-y-3 border-t dark:border-gray-800 border-gray-100 pt-4 transition-colors duration-300">
+                    <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
                       <Star size={18} className="text-yellow-500 mr-2" />
                       <span className="font-semibold">
                         {item.rating} Rating
                       </span>
                     </div>
-                    <div className="flex items-center text-gray-700">
+                    <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
                       <Clock size={18} className="text-blue-600 mr-2" />
                       <span>{item.duration || `${item.modules} Modules`}</span>
                     </div>
                   </div>
 
-                  <button className="w-full mt-6 border-2 border-[#090D0E] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#090D0E] hover:text-[#FAD502] transition-colors duration-200 flex items-center justify-center gap-2">
+                  <button className="w-full mt-6 border-2 dark:border-white border-[#090D0E] dark:text-white text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#090D0E] hover:text-[#FAD502] dark:hover:bg-white dark:hover:text-black transition-colors duration-200 flex items-center justify-center gap-2">
                     View Course
                   </button>
                 </div>
