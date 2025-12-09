@@ -46,6 +46,14 @@ const Header = () => {
               Home
             </Link>
             <Link
+              to="/entertainment"
+              className={`transition font-medium ${
+                isScrolled ? "dark:text-white text-gray-900" : "text-white"
+              } hover:text-[#FAD502]`}
+            >
+              Entertainment
+            </Link>
+            <Link
               to="/subjects"
               className={`transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
@@ -68,6 +76,14 @@ const Header = () => {
               } hover:text-[#FAD502]`}
             >
               Scholarship
+            </Link>
+            <Link
+              to="/vr"
+              className={`transition font-medium ${
+                isScrolled ? "dark:text-white text-gray-900" : "text-white"
+              } hover:text-[#FAD502]`}
+            >
+              VR
             </Link>
           </nav>
         </div>
@@ -148,18 +164,39 @@ const Header = () => {
             Home
           </Link>
           <Link
+            to="/entertainment"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Entertainment
+          </Link>
+          <Link
             to="/subjects"
             className="text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Subjects
+            Education
           </Link>
           <Link
-            to="/my-list"
+            to="/my-corner"
             className="text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            My List
+            My Corner
+          </Link>
+          <Link
+            to="/scholarship"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Scholarship
+          </Link>
+          <Link
+            to="/vr"
+            className="text-white text-2xl hover:text-[#FAD502] transition"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            VR
           </Link>
           <Link
             to="/scholarship"

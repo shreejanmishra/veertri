@@ -193,7 +193,7 @@ export const scholarships = [
       "Financial assistance for OBC, EBC, and DNT students studying in top-class schools and colleges across India.",
     eligibility: "Class 9-12 students, Family income < ₹2.5L",
     image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop",
+      "https://www.pmindia.gov.in/wp-content/uploads/2025/11/H20251127197887.jpg",
   },
   {
     id: 2,
@@ -210,7 +210,7 @@ export const scholarships = [
   },
   {
     id: 3,
-    title: "Santoor Women's Scholarship",
+    title: "Wipro's Underprivileged Women Scholarship",
     provider: "Wipro Cares",
     amount: "₹24,000/year",
     deadline: "2025-09-15",
@@ -219,7 +219,7 @@ export const scholarships = [
       "Empowering young women from underprivileged backgrounds to pursue higher education after Class 12.",
     eligibility: "Girls who passed Class 12 from govt schools",
     image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop",
+      "https://thecsruniverse.com/adminxsafe/uploads/IMG-20240703-WA0003.jpg",
   },
   {
     id: 4,
@@ -447,7 +447,11 @@ const topicVideoMap = {
   "Addition & Subtraction": "OgOZ5rLX_n0",
 };
 
-export const getContentBySubjectAndClass = (subject, classLevel) => {
+export const getContentBySubjectAndClass = (
+  subject,
+  classLevel,
+  board = "CBSE"
+) => {
   // Determine the group
   let group = "";
   if (classLevel === "Pre-school") group = "Pre-school";
@@ -502,14 +506,14 @@ export const getContentBySubjectAndClass = (subject, classLevel) => {
 
     return {
       id: `${classLevel}-${subject}-${index}`,
-      title: topic,
+      title: board === "CBSE" ? topic : `[${board}] ${topic}`,
       thumbnail: imageUrl,
       backdrop: imageUrl,
       genre: subject,
       year: 2024,
       duration: "45m", // Mock duration
       rating: (4 + Math.random()).toFixed(1), // Mock rating 4.0-5.0
-      description: `Learn about ${topic} in this comprehensive module designed for Class ${classLevel}.`,
+      description: `Learn about ${topic} in this comprehensive module designed for Class ${classLevel} (${board}).`,
       instructor: "Veertri Faculty",
       featured: Math.random() > 0.8,
       videoUrl: youtubeUrl, // Use YouTube Embed URL

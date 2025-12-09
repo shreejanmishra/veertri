@@ -374,17 +374,17 @@ export default function Scholarship() {
       appliedDate: "2024-11-15",
       amount: "₹75,000 - ₹1,25,000",
       image:
-        "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop",
+        "https://www.pmindia.gov.in/wp-content/uploads/2025/11/H20251127197887.jpg",
     },
     {
       id: 3,
-      title: "Santoor Women's Scholarship",
+      title: "Wipro's Underprivileged Women Scholarship",
       provider: "Wipro Cares",
       status: "Approved",
       appliedDate: "2024-10-20",
       amount: "₹24,000/year",
       image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop",
+        "https://thecsruniverse.com/adminxsafe/uploads/IMG-20240703-WA0003.jpg",
     },
   ]);
 

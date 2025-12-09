@@ -16,6 +16,30 @@ import {
 } from "lucide-react";
 import MovieCard from "../components/MovieCard";
 
+const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
+  const boards = ["CBSE", "ICSE", "IB", "Maharashtra Board"];
+  return (
+    <div className="px-4 md:px-16 mb-6 flex justify-end">
+      <div className="relative inline-block text-left w-full md:w-64">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Select Board
+        </label>
+        <select
+          value={selectedBoard}
+          onChange={(e) => onSelectBoard(e.target.value)}
+          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-[#FAD502] focus:border-[#FAD502] sm:text-sm rounded-md dark:bg-gray-800 dark:text-white bg-white text-gray-900 shadow-sm"
+        >
+          {boards.map((board) => (
+            <option key={board} value={board}>
+              {board}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+};
+
 const ClassSelector = ({ selectedClass, onSelectClass }) => {
   const rowRef = useRef(null);
   // const classes = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -84,7 +108,7 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
   );
 };
 
-const SubjectContentRow = ({ title, selectedClass }) => {
+const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
   const [items, setItems] = useState([]);
   const [stats, setStats] = useState({ completed: 0, total: 0, percentage: 0 });
   const [isExpanded, setIsExpanded] = useState(true);
@@ -108,10 +132,14 @@ const SubjectContentRow = ({ title, selectedClass }) => {
 
   useEffect(() => {
     // Filter content based on subject and selected class
-    const filteredItems = getContentBySubjectAndClass(title, selectedClass);
+    const filteredItems = getContentBySubjectAndClass(
+      title,
+      selectedClass,
+      selectedBoard
+    );
     setItems(filteredItems);
     setStats(calculateStats(filteredItems));
-  }, [title, selectedClass]);
+  }, [title, selectedClass, selectedBoard]);
 
   const handleProgressUpdate = () => {
     setStats(calculateStats(items));
@@ -234,6 +262,7 @@ const Subjects = () => {
     if (saved) return parseInt(saved);
     return 10;
   });
+  const [selectedBoard, setSelectedBoard] = useState("CBSE");
   const [heroContent, setHeroContent] = useState(null);
 
   useEffect(() => {
@@ -333,10 +362,18 @@ const Subjects = () => {
       className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="min-h-screen dark:bg-black/80 dark:backdrop-blur-sm transition-colors duration-300">
-        <HeroSection content={heroContent} isCompact={true} />
+      <div className="min-h-screen dark:bg-black/80 dark:backdrop-blur-sm transition-colors duration-300 pt-24">
+        <div className="px-4 md:px-16 mb-8">
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">
+            <HeroSection content={heroContent} isCompact={true} />
+          </div>
+        </div>
 
-        <div className="relative mt-8 z-10 pb-20">
+        <div className="relative z-10 pb-20">
+          <BoardSelector
+            selectedBoard={selectedBoard}
+            onSelectBoard={setSelectedBoard}
+          />
           {/* Class Selector Carousel */}
           <ClassSelector
             selectedClass={selectedClass}
@@ -359,6 +396,7 @@ const Subjects = () => {
                         key={subject}
                         title={subject}
                         selectedClass={selectedClass}
+                        selectedBoard={selectedBoard}
                       />
                     ))}
                   </div>
@@ -370,6 +408,7 @@ const Subjects = () => {
                     key={subject.name}
                     title={subject.name}
                     selectedClass={selectedClass}
+                    selectedBoard={selectedBoard}
                   />
                 ));
               }
@@ -377,7 +416,9 @@ const Subjects = () => {
 
             {/* Empty State Message if no content found for any subject */}
             <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">
-              <p>Showing curriculum for Class {selectedClass}</p>
+              <p>
+                Showing curriculum for Class {selectedClass} ({selectedBoard})
+              </p>
             </div>
           </div>
         </div>
