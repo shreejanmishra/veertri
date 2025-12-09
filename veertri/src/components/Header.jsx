@@ -54,7 +54,7 @@ const Header = () => {
               Education
             </Link>
             <Link
-              to="/my-list"
+              to="/my-corner"
               className={`transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
               } hover:text-[#FAD502]`}

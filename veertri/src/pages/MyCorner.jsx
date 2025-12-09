@@ -3,7 +3,7 @@ import { Trash2, Play, Clock, Star, Calendar, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { educationalVideos, courses } from "../data/mockData";
 
-const MyList = () => {
+const MyCorner = () => {
   const [activeTab, setActiveTab] = useState("list"); // 'list' or 'subscriptions'
   // In a real app, this would come from user's saved data
   const [myList, setMyList] = useState([
@@ -216,4 +216,4 @@ const MyList = () => {
   );
 };
 
-export default MyList;
+export default MyCorner;

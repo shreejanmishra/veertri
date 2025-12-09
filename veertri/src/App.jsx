@@ -10,7 +10,7 @@ import HomePage from "./pages/HomePage";
 import Subjects from "./pages/Subjects";
 import ClassCurriculum from "./pages/ClassCurriculum";
 import VideoDetail from "./pages/VideoDetail";
-import MyList from "./pages/MyList";
+import MyCorner from "./pages/MyCorner";
 import Profile from "./pages/Profile";
 import Scholarship from "./pages/Scholarship";
 import ScholarshipExam from "./pages/ScholarshipExam";
@@ -30,7 +30,7 @@ function App() {
           <Route path="/scholarship" element={<Scholarship />} />
           <Route path="/scholarship/exam/:id" element={<ScholarshipExam />} />
           <Route path="/watch/:id" element={<VideoDetail />} />
-          <Route path="/my-list" element={<MyList />} />
+          <Route path="/my-corner" element={<MyCorner />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>

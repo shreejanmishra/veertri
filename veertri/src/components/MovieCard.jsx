@@ -84,10 +84,7 @@ const MovieCard = ({
             }`}
             title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
           >
-            <CheckCircle
-              size={16}
-              fill={isCompleted ? "currentColor" : "none"}
-            />
+            <CheckCircle size={16} />
           </button>
 
           <div className="w-full">

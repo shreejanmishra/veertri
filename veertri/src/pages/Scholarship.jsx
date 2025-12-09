@@ -347,7 +347,10 @@ export default function Scholarship() {
 
     // Simulate Disbursement after 3 seconds for POC
     setTimeout(() => {
-      localStorage.setItem(`scholarship_disbursed_${selectedAppForBank.id}`, "true");
+      localStorage.setItem(
+        `scholarship_disbursed_${selectedAppForBank.id}`,
+        "true"
+      );
       setApplications((prevApps) =>
         prevApps.map((app) => {
           if (app.id === selectedAppForBank.id) {
