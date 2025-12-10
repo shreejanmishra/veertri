@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { scholarships } from "../data/mockData";
 
-import scholarshipBg from "../assets/scholarshipBg.jpg";
+import scholarshipBg from "../assets/scholarshipBG.jpg";
 import entertainmentBg from "../assets/entertainment.jpg";
 import {
   Calendar,
