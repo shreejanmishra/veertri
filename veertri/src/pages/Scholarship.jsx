@@ -309,12 +309,50 @@ const BankDetailsModal = ({ isOpen, onClose, onSubmit }) => {
   );
 };
 
+const ConfirmationModal = ({ isOpen, onClose, onConfirm, title, message }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 max-w-sm w-full relative border dark:border-gray-800 border-gray-200 shadow-2xl">
+        <div className="flex flex-col items-center text-center">
+          <div className="w-12 h-12 bg-yellow-500/20 text-yellow-500 rounded-full flex items-center justify-center mb-4">
+            <AlertCircle size={24} />
+          </div>
+          <h3 className="text-xl font-bold dark:text-white text-gray-900 mb-2">
+            {title}
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+            {message}
+          </p>
+          <div className="flex gap-3 w-full">
+            <button
+              onClick={onClose}
+              className="flex-1 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white py-2 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              onClick={onConfirm}
+              className="flex-1 bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#FAD502]/80 transition-colors"
+            >
+              Proceed
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Scholarship() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("all"); // 'all' or 'applications'
   const [selectedScholarship, setSelectedScholarship] = useState(null);
   const [showBankModal, setShowBankModal] = useState(false);
   const [selectedAppForBank, setSelectedAppForBank] = useState(null);
+  const [showExamConfirmModal, setShowExamConfirmModal] = useState(false);
+  const [selectedExamId, setSelectedExamId] = useState(null);
 
   const handleApplicationSubmit = (scholarship) => {
     const newApp = {
@@ -541,9 +579,10 @@ Thank you for using Veertri.
                         <>
                           {!app.examStatus && (
                             <button
-                              onClick={() =>
-                                navigate(`/scholarship/exam/${app.id}`)
-                              }
+                              onClick={() => {
+                                setSelectedExamId(app.id);
+                                setShowExamConfirmModal(true);
+                              }}
                               className="mt-3 w-full bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-bold text-sm hover:bg-[#FAD502]/90 transition-colors"
                             >
                               Take Eligibility Exam
@@ -712,6 +751,21 @@ Thank you for using Veertri.
           setSelectedAppForBank(null);
         }}
         onSubmit={handleBankDetailsSubmit}
+      />
+
+      {/* Exam Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={showExamConfirmModal}
+        onClose={() => {
+          setShowExamConfirmModal(false);
+          setSelectedExamId(null);
+        }}
+        onConfirm={() => {
+          setShowExamConfirmModal(false);
+          navigate(`/scholarship/exam/${selectedExamId}`);
+        }}
+        title="Start Eligibility Exam?"
+        message="Are you sure you want to start the exam? Once started, you cannot pause or restart it."
       />
     </div>
   );

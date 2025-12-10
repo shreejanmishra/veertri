@@ -1,5 +1,18 @@
 import { Link } from "react-router-dom";
-import { Search, Bell, User, Menu, Sun, Moon } from "lucide-react";
+import {
+  Search,
+  Bell,
+  User,
+  Menu,
+  Sun,
+  Moon,
+  Home,
+  Film,
+  GraduationCap,
+  LayoutDashboard,
+  Award,
+  Glasses,
+} from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "../context/ThemeContext";
 
@@ -39,50 +52,56 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-6">
             <Link
               to="/"
-              className={`transition font-medium ${
+              className={`flex items-center gap-2 transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
-              } hover:text-[#FAD502]`}
+              } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
             >
+              <Home size={18} />
               Home
             </Link>
             <Link
               to="/entertainment"
-              className={`transition font-medium ${
+              className={`flex items-center gap-2 transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
-              } hover:text-[#FAD502]`}
+              } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
             >
+              <Film size={18} />
               Entertainment
             </Link>
             <Link
               to="/subjects"
-              className={`transition font-medium ${
+              className={`flex items-center gap-2 transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
-              } hover:text-[#FAD502]`}
+              } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
             >
+              <GraduationCap size={18} />
               Education
             </Link>
             <Link
               to="/my-corner"
-              className={`transition font-medium ${
+              className={`flex items-center gap-2 transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
-              } hover:text-[#FAD502]`}
+              } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
             >
+              <LayoutDashboard size={18} />
               My Corner
             </Link>
             <Link
               to="/scholarship"
-              className={`transition font-medium ${
+              className={`flex items-center gap-2 transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
-              } hover:text-[#FAD502]`}
+              } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
             >
+              <Award size={18} />
               Scholarship
             </Link>
             <Link
               to="/vr"
-              className={`transition font-medium ${
+              className={`flex items-center gap-2 transition font-medium ${
                 isScrolled ? "dark:text-white text-gray-900" : "text-white"
-              } hover:text-[#FAD502]`}
+              } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
             >
+              <Glasses size={18} />
               VR
             </Link>
           </nav>
@@ -95,7 +114,7 @@ const Header = () => {
             onClick={toggleTheme}
             className={`transition ${
               isScrolled ? "dark:text-white text-gray-900" : "text-white"
-            } hover:text-[#FAD502]`}
+            } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
           >
             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
           </button>
@@ -119,7 +138,7 @@ const Header = () => {
                 onClick={() => setShowSearch(true)}
                 className={`transition ${
                   isScrolled ? "dark:text-white text-gray-900" : "text-white"
-                } hover:text-[#FAD502]`}
+                } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
               >
                 <Search size={20} />
               </button>
@@ -130,7 +149,7 @@ const Header = () => {
           <button
             className={`transition ${
               isScrolled ? "dark:text-white text-gray-900" : "text-white"
-            } hover:text-[#FAD502]`}
+            } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
           >
             <Bell size={20} />
           </button>
@@ -138,7 +157,9 @@ const Header = () => {
           {/* Profile */}
           <Link
             to="/profile"
-            className="dark:text-white text-gray-900 hover:text-gray-500 dark:hover:text-gray-300 transition"
+            className={`transition ${
+              isScrolled ? "dark:text-white text-gray-900" : "text-white"
+            } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
           >
             <User size={20} />
           </Link>
@@ -158,58 +179,58 @@ const Header = () => {
         <div className="fixed inset-0 bg-black/95 z-40 flex flex-col items-center justify-center gap-8 md:hidden">
           <Link
             to="/"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <Home size={24} />
             Home
           </Link>
           <Link
             to="/entertainment"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <Film size={24} />
             Entertainment
           </Link>
           <Link
             to="/subjects"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <GraduationCap size={24} />
             Education
           </Link>
           <Link
             to="/my-corner"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <LayoutDashboard size={24} />
             My Corner
           </Link>
           <Link
             to="/scholarship"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <Award size={24} />
             Scholarship
           </Link>
           <Link
             to="/vr"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <Glasses size={24} />
             VR
           </Link>
           <Link
-            to="/scholarship"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            Scholarship
-          </Link>
-          <Link
             to="/profile"
-            className="text-white text-2xl hover:text-[#FAD502] transition"
+            className="flex items-center gap-3 text-white text-2xl hover:text-[#FAD502] transition"
             onClick={() => setIsMobileMenuOpen(false)}
           >
+            <User size={24} />
             My Profile
           </Link>
         </div>

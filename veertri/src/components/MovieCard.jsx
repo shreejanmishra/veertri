@@ -111,9 +111,6 @@ const MovieCard = ({
           <span className="text-xs font-medium text-gray-500 dark:text-gray-400 px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
             HD
           </span>
-          <span className="text-sm font-semibold text-[#FAD502] flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">
-            Watch Now
-          </span>
         </div>
       </div>
     </Link>

@@ -9,18 +9,69 @@ const SubjectPage = () => {
   const [subjectData, setSubjectData] = useState(null);
 
   useEffect(() => {
-    // Find the category that matches the subject name
-    // The URL param might be "Mathematics", "Science", etc.
-    // We need to handle potential URL encoding or slight mismatches if any.
-    // For now, assume exact match or simple decoding.
     const decodedSubject = decodeURIComponent(subject);
-    const category = categories.find((cat) => cat.name === decodedSubject);
+
+    // Map specific subjects to broader categories
+    let categoryName = decodedSubject;
+    if (decodedSubject === "Maths") categoryName = "Mathematics";
+    if (
+      ["Physics", "Chemistry", "Biology", "EVS", "Science"].includes(
+        decodedSubject
+      )
+    ) {
+      categoryName = "Science (Physics, Chemistry, Biology)";
+    }
+    if (
+      [
+        "History",
+        "Civics",
+        "Geography",
+        "Political Science",
+        "Sociology",
+        "Economics",
+        "Psychology",
+        "Philosophy",
+      ].includes(decodedSubject)
+    ) {
+      categoryName = "Social Science";
+    }
+    if (
+      [
+        "Computer",
+        "Multimedia & Web Technology",
+        "Informatics Practices",
+        "Computer Science",
+      ].includes(decodedSubject)
+    ) {
+      categoryName = "Computer Science";
+    }
+    if (
+      [
+        "Rhymes",
+        "Stories",
+        "Alphabets",
+        "Drawing",
+        "Fine Arts",
+        "English",
+      ].includes(decodedSubject)
+    ) {
+      categoryName = "English";
+    }
+    if (["Numbers", "Maths", "Mathematics"].includes(decodedSubject)) {
+      categoryName = "Mathematics";
+    }
+
+    const category = categories.find((cat) => cat.name === categoryName);
 
     if (category) {
-      setSubjectData(category);
+      // If we mapped to a broader category, we might want to filter items further if possible,
+      // but for now, showing the broader category content is better than nothing.
+      // We can update the display name to match the requested subject but show category items.
+      setSubjectData({
+        ...category,
+        name: decodedSubject, // Keep the original requested name for the header
+      });
     } else {
-      // Fallback if not found in categories array (e.g. if we passed a raw genre)
-      // But for now, we will link from the categories list, so it should match.
       setSubjectData({ name: decodedSubject, items: [] });
     }
   }, [subject]);

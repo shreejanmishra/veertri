@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
   const boards = ["CBSE", "ICSE", "IB", "Maharashtra Board"];
   return (
-    <div className="px-4 md:px-16 mb-6 flex justify-end">
+    <div className="px-4 md:px-16 mb-6 flex justify-start">
       <div className="relative inline-block text-left w-full md:w-64">
         <label className="block text-sm font-medium text-gray-100 dark:text-gray-300 mb-1">
           Select Board
@@ -76,7 +76,7 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
 
       <div
         ref={rowRef}
-        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth p-4 min-[1400px]:justify-start min-[1400px]:overflow-visible"
+        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 min-[1400px]:justify-start min-[1400px]:overflow-visible"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {classes.map((classNum) => (

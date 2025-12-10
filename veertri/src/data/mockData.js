@@ -1083,38 +1083,99 @@ export const categories = [
   {
     id: 1,
     name: "Mathematics",
-    items: educationalVideos.filter((m) => m.genre === "Mathematics"),
+    items: [
+      ...educationalVideos.filter((m) =>
+        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(t.genre)
+      ),
+    ],
   },
   {
     id: 2,
     name: "Science (Physics, Chemistry, Biology)",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "Science"),
-      ...courses.filter((t) => t.genre === "Science"),
+      ...educationalVideos.filter((m) =>
+        [
+          "Science",
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "Nature",
+          "EVS",
+        ].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        [
+          "Science",
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "Nature",
+          "EVS",
+        ].includes(t.genre)
+      ),
     ],
   },
   {
     id: 3,
     name: "Social Science",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "History"),
-      ...courses.filter((t) => t.genre === "History"),
+      ...educationalVideos.filter((m) =>
+        [
+          "Social Science",
+          "History",
+          "Geography",
+          "Civics",
+          "Economics",
+          "Political Science",
+          "Sociology",
+          "Psychology",
+          "Biography",
+        ].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        [
+          "Social Science",
+          "History",
+          "Geography",
+          "Civics",
+          "Economics",
+          "Political Science",
+          "Sociology",
+          "Psychology",
+          "Biography",
+        ].includes(t.genre)
+      ),
     ],
   },
   {
     id: 4,
     name: "Computer Science",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "Technology"),
-      ...courses.filter((t) => t.genre === "Technology"),
+      ...educationalVideos.filter((m) =>
+        ["Computer Science", "Technology", "Design", "Coding", "AI"].includes(
+          m.genre
+        )
+      ),
+      ...courses.filter((t) =>
+        ["Computer Science", "Technology", "Design", "Coding", "AI"].includes(
+          t.genre
+        )
+      ),
     ],
   },
   {
     id: 5,
     name: "English",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "Arts"),
-      ...courses.filter((t) => t.genre === "Arts"),
+      ...educationalVideos.filter((m) =>
+        ["English", "Arts", "Literature", "Grammar"].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        ["English", "Arts", "Literature", "Grammar"].includes(t.genre)
+      ),
     ],
   },
 ];
