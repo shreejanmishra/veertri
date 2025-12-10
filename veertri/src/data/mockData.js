@@ -1,5 +1,292 @@
 import { curriculumData } from "./curriculumData";
 
+export const entertainmentContent = [
+  {
+    id: "ent-1",
+    title: "Cosmos: Possible Worlds",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2024,
+    duration: "45m",
+    rating: "4.9",
+    description:
+      "Embark on a voyage through space and time to discover the wonders of our universe and the history of scientific discovery.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-2",
+    title: "The Blue Planet",
+    thumbnail:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=1920&h=1080&fit=crop",
+    genre: "Nature",
+    year: 2023,
+    duration: "50m",
+    rating: "4.9",
+    description:
+      "A comprehensive natural history of the world's oceans, featuring rare and unusual creatures of the deep.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-3",
+    title: "The Imitation Game",
+    thumbnail:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2014,
+    duration: "1h 54m",
+    rating: "4.8",
+    description:
+      "During World War II, the English mathematical genius Alan Turing tries to crack the German Enigma code with help from fellow mathematicians.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-4",
+    title: "Brain Games",
+    thumbnail:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&h=1080&fit=crop",
+    genre: "Psychology",
+    year: 2020,
+    duration: "30m",
+    rating: "4.7",
+    description:
+      "Interactive games and experiments designed to mess with your mind and reveal the inner workings of your brain.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-5",
+    title: "Abstract: The Art of Design",
+    thumbnail:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop",
+    genre: "Design",
+    year: 2019,
+    duration: "45m",
+    rating: "4.8",
+    description:
+      "Step inside the minds of the most innovative designers in a variety of disciplines and learn how design impacts every aspect of life.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-6",
+    title: "Hidden Figures",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2016,
+    duration: "2h 7m",
+    rating: "4.9",
+    description:
+      "The story of a team of female African-American mathematicians who served a vital role in NASA during the early years of the U.S. space program.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-7",
+    title: "MythBusters",
+    thumbnail:
+      "https://images.unsplash.com/photo-1535551951406-a19828b2779d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1535551951406-a19828b2779d?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2010,
+    duration: "45m",
+    rating: "4.7",
+    description:
+      "A special effects team puts urban legends, rumors, and myths to the test using scientific methods.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-8",
+    title: "A Beautiful Mind",
+    thumbnail:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2001,
+    duration: "2h 15m",
+    rating: "4.8",
+    description:
+      "After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-9",
+    title: "Explained",
+    thumbnail:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1920&h=1080&fit=crop",
+    genre: "Education",
+    year: 2018,
+    duration: "20m",
+    rating: "4.6",
+    description:
+      "This enlightening series digs deep into a wide range of topics such as the cryptocurrency boom, why diets fail, and the world of K-pop.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-10",
+    title: "The Theory of Everything",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2014,
+    duration: "2h 3m",
+    rating: "4.7",
+    description:
+      "A look at the relationship between the famous physicist Stephen Hawking and his wife.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-11",
+    title: "Interstellar",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Sci-Fi",
+    year: 2014,
+    duration: "2h 49m",
+    rating: "4.9",
+    description:
+      "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-12",
+    title: "Planet Earth II",
+    thumbnail:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=1920&h=1080&fit=crop",
+    genre: "Nature",
+    year: 2016,
+    duration: "50m",
+    rating: "4.9",
+    description:
+      "David Attenborough returns with a new wildlife documentary that showcases life on Planet Earth.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-13",
+    title: "Bill Nye the Science Guy",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 1993,
+    duration: "30m",
+    rating: "4.6",
+    description:
+      "Scientist Bill Nye teaches kids about science in a fun and energetic way.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-14",
+    title: "Apollo 11",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2019,
+    duration: "1h 33m",
+    rating: "4.8",
+    description:
+      "A look at the Apollo 11 mission to land on the moon led by commander Neil Armstrong and pilots Buzz Aldrin and Michael Collins.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-15",
+    title: "Inside Bill's Brain",
+    thumbnail:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2019,
+    duration: "50m",
+    rating: "4.7",
+    description:
+      "A documentary that tells Bill Gates' life story as he pursues solutions to some of the world's most complex problems.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Documentaries",
+  },
+];
+
+export const getEntertainmentContent = () => {
+  return {
+    featured: entertainmentContent[0],
+    categories: [
+      {
+        id: "movies",
+        title: "Trending Movies",
+        items: entertainmentContent.filter(
+          (item) => item.category === "Movies"
+        ),
+      },
+      {
+        id: "tv-shows",
+        title: "Popular TV Shows",
+        items: entertainmentContent.filter(
+          (item) => item.category === "TV Shows"
+        ),
+      },
+      {
+        id: "documentaries",
+        title: "Documentaries",
+        items: entertainmentContent.filter(
+          (item) => item.category === "Documentaries"
+        ),
+      },
+    ],
+  };
+};
+
 export const educationalVideos = [
   {
     id: 1,

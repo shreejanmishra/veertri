@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import Scholarship from "./pages/Scholarship";
 import ScholarshipExam from "./pages/ScholarshipExam";
 import Entertainment from "./pages/Entertainment";
+import EntertainmentCategory from "./pages/EntertainmentCategory";
 import VR from "./pages/VR";
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/entertainment" element={<Entertainment />} />
+          <Route
+            path="/entertainment/:categoryId"
+            element={<EntertainmentCategory />}
+          />
           <Route path="/subjects" element={<Subjects />} />
           <Route
             path="/subjects/:subject/class/:classId"

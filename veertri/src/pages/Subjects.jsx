@@ -21,7 +21,7 @@ const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
   return (
     <div className="px-4 md:px-16 mb-6 flex justify-end">
       <div className="relative inline-block text-left w-full md:w-64">
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-100 dark:text-gray-300 mb-1">
           Select Board
         </label>
         <select
@@ -156,7 +156,7 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
 
   return (
     <div className="px-4 md:px-16 mb-12">
-      <div className="dark:bg-gray-900/40 bg-white/60 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
+      <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
         {/* Header */}
         <div
           className="mb-4 px-1 flex items-center justify-between cursor-pointer"
@@ -362,7 +362,7 @@ const Subjects = () => {
       className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="min-h-screen dark:bg-black/80 dark:backdrop-blur-sm transition-colors duration-300 pt-24">
+      <div className="min-h-screen dark:bg-black/30 dark:backdrop-blur-sm transition-colors duration-300 pt-24">
         <div className="px-4 md:px-16 mb-8">
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">
             <HeroSection content={heroContent} isCompact={true} />

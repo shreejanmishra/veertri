@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Trash2, Play, Clock, Star, Calendar, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { educationalVideos, courses } from "../data/mockData";
+import myCorner from "../assets/myCorner.jpg";
 
 const MyCorner = () => {
   const [activeTab, setActiveTab] = useState("list"); // 'list' or 'subscriptions'
@@ -18,8 +19,11 @@ const MyCorner = () => {
   };
 
   return (
-    <div className="min-h-screen dark:bg-black bg-gray-50 pt-24 px-4 md:px-16 pb-12 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
+    <div
+      className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${myCorner})` }}
+    >
+      <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 px-4 md:px-16 pb-12">
         {/* Tabs */}
         <div className="flex gap-6 mb-8 border-b dark:border-gray-800 border-gray-200">
           <button
@@ -27,7 +31,7 @@ const MyCorner = () => {
             className={`pb-4 text-lg font-bold transition-colors relative ${
               activeTab === "list"
                 ? "text-[#FAD502]"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                : "text-white dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
             }`}
           >
             My List
@@ -40,7 +44,7 @@ const MyCorner = () => {
             className={`pb-4 text-lg font-bold transition-colors relative ${
               activeTab === "subscriptions"
                 ? "text-[#FAD502]"
-                : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
+                : "text-white dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
             }`}
           >
             My Subscriptions
@@ -54,7 +58,7 @@ const MyCorner = () => {
         {activeTab === "list" && (
           <div className="mb-16">
             {myList.length === 0 ? (
-              <div className="text-center py-10 dark:bg-gray-900 bg-white rounded-xl shadow-sm border dark:border-gray-800 border-gray-100 transition-colors duration-300">
+              <div className="text-center py-10 dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm border dark:border-gray-800 border-gray-100 transition-colors duration-300">
                 <p className="dark:text-gray-300 text-gray-600 text-xl mb-4 transition-colors duration-300">
                   Your list is empty
                 </p>
@@ -70,7 +74,7 @@ const MyCorner = () => {
                 {myList.map((item) => (
                   <div
                     key={item.id}
-                    className="dark:bg-gray-900 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
+                    className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
                   >
                     {/* Remove Button */}
                     <button
@@ -153,7 +157,7 @@ const MyCorner = () => {
               {mySubscriptions.map((item) => (
                 <div
                   key={item.id}
-                  className="dark:bg-gray-900 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
+                  className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
                 >
                   <div
                     className="absolute top-4 left-4 z-10 bg-green-100 p-2 rounded-full text-green-600 shadow-sm"

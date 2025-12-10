@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { scholarships } from "../data/mockData";
-import scholarshipImage from "../assets/scholarshipImage.jpg";
+
+import scholarshipBg from "../assets/scholarshipBg.jpg";
+import entertainmentBg from "../assets/entertainment.jpg";
 import {
   Calendar,
   IndianRupee,
@@ -468,17 +470,20 @@ Thank you for using Veertri.
   };
 
   return (
-    <div className="min-h-screen dark:bg-black bg-gray-50 pt-24 px-4 md:px-16 pb-12 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
+    <div
+      className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${entertainmentBg})` }}
+    >
+      <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 px-4 md:px-16 pb-12">
         <div
           className="relative rounded-2xl overflow-hidden mb-12 text-left py-16 px-8 md:px-12"
           style={{
-            backgroundImage: `url(${scholarshipImage})`,
+            backgroundImage: `url(${scholarshipBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10">
             <h1 className="text-4xl font-bold text-white mb-4">
               Scholarship Opportunities
@@ -492,191 +497,202 @@ Thank you for using Veertri.
 
         {/* Section 1: Application Tracker */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold dark:text-white text-gray-900 mb-6 flex items-center gap-3">
-            <span className="w-1.5 h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
-            Application Status
-          </h2>
+          <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
+            <h2 className="text-2xl font-bold dark:text-white text-gray-200 mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
+              Application Status
+            </h2>
 
-          {applications.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {applications.map((app) => (
-                <div
-                  key={app.id}
-                  className="dark:bg-gray-900 bg-white rounded-xl p-4 shadow-md border dark:border-gray-800 border-gray-100 flex gap-4 items-center"
-                >
-                  <img
-                    src={app.image}
-                    alt={app.title}
-                    className="w-24 h-24 rounded-lg object-cover"
-                  />
-                  <div className="flex-1">
-                    <h3 className="font-bold dark:text-white text-gray-900 line-clamp-1">
-                      {app.title}
-                    </h3>
-                    <p className="text-sm text-gray-500 mb-2">{app.provider}</p>
+            {applications.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {applications.map((app) => (
+                  <div
+                    key={app.id}
+                    className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-md border dark:border-gray-800 border-gray-100 flex gap-4 items-center"
+                  >
+                    <img
+                      src={app.image}
+                      alt={app.title}
+                      className="w-24 h-24 rounded-lg object-cover"
+                    />
+                    <div className="flex-1">
+                      <h3 className="font-bold dark:text-white text-gray-900 line-clamp-1">
+                        {app.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 mb-2">
+                        {app.provider}
+                      </p>
 
-                    <div className="flex items-center justify-between mt-2">
-                      <div
-                        className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(
-                          app.status
-                        )}`}
-                      >
-                        {getStatusIcon(app.status)}
-                        {app.status}
+                      <div className="flex items-center justify-between mt-2">
+                        <div
+                          className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(
+                            app.status
+                          )}`}
+                        >
+                          {getStatusIcon(app.status)}
+                          {app.status}
+                        </div>
+                        <span className="text-xs text-gray-400">
+                          Applied: {app.appliedDate}
+                        </span>
                       </div>
-                      <span className="text-xs text-gray-400">
-                        Applied: {app.appliedDate}
-                      </span>
-                    </div>
 
-                    {app.status === "Approved" && app.id % 2 !== 0 && (
-                      <>
-                        {!app.examStatus && (
-                          <button
-                            onClick={() =>
-                              navigate(`/scholarship/exam/${app.id}`)
-                            }
-                            className="mt-3 w-full bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-bold text-sm hover:bg-[#FAD502]/90 transition-colors"
-                          >
-                            Take Eligibility Exam
-                          </button>
-                        )}
+                      {app.status === "Approved" && app.id % 2 !== 0 && (
+                        <>
+                          {!app.examStatus && (
+                            <button
+                              onClick={() =>
+                                navigate(`/scholarship/exam/${app.id}`)
+                              }
+                              className="mt-3 w-full bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-bold text-sm hover:bg-[#FAD502]/90 transition-colors"
+                            >
+                              Take Eligibility Exam
+                            </button>
+                          )}
 
-                        {app.examStatus === "failed" && (
-                          <div className="mt-3 w-full bg-red-500/10 border border-red-500/20 text-red-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
-                            <XCircle size={16} />
-                            Exam Failed. Cannot Retake.
-                          </div>
-                        )}
-
-                        {app.examStatus === "passed" && (
-                          <div className="mt-3 space-y-2">
-                            <div className="w-full bg-green-500/10 border border-green-800/20 text-green-600 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
-                              <CheckCircle size={16} />
-                              Exam Passed
+                          {app.examStatus === "failed" && (
+                            <div className="mt-3 w-full bg-red-500/10 border border-red-500/20 text-red-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
+                              <XCircle size={16} />
+                              Exam Failed. Cannot Retake.
                             </div>
+                          )}
 
-                            {app.bankDetailsSubmitted ? (
-                              app.disbursed ? (
-                                <div className="space-y-2">
-                                  <div className="w-full bg-green-500/10 border border-green-800/20 text-green-600 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
-                                    <IndianRupee size={16} />
-                                    Scholarship Disbursed
+                          {app.examStatus === "passed" && (
+                            <div className="mt-3 space-y-2">
+                              <div className="w-full bg-green-500/10 border border-green-800/20 text-green-600 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
+                                <CheckCircle size={16} />
+                                Exam Passed
+                              </div>
+
+                              {app.bankDetailsSubmitted ? (
+                                app.disbursed ? (
+                                  <div className="space-y-2">
+                                    <div className="w-full bg-green-500/10 border border-green-800/20 text-green-600 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
+                                      <IndianRupee size={16} />
+                                      Scholarship Disbursed
+                                    </div>
+                                    <button
+                                      onClick={() => handleDownloadReceipt(app)}
+                                      className="w-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white py-2 rounded-lg font-bold text-sm hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
+                                    >
+                                      <Download size={16} />
+                                      Download Receipt
+                                    </button>
                                   </div>
-                                  <button
-                                    onClick={() => handleDownloadReceipt(app)}
-                                    className="w-full bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white py-2 rounded-lg font-bold text-sm hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
-                                  >
-                                    <Download size={16} />
-                                    Download Receipt
-                                  </button>
-                                </div>
+                                ) : (
+                                  <div className="w-full bg-blue-500/10 border border-blue-500/20 text-blue-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
+                                    <CheckCircle size={16} />
+                                    Bank Details Submitted
+                                  </div>
+                                )
                               ) : (
-                                <div className="w-full bg-blue-500/10 border border-blue-500/20 text-blue-500 py-2 rounded-lg font-bold text-sm text-center flex items-center justify-center gap-2">
-                                  <CheckCircle size={16} />
-                                  Bank Details Submitted
-                                </div>
-                              )
-                            ) : (
-                              <button
-                                onClick={() => {
-                                  setSelectedAppForBank(app);
-                                  setShowBankModal(true);
-                                }}
-                                className="w-full bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-bold text-sm hover:bg-[#FAD502]/90 transition-colors"
-                              >
-                                Add Beneficiary Bank Details
-                              </button>
-                            )}
-                          </div>
-                        )}
-                      </>
-                    )}
+                                <button
+                                  onClick={() => {
+                                    setSelectedAppForBank(app);
+                                    setShowBankModal(true);
+                                  }}
+                                  className="w-full bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-bold text-sm hover:bg-[#FAD502]/90 transition-colors"
+                                >
+                                  Add Beneficiary Bank Details
+                                </button>
+                              )}
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="dark:bg-gray-900 bg-white rounded-xl p-8 text-center border dark:border-gray-800 border-gray-100">
-              <p className="text-gray-500">
-                You haven't applied to any scholarships yet.
-              </p>
-            </div>
-          )}
+                ))}
+              </div>
+            ) : (
+              <div className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl p-8 text-center border dark:border-gray-800 border-gray-100">
+                <p className="text-gray-500">
+                  You haven't applied to any scholarships yet.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Section 2: Available Scholarships */}
         <div>
-          <h2 className="text-2xl font-bold dark:text-white text-gray-900 mb-6 flex items-center gap-3">
-            <span className="w-1.5 h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
-            Available Scholarships
-          </h2>
+          <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
+            <h2 className="text-2xl font-bold dark:text-white text-gray-200 mb-6 flex items-center gap-3">
+              <span className="w-1.5 h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
+              Available Scholarships
+            </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {scholarships.map((scholarship) => (
-              <div
-                key={scholarship.id}
-                className="dark:bg-gray-900 bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={scholarship.image}
-                    alt={scholarship.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-4 right-4 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#FAD502] shadow-sm">
-                    {scholarship.category}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {scholarships.map((scholarship) => (
+                <div
+                  key={scholarship.id}
+                  className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full group"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={scholarship.image}
+                      alt={scholarship.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 right-4 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#FAD502] shadow-sm">
+                      {scholarship.category}
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-6 flex-1 flex flex-col">
-                  <div className="mb-4">
-                    <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-2 line-clamp-2 transition-colors duration-300">
-                      {scholarship.title}
-                    </h2>
-                    <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
-                      Provided by {scholarship.provider}
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="mb-4">
+                      <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-2 line-clamp-2 transition-colors duration-300">
+                        {scholarship.title}
+                      </h2>
+                      <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
+                        Provided by {scholarship.provider}
+                      </p>
+                    </div>
+
+                    <p className="dark:text-gray-300 text-gray-600 mb-6 line-clamp-3 flex-1 transition-colors duration-300">
+                      {scholarship.description}
                     </p>
-                  </div>
 
-                  <p className="dark:text-gray-300 text-gray-600 mb-6 line-clamp-3 flex-1 transition-colors duration-300">
-                    {scholarship.description}
-                  </p>
+                    <div className="space-y-3 border-t dark:border-gray-800 border-gray-100 pt-4 transition-colors duration-300">
+                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
+                        <IndianRupee
+                          size={18}
+                          className="text-green-600 mr-2"
+                        />
+                        <span className="font-semibold">
+                          {scholarship.amount}
+                        </span>
+                      </div>
+                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
+                        <Calendar size={18} className="text-blue-600 mr-2" />
+                        <span>Deadline: {scholarship.deadline}</span>
+                      </div>
+                      <div className="flex items-start dark:text-gray-300 text-gray-700 transition-colors duration-300">
+                        <UserCheck
+                          size={18}
+                          className="text-purple-600 mr-2 mt-1 flex-shrink-0"
+                        />
+                        <span className="text-sm">
+                          {scholarship.eligibility}
+                        </span>
+                      </div>
+                    </div>
 
-                  <div className="space-y-3 border-t dark:border-gray-800 border-gray-100 pt-4 transition-colors duration-300">
-                    <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                      <IndianRupee size={18} className="text-green-600 mr-2" />
-                      <span className="font-semibold">
-                        {scholarship.amount}
-                      </span>
+                    <div className="flex gap-3 mt-6">
+                      <button className="flex-1 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white py-2 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
+                        Details
+                      </button>
+                      <button
+                        onClick={() => setSelectedScholarship(scholarship)}
+                        className="flex-1 bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#FAD502]/80 transition-colors duration-200"
+                      >
+                        Check Eligibility
+                      </button>
                     </div>
-                    <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                      <Calendar size={18} className="text-blue-600 mr-2" />
-                      <span>Deadline: {scholarship.deadline}</span>
-                    </div>
-                    <div className="flex items-start dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                      <UserCheck
-                        size={18}
-                        className="text-purple-600 mr-2 mt-1 flex-shrink-0"
-                      />
-                      <span className="text-sm">{scholarship.eligibility}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3 mt-6">
-                    <button className="flex-1 bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-white py-2 rounded-lg font-medium hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
-                      Details
-                    </button>
-                    <button
-                      onClick={() => setSelectedScholarship(scholarship)}
-                      className="flex-1 bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#FAD502]/80 transition-colors duration-200"
-                    >
-                      Check Eligibility
-                    </button>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

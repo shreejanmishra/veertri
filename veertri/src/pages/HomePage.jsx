@@ -6,6 +6,7 @@ import {
   courses,
 } from "../data/mockData";
 import { useEffect, useState } from "react";
+import bgImage from "../assets/bgImage2.jpg";
 
 const HomePage = () => {
   const [featuredContent, setFeaturedContent] = useState(null);
@@ -42,20 +43,29 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="dark:bg-black bg-gray-50 min-h-screen transition-colors duration-300">
-      {/* Hero Section */}
-      <HeroSection content={featuredContent} />
+    <div
+      className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
+        {/* Hero Section */}
+        <div className="px-4 md:px-16 mb-8">
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">
+            <HeroSection content={featuredContent} isCompact={true} />
+          </div>
+        </div>
 
-      {/* Category Rows */}
-      <div className="relative -mt-20 md:-mt-32 z-10 pb-20 space-y-8 md:space-y-12">
-        {homeCategories.map((category) => (
-          <CategoryRow
-            key={category.id}
-            title={category.name}
-            items={category.items}
-            isLarge={category.id === 1}
-          />
-        ))}
+        {/* Category Rows */}
+        <div>
+          {homeCategories.map((category) => (
+            <CategoryRow
+              key={category.id}
+              title={category.name}
+              items={category.items}
+              isLarge={category.id === 1}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
