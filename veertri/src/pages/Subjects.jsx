@@ -13,8 +13,10 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  ArrowRight,
 } from "lucide-react";
 import MovieCard from "../components/MovieCard";
+import { Link } from "react-router-dom";
 
 const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
   const boards = ["CBSE", "ICSE", "IB", "Maharashtra Board"];
@@ -162,10 +164,19 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
           className="mb-4 px-1 flex items-center justify-between cursor-pointer"
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300">
-            <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
-            {title}
-          </h2>
+          <Link
+            to={`/subjects/${encodeURIComponent(title)}`}
+            onClick={(e) => e.stopPropagation()}
+            className="group/title flex items-center gap-3"
+          >
+            <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300 group-hover/title:text-[#FAD502]">
+              <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
+              {title}
+            </h2>
+            <span className="opacity-0 group-hover/title:opacity-100 transition-opacity duration-300 text-[#FAD502]">
+              <ArrowRight size={24} />
+            </span>
+          </Link>
 
           <div className="flex items-center gap-4">
             {/* Progress Donut */}
@@ -234,14 +245,13 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
             {/* Cards Container */}
             <div
               ref={rowRef}
-              className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 px-1"
+              className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 px-1 "
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {items.map((item, index) => (
                 <MovieCard
                   key={item.id}
                   item={item}
-                  className="w-[calc((100%-16px)/2)] md:w-[calc((100%-48px)/4)]"
                   isFirst={index === 0}
                   isLast={index === items.length - 1}
                   onToggleComplete={handleProgressUpdate}

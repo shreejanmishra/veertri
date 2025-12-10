@@ -57,9 +57,7 @@ const ContentRow = ({ title, items, categoryId }) => {
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {items.map((item) => (
-            <div key={item.id} className="flex-none w-[200px] md:w-[280px]">
-              <MovieCard item={item} />
-            </div>
+            <MovieCard key={item.id} item={item} />
           ))}
         </div>
       </div>

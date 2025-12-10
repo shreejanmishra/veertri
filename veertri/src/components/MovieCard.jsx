@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
-import { Play, Plus, ThumbsUp, ChevronDown, CheckCircle } from "lucide-react";
+import { Play, Clock, Star, Calendar, CheckCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const MovieCard = ({
   item,
   isLarge = false,
   className = "",
-  isFirst = false,
-  isLast = false,
   onToggleComplete,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
 
   useEffect(() => {
@@ -46,87 +43,77 @@ const MovieCard = ({
   return (
     <Link
       to={`/watch/${item.id}`}
-      className={`relative flex-shrink-0 cursor-pointer transition-all duration-300 ease-in-out ${
-        className ? className : isLarge ? "w-64 md:w-80" : "w-36 md:w-56"
-      } ${
-        isHovered
-          ? "scale-110 z-10 shadow-[0_0_25px_rgba(250,213,2,0.4)]"
-          : "shadow-lg"
-      } ${isFirst ? "origin-left" : isLast ? "origin-right" : "origin-center"}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`group/card relative flex flex-col h-full bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${
+        className ? className : isLarge ? "w-80 md:w-96" : "w-64 md:w-72"
+      } flex-shrink-0`}
     >
-      {/* Thumbnail */}
-      <div
-        className={`relative rounded-xl overflow-hidden bg-gray-900 transition-all duration-300 ${
-          isHovered ? "ring-2 ring-[#FAD502]" : "ring-1 ring-white/10"
-        }`}
-      >
+      {/* Thumbnail Container */}
+      <div className="relative aspect-video overflow-hidden">
         <img
           src={item.thumbnail}
           alt={item.title}
-          className={`w-full aspect-video object-cover transition-transform duration-500 ${
-            isHovered ? "scale-105" : ""
-          }`}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
         />
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex flex-col justify-end p-3 transition-opacity duration-300">
-          {/* Completion Checkbox - Always visible if completed, or on hover */}
-          <button
-            onClick={handleToggleComplete}
-            className={`absolute top-2 right-2 p-1.5 rounded-full transition-all duration-300 z-20 ${
-              isCompleted
-                ? "bg-green-500 text-white opacity-100"
-                : `bg-black/50 text-white hover:bg-green-500/50 ${
-                    isHovered ? "opacity-100" : "opacity-0"
-                  }`
-            }`}
-            title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
-          >
-            <CheckCircle size={16} />
-          </button>
+        {/* Overlay Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
 
-          <div className="w-full">
-            <h3 className="text-white font-bold text-sm mb-2 line-clamp-2 leading-tight drop-shadow-md">
-              {item.title}
-            </h3>
-
-            {/* Action buttons - Only visible on hover to reduce clutter */}
-            <div
-              className={`flex items-center gap-2 mb-2 transition-opacity duration-300 ${
-                isHovered ? "opacity-100" : "opacity-0 h-0 overflow-hidden"
-              }`}
-            >
-              <button className="bg-[#FAD502] hover:bg-[#FAD502]/90 text-[#090D0E] rounded-full p-1.5 transition shadow-sm transform hover:scale-110">
-                <Play size={12} fill="currentColor" />
-              </button>
-
-              <button className="bg-[#2a2a2a] hover:bg-[#3a3a3a] border border-gray-600 text-white rounded-full p-1.5 transition shadow-sm transform hover:scale-110">
-                <Plus size={12} />
-              </button>
-
-              <button className="bg-[#2a2a2a] hover:bg-[#3a3a3a] border border-gray-600 text-white rounded-full p-1.5 transition shadow-sm transform hover:scale-110">
-                <ThumbsUp size={12} />
-              </button>
-
-              <button className="bg-[#2a2a2a] hover:bg-[#3a3a3a] border border-gray-600 text-white rounded-full p-1.5 ml-auto transition shadow-sm transform hover:scale-110">
-                <ChevronDown size={12} />
-              </button>
-            </div>
-
-            {/* Info */}
-            <div className="flex items-center gap-2 text-[10px] text-gray-300">
-              <span className="text-green-500 font-semibold">
-                {item.rating}
-              </span>
-              <span>{item.year}</span>
-              <span>{item.duration || `${item.seasons} Seasons`}</span>
-              <span className="border border-gray-500 px-1 rounded-[2px] ml-auto">
-                HD
-              </span>
-            </div>
+        {/* Play Button Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity duration-300">
+          <div className="bg-[#FAD502] text-black p-3 rounded-full shadow-lg transform scale-75 group-hover/card:scale-100 transition-transform duration-300">
+            <Play size={24} fill="currentColor" />
           </div>
+        </div>
+
+        {/* Completion Status */}
+        <button
+          onClick={handleToggleComplete}
+          className={`absolute top-2 right-2 p-1.5 rounded-full transition-all duration-300 z-20 ${
+            isCompleted
+              ? "bg-green-500 text-white opacity-100 shadow-md"
+              : "bg-black/50 text-white hover:bg-green-500/50 opacity-0 group-hover/card:opacity-100"
+          }`}
+          title={isCompleted ? "Mark as incomplete" : "Mark as complete"}
+        >
+          <CheckCircle size={18} />
+        </button>
+      </div>
+
+      {/* Content */}
+      <div className="p-4 flex flex-col flex-grow">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 group-hover/card:text-[#FAD502] transition-colors">
+          {item.title}
+        </h3>
+
+        <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400 mb-3">
+          <div className="flex items-center gap-1">
+            <Star size={12} className="text-[#FAD502] fill-[#FAD502]" />
+            <span>{item.rating}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Calendar size={12} />
+            <span>{item.year}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Clock size={12} />
+            <span>{item.duration || `${item.seasons} Seasons`}</span>
+          </div>
+        </div>
+
+        {/* Description - Optional, if available in item */}
+        {item.description && (
+          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4 flex-grow">
+            {item.description}
+          </p>
+        )}
+
+        <div className="mt-auto pt-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
+          <span className="text-xs font-medium text-gray-500 dark:text-gray-400 px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+            HD
+          </span>
+          <span className="text-sm font-semibold text-[#FAD502] flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">
+            Watch Now
+          </span>
         </div>
       </div>
     </Link>

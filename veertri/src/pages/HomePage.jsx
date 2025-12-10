@@ -20,17 +20,20 @@ const HomePage = () => {
     {
       id: 1,
       name: "Trending Now",
-      items: [...educationalVideos.slice(0, 3), ...courses.slice(0, 2)],
+      items: [...educationalVideos.slice(0, 8), ...courses.slice(0, 5)],
+      link: "/home/trending",
     },
     {
       id: 2,
       name: "New Educational Videos",
-      items: educationalVideos.slice(2, 5),
+      items: educationalVideos.slice(0, 12),
+      link: "/home/new-educational",
     },
     {
       id: 3,
       name: "Popular Courses",
-      items: courses.slice(0, 3),
+      items: courses.slice(0, 12),
+      link: "/home/popular-courses",
     },
     {
       id: 4,
@@ -39,6 +42,7 @@ const HomePage = () => {
         ...educationalVideos.filter((m) => parseFloat(m.rating) >= 4.8),
         ...courses.filter((t) => parseFloat(t.rating) >= 4.8),
       ],
+      link: "/home/top-rated",
     },
   ];
 
@@ -63,6 +67,7 @@ const HomePage = () => {
               title={category.name}
               items={category.items}
               isLarge={category.id === 1}
+              linkTo={category.link}
             />
           ))}
         </div>

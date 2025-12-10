@@ -16,6 +16,8 @@ import Scholarship from "./pages/Scholarship";
 import ScholarshipExam from "./pages/ScholarshipExam";
 import Entertainment from "./pages/Entertainment";
 import EntertainmentCategory from "./pages/EntertainmentCategory";
+import HomeCategory from "./pages/HomeCategory";
+import SubjectPage from "./pages/SubjectPage";
 import VR from "./pages/VR";
 
 function App() {
@@ -25,12 +27,14 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/home/:categoryId" element={<HomeCategory />} />
           <Route path="/entertainment" element={<Entertainment />} />
           <Route
             path="/entertainment/:categoryId"
             element={<EntertainmentCategory />}
           />
           <Route path="/subjects" element={<Subjects />} />
+          <Route path="/subjects/:subject" element={<SubjectPage />} />
           <Route
             path="/subjects/:subject/class/:classId"
             element={<ClassCurriculum />}
