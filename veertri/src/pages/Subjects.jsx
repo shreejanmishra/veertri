@@ -13,8 +13,34 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  ArrowRight,
 } from "lucide-react";
 import MovieCard from "../components/MovieCard";
+import { Link } from "react-router-dom";
+
+const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
+  const boards = ["CBSE", "ICSE", "IB", "Maharashtra Board"];
+  return (
+    <div className="px-4 md:px-16 mb-6 flex justify-start">
+      <div className="relative inline-block text-left w-full md:w-64">
+        <label className="block text-sm font-medium text-gray-100 dark:text-gray-300 mb-1">
+          Select Board
+        </label>
+        <select
+          value={selectedBoard}
+          onChange={(e) => onSelectBoard(e.target.value)}
+          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-[#FAD502] focus:border-[#FAD502] sm:text-sm rounded-md dark:bg-gray-800 dark:text-white bg-white text-gray-900 shadow-sm"
+        >
+          {boards.map((board) => (
+            <option key={board} value={board}>
+              {board}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+};
 
 const ClassSelector = ({ selectedClass, onSelectClass }) => {
   const rowRef = useRef(null);
@@ -50,7 +76,7 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
 
       <div
         ref={rowRef}
-        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth p-4 min-[1400px]:justify-start min-[1400px]:overflow-visible"
+        className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 min-[1400px]:justify-start min-[1400px]:overflow-visible"
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {classes.map((classNum) => (
@@ -84,7 +110,7 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
   );
 };
 
-const SubjectContentRow = ({ title, selectedClass }) => {
+const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
   const [items, setItems] = useState([]);
   const [stats, setStats] = useState({ completed: 0, total: 0, percentage: 0 });
   const [isExpanded, setIsExpanded] = useState(true);
@@ -108,10 +134,14 @@ const SubjectContentRow = ({ title, selectedClass }) => {
 
   useEffect(() => {
     // Filter content based on subject and selected class
-    const filteredItems = getContentBySubjectAndClass(title, selectedClass);
+    const filteredItems = getContentBySubjectAndClass(
+      title,
+      selectedClass,
+      selectedBoard
+    );
     setItems(filteredItems);
     setStats(calculateStats(filteredItems));
-  }, [title, selectedClass]);
+  }, [title, selectedClass, selectedBoard]);
 
   const handleProgressUpdate = () => {
     setStats(calculateStats(items));
@@ -128,16 +158,25 @@ const SubjectContentRow = ({ title, selectedClass }) => {
 
   return (
     <div className="px-4 md:px-16 mb-12">
-      <div className="dark:bg-gray-900/40 bg-white/60 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
+      <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
         {/* Header */}
         <div
           className="mb-4 px-1 flex items-center justify-between cursor-pointer"
           onClick={() => setIsExpanded(!isExpanded)}
         >
-          <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300">
-            <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
-            {title}
-          </h2>
+          <Link
+            to={`/subjects/${encodeURIComponent(title)}`}
+            onClick={(e) => e.stopPropagation()}
+            className="group/title flex items-center gap-3"
+          >
+            <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300 group-hover/title:text-[#FAD502]">
+              <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
+              {title}
+            </h2>
+            <span className="opacity-0 group-hover/title:opacity-100 transition-opacity duration-300 text-[#FAD502]">
+              <ArrowRight size={24} />
+            </span>
+          </Link>
 
           <div className="flex items-center gap-4">
             {/* Progress Donut */}
@@ -206,14 +245,13 @@ const SubjectContentRow = ({ title, selectedClass }) => {
             {/* Cards Container */}
             <div
               ref={rowRef}
-              className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 px-1"
+              className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 px-1 "
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {items.map((item, index) => (
                 <MovieCard
                   key={item.id}
                   item={item}
-                  className="w-[calc((100%-16px)/2)] md:w-[calc((100%-48px)/4)]"
                   isFirst={index === 0}
                   isLast={index === items.length - 1}
                   onToggleComplete={handleProgressUpdate}
@@ -234,6 +272,7 @@ const Subjects = () => {
     if (saved) return parseInt(saved);
     return 10;
   });
+  const [selectedBoard, setSelectedBoard] = useState("CBSE");
   const [heroContent, setHeroContent] = useState(null);
 
   useEffect(() => {
@@ -333,10 +372,18 @@ const Subjects = () => {
       className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="min-h-screen dark:bg-black/80 dark:backdrop-blur-sm transition-colors duration-300">
-        <HeroSection content={heroContent} isCompact={true} />
+      <div className="min-h-screen dark:bg-black/30 dark:backdrop-blur-sm transition-colors duration-300 pt-24">
+        <div className="px-4 md:px-16 mb-8">
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">
+            <HeroSection content={heroContent} isCompact={true} />
+          </div>
+        </div>
 
-        <div className="relative mt-8 z-10 pb-20">
+        <div className="relative z-10 pb-20">
+          <BoardSelector
+            selectedBoard={selectedBoard}
+            onSelectBoard={setSelectedBoard}
+          />
           {/* Class Selector Carousel */}
           <ClassSelector
             selectedClass={selectedClass}
@@ -359,6 +406,7 @@ const Subjects = () => {
                         key={subject}
                         title={subject}
                         selectedClass={selectedClass}
+                        selectedBoard={selectedBoard}
                       />
                     ))}
                   </div>
@@ -370,6 +418,7 @@ const Subjects = () => {
                     key={subject.name}
                     title={subject.name}
                     selectedClass={selectedClass}
+                    selectedBoard={selectedBoard}
                   />
                 ));
               }
@@ -377,7 +426,9 @@ const Subjects = () => {
 
             {/* Empty State Message if no content found for any subject */}
             <div className="px-4 md:px-16 mt-8 text-gray-500 text-center">
-              <p>Showing curriculum for Class {selectedClass}</p>
+              <p>
+                Showing curriculum for Class {selectedClass} ({selectedBoard})
+              </p>
             </div>
           </div>
         </div>

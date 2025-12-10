@@ -1,5 +1,462 @@
 import { curriculumData } from "./curriculumData";
 
+export const entertainmentContent = [
+  {
+    id: "ent-1",
+    title: "Cosmos: Possible Worlds",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2024,
+    duration: "45m",
+    rating: "4.9",
+    description:
+      "Embark on a voyage through space and time to discover the wonders of our universe and the history of scientific discovery.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-2",
+    title: "The Blue Planet",
+    thumbnail:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=1920&h=1080&fit=crop",
+    genre: "Nature",
+    year: 2023,
+    duration: "50m",
+    rating: "4.9",
+    description:
+      "A comprehensive natural history of the world's oceans, featuring rare and unusual creatures of the deep.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-3",
+    title: "The Imitation Game",
+    thumbnail:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2014,
+    duration: "1h 54m",
+    rating: "4.8",
+    description:
+      "During World War II, the English mathematical genius Alan Turing tries to crack the German Enigma code with help from fellow mathematicians.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-4",
+    title: "Brain Games",
+    thumbnail:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&h=1080&fit=crop",
+    genre: "Psychology",
+    year: 2020,
+    duration: "30m",
+    rating: "4.7",
+    description:
+      "Interactive games and experiments designed to mess with your mind and reveal the inner workings of your brain.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-5",
+    title: "Abstract: The Art of Design",
+    thumbnail:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop",
+    genre: "Design",
+    year: 2019,
+    duration: "45m",
+    rating: "4.8",
+    description:
+      "Step inside the minds of the most innovative designers in a variety of disciplines and learn how design impacts every aspect of life.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-6",
+    title: "Hidden Figures",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2016,
+    duration: "2h 7m",
+    rating: "4.9",
+    description:
+      "The story of a team of female African-American mathematicians who served a vital role in NASA during the early years of the U.S. space program.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-7",
+    title: "MythBusters",
+    thumbnail:
+      "https://images.unsplash.com/photo-1535551951406-a19828b2779d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1535551951406-a19828b2779d?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2010,
+    duration: "45m",
+    rating: "4.7",
+    description:
+      "A special effects team puts urban legends, rumors, and myths to the test using scientific methods.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-8",
+    title: "A Beautiful Mind",
+    thumbnail:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2001,
+    duration: "2h 15m",
+    rating: "4.8",
+    description:
+      "After John Nash, a brilliant but asocial mathematician, accepts secret work in cryptography, his life takes a turn for the nightmarish.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-9",
+    title: "Explained",
+    thumbnail:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1920&h=1080&fit=crop",
+    genre: "Education",
+    year: 2018,
+    duration: "20m",
+    rating: "4.6",
+    description:
+      "This enlightening series digs deep into a wide range of topics such as the cryptocurrency boom, why diets fail, and the world of K-pop.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-10",
+    title: "The Theory of Everything",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2014,
+    duration: "2h 3m",
+    rating: "4.7",
+    description:
+      "A look at the relationship between the famous physicist Stephen Hawking and his wife.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-11",
+    title: "Interstellar",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Sci-Fi",
+    year: 2014,
+    duration: "2h 49m",
+    rating: "4.9",
+    description:
+      "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-12",
+    title: "Planet Earth II",
+    thumbnail:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1582967788606-a171f1080ca8?w=1920&h=1080&fit=crop",
+    genre: "Nature",
+    year: 2016,
+    duration: "50m",
+    rating: "4.9",
+    description:
+      "David Attenborough returns with a new wildlife documentary that showcases life on Planet Earth.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-13",
+    title: "Bill Nye the Science Guy",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 1993,
+    duration: "30m",
+    rating: "4.6",
+    description:
+      "Scientist Bill Nye teaches kids about science in a fun and energetic way.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-14",
+    title: "Apollo 11",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2019,
+    duration: "1h 33m",
+    rating: "4.8",
+    description:
+      "A look at the Apollo 11 mission to land on the moon led by commander Neil Armstrong and pilots Buzz Aldrin and Michael Collins.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-15",
+    title: "Inside Bill's Brain",
+    thumbnail:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2019,
+    duration: "50m",
+    rating: "4.7",
+    description:
+      "A documentary that tells Bill Gates' life story as he pursues solutions to some of the world's most complex problems.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-16",
+    title: "The Crown",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2016,
+    duration: "60m",
+    rating: "4.8",
+    description:
+      "Follows the political rivalries and romance of Queen Elizabeth II's reign and the events that shaped the second half of the twentieth century.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-17",
+    title: "Inception",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "Sci-Fi",
+    year: 2010,
+    duration: "2h 28m",
+    rating: "4.9",
+    description:
+      "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-18",
+    title: "Our Planet",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Nature",
+    year: 2019,
+    duration: "50m",
+    rating: "4.9",
+    description:
+      "Documentary series focusing on the diversity of habitats around the world, from the remote Arctic wilderness and mysterious deep oceans to the vast landscapes of Africa and diverse jungles of South America.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-19",
+    title: "Breaking Bad",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "Crime",
+    year: 2008,
+    duration: "49m",
+    rating: "5.0",
+    description:
+      "A high school chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine in order to secure his family's future.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-20",
+    title: "The Social Network",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "Biography",
+    year: 2010,
+    duration: "2h",
+    rating: "4.7",
+    description:
+      "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea, and by the co-founder who was later squeezed out of the business.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-21",
+    title: "Cosmos: A Spacetime Odyssey",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2014,
+    duration: "44m",
+    rating: "4.9",
+    description:
+      "An exploration of our discovery of the laws of nature and coordinates in space and time.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-22",
+    title: "Stranger Things",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "Sci-Fi",
+    year: 2016,
+    duration: "51m",
+    rating: "4.8",
+    description:
+      "When a young boy disappears, his mother, a police chief and his friends must confront terrifying supernatural forces in order to get him back.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    category: "TV Shows",
+  },
+  {
+    id: "ent-23",
+    title: "The Martian",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Sci-Fi",
+    year: 2015,
+    duration: "2h 24m",
+    rating: "4.8",
+    description:
+      "An astronaut becomes stranded on Mars after his team assume him dead, and must rely on his ingenuity to find a way to signal to Earth that he is alive.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    category: "Movies",
+  },
+  {
+    id: "ent-24",
+    title: "13th",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "Documentary",
+    year: 2016,
+    duration: "1h 40m",
+    rating: "4.8",
+    description:
+      "An in-depth look at the prison system in the United States and how it reveals the nation's history of racial inequality.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    category: "Documentaries",
+  },
+  {
+    id: "ent-25",
+    title: "Black Mirror",
+    thumbnail:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1920&h=1080&fit=crop",
+    genre: "Sci-Fi",
+    year: 2011,
+    duration: "60m",
+    rating: "4.8",
+    description:
+      "An anthology series exploring a twisted, high-tech multiverse where humanity's greatest innovations and darkest instincts collide.",
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    category: "TV Shows",
+  },
+];
+
+export const getEntertainmentContent = () => {
+  return {
+    featured: entertainmentContent[0],
+    categories: [
+      {
+        id: "movies",
+        title: "Trending Movies",
+        items: entertainmentContent.filter(
+          (item) => item.category === "Movies"
+        ),
+      },
+      {
+        id: "tv-shows",
+        title: "Popular TV Shows",
+        items: entertainmentContent.filter(
+          (item) => item.category === "TV Shows"
+        ),
+      },
+      {
+        id: "documentaries",
+        title: "Documentaries",
+        items: entertainmentContent.filter(
+          (item) => item.category === "Documentaries"
+        ),
+      },
+    ],
+  };
+};
+
 export const educationalVideos = [
   {
     id: 1,
@@ -96,6 +553,189 @@ export const educationalVideos = [
       "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     classLevel: 8,
   },
+  {
+    id: 6,
+    title: "Linear Algebra",
+    thumbnail:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&h=1080&fit=crop",
+    genre: "Mathematics",
+    year: 2023,
+    duration: "55m",
+    rating: "4.8",
+    description: "Understanding vectors, matrices, and linear transformations.",
+    instructor: "Prof. Gilbert Strang",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 7,
+    title: "Organic Chemistry",
+    thumbnail:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2024,
+    duration: "1h 10m",
+    rating: "4.7",
+    description: "A deep dive into carbon compounds and their reactions.",
+    instructor: "Dr. Khan",
+    featured: true,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    classLevel: 11,
+  },
+  {
+    id: 8,
+    title: "World Geography",
+    thumbnail:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+    genre: "Social Science",
+    year: 2022,
+    duration: "45m",
+    rating: "4.6",
+    description: "Exploring continents, countries, and cultures.",
+    instructor: "Ms. Carmen Sandiego",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 9,
+  },
+  {
+    id: 9,
+    title: "Introduction to Psychology",
+    thumbnail:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&h=1080&fit=crop",
+    genre: "Social Science",
+    year: 2023,
+    duration: "50m",
+    rating: "4.8",
+    description: "Understanding the human mind and behavior.",
+    instructor: "Prof. Jordan Peterson",
+    featured: true,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 10,
+    title: "Macroeconomics",
+    thumbnail:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
+    genre: "Social Science",
+    year: 2023,
+    duration: "1h",
+    rating: "4.7",
+    description:
+      "Study of the economy as a whole, including inflation, unemployment, and economic growth.",
+    instructor: "Prof. Krugman",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    classLevel: 11,
+  },
+  {
+    id: 11,
+    title: "Quantum Physics",
+    thumbnail:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2024,
+    duration: "1h 20m",
+    rating: "4.9",
+    description:
+      "The behavior of matter and energy on the atomic and subatomic scale.",
+    instructor: "Dr. Feynman",
+    featured: true,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 12,
+    title: "Human Anatomy",
+    thumbnail:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&h=1080&fit=crop",
+    genre: "Science",
+    year: 2022,
+    duration: "55m",
+    rating: "4.8",
+    description: "Detailed study of the structure of the human body.",
+    instructor: "Dr. Gray",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    classLevel: 10,
+  },
+  {
+    id: 13,
+    title: "European History",
+    thumbnail:
+      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=1920&h=1080&fit=crop",
+    genre: "History",
+    year: 2021,
+    duration: "45m",
+    rating: "4.6",
+    description: "From the Renaissance to the modern era.",
+    instructor: "Prof. Davies",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 9,
+  },
+  {
+    id: 14,
+    title: "Statistics 101",
+    thumbnail:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
+    genre: "Mathematics",
+    year: 2023,
+    duration: "50m",
+    rating: "4.7",
+    description:
+      "Data collection, analysis, interpretation, presentation, and organization.",
+    instructor: "Prof. Fisher",
+    featured: false,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    classLevel: 11,
+  },
+  {
+    id: 15,
+    title: "Creative Writing II",
+    thumbnail:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&h=1080&fit=crop",
+    genre: "Arts",
+    year: 2022,
+    duration: "40m",
+    rating: "4.8",
+    description: "Advanced techniques in fiction and non-fiction writing.",
+    instructor: "Margaret Atwood",
+    featured: true,
+    videoUrl:
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    classLevel: 10,
+  },
 ];
 
 export const courses = [
@@ -179,6 +819,196 @@ export const courses = [
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
     classLevel: 9,
   },
+  {
+    id: 105,
+    title: "Data Science Bootcamp",
+    thumbnail:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2023,
+    modules: 15,
+    lessons: 120,
+    rating: "4.9",
+    description: "Master Python, SQL, and Machine Learning for Data Science.",
+    instructor: "Jose Portilla",
+    featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 106,
+    title: "UX/UI Design Fundamentals",
+    thumbnail:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop",
+    genre: "Design",
+    year: 2022,
+    modules: 8,
+    lessons: 60,
+    rating: "4.8",
+    description: "Learn to design beautiful and functional user interfaces.",
+    instructor: "Don Norman",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    classLevel: 11,
+  },
+  {
+    id: 107,
+    title: "Digital Marketing Mastery",
+    thumbnail:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
+    genre: "Business",
+    year: 2023,
+    modules: 10,
+    lessons: 80,
+    rating: "4.7",
+    description: "SEO, Social Media, Email Marketing, and more.",
+    instructor: "Seth Godin",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 108,
+    title: "Public Speaking",
+    thumbnail:
+      "https://images.unsplash.com/photo-1475721027767-4d06338ac966?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1475721027767-4d06338ac966?w=1920&h=1080&fit=crop",
+    genre: "Personal Development",
+    year: 2021,
+    modules: 6,
+    lessons: 30,
+    rating: "4.8",
+    description: "Overcome stage fright and deliver powerful presentations.",
+    instructor: "Chris Anderson",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    classLevel: 10,
+  },
+  {
+    id: 109,
+    title: "Personal Finance",
+    thumbnail:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
+    genre: "Finance",
+    year: 2023,
+    modules: 5,
+    lessons: 25,
+    rating: "4.9",
+    description: "Budgeting, saving, and investing for beginners.",
+    instructor: "Ramit Sethi",
+    featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    classLevel: 11,
+  },
+  {
+    id: 110,
+    title: "Ethical Hacking",
+    thumbnail:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2024,
+    modules: 12,
+    lessons: 100,
+    rating: "4.8",
+    description: "Learn network security and penetration testing.",
+    instructor: "Kevin Mitnick",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 111,
+    title: "Mobile App Development",
+    thumbnail:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2023,
+    modules: 14,
+    lessons: 110,
+    rating: "4.7",
+    description: "Build iOS and Android apps with React Native.",
+    instructor: "Maximilian Schwarzmüller",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    classLevel: 11,
+  },
+  {
+    id: 112,
+    title: "Graphic Design Masterclass",
+    thumbnail:
+      "https://images.unsplash.com/photo-1626785774573-4b799314346d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1626785774573-4b799314346d?w=1920&h=1080&fit=crop",
+    genre: "Design",
+    year: 2022,
+    modules: 9,
+    lessons: 70,
+    rating: "4.8",
+    description: "Learn Photoshop, Illustrator, and InDesign.",
+    instructor: "Lindsay Marsh",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 10,
+  },
+  {
+    id: 113,
+    title: "Project Management PMP",
+    thumbnail:
+      "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1920&h=1080&fit=crop",
+    genre: "Business",
+    year: 2023,
+    modules: 10,
+    lessons: 50,
+    rating: "4.6",
+    description: "Prepare for the PMP certification exam.",
+    instructor: "Joseph Phillips",
+    featured: false,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    classLevel: 12,
+  },
+  {
+    id: 114,
+    title: "Blockchain Basics",
+    thumbnail:
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=750&fit=crop",
+    backdrop:
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&h=1080&fit=crop",
+    genre: "Technology",
+    year: 2024,
+    modules: 6,
+    lessons: 30,
+    rating: "4.7",
+    description: "Understand how blockchain and cryptocurrencies work.",
+    instructor: "Vitalik Buterin",
+    featured: true,
+    videoUrl:
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    classLevel: 11,
+  },
 ];
 
 export const scholarships = [
@@ -193,7 +1023,7 @@ export const scholarships = [
       "Financial assistance for OBC, EBC, and DNT students studying in top-class schools and colleges across India.",
     eligibility: "Class 9-12 students, Family income < ₹2.5L",
     image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&h=300&fit=crop",
+      "https://www.pmindia.gov.in/wp-content/uploads/2025/11/H20251127197887.jpg",
   },
   {
     id: 2,
@@ -210,7 +1040,7 @@ export const scholarships = [
   },
   {
     id: 3,
-    title: "Santoor Women's Scholarship",
+    title: "Wipro's Underprivileged Women Scholarship",
     provider: "Wipro Cares",
     amount: "₹24,000/year",
     deadline: "2025-09-15",
@@ -219,7 +1049,7 @@ export const scholarships = [
       "Empowering young women from underprivileged backgrounds to pursue higher education after Class 12.",
     eligibility: "Girls who passed Class 12 from govt schools",
     image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=300&fit=crop",
+      "https://thecsruniverse.com/adminxsafe/uploads/IMG-20240703-WA0003.jpg",
   },
   {
     id: 4,
@@ -253,38 +1083,99 @@ export const categories = [
   {
     id: 1,
     name: "Mathematics",
-    items: educationalVideos.filter((m) => m.genre === "Mathematics"),
+    items: [
+      ...educationalVideos.filter((m) =>
+        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(t.genre)
+      ),
+    ],
   },
   {
     id: 2,
     name: "Science (Physics, Chemistry, Biology)",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "Science"),
-      ...courses.filter((t) => t.genre === "Science"),
+      ...educationalVideos.filter((m) =>
+        [
+          "Science",
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "Nature",
+          "EVS",
+        ].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        [
+          "Science",
+          "Physics",
+          "Chemistry",
+          "Biology",
+          "Nature",
+          "EVS",
+        ].includes(t.genre)
+      ),
     ],
   },
   {
     id: 3,
     name: "Social Science",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "History"),
-      ...courses.filter((t) => t.genre === "History"),
+      ...educationalVideos.filter((m) =>
+        [
+          "Social Science",
+          "History",
+          "Geography",
+          "Civics",
+          "Economics",
+          "Political Science",
+          "Sociology",
+          "Psychology",
+          "Biography",
+        ].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        [
+          "Social Science",
+          "History",
+          "Geography",
+          "Civics",
+          "Economics",
+          "Political Science",
+          "Sociology",
+          "Psychology",
+          "Biography",
+        ].includes(t.genre)
+      ),
     ],
   },
   {
     id: 4,
     name: "Computer Science",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "Technology"),
-      ...courses.filter((t) => t.genre === "Technology"),
+      ...educationalVideos.filter((m) =>
+        ["Computer Science", "Technology", "Design", "Coding", "AI"].includes(
+          m.genre
+        )
+      ),
+      ...courses.filter((t) =>
+        ["Computer Science", "Technology", "Design", "Coding", "AI"].includes(
+          t.genre
+        )
+      ),
     ],
   },
   {
     id: 5,
     name: "English",
     items: [
-      ...educationalVideos.filter((m) => m.genre === "Arts"),
-      ...courses.filter((t) => t.genre === "Arts"),
+      ...educationalVideos.filter((m) =>
+        ["English", "Arts", "Literature", "Grammar"].includes(m.genre)
+      ),
+      ...courses.filter((t) =>
+        ["English", "Arts", "Literature", "Grammar"].includes(t.genre)
+      ),
     ],
   },
 ];
@@ -447,7 +1338,11 @@ const topicVideoMap = {
   "Addition & Subtraction": "OgOZ5rLX_n0",
 };
 
-export const getContentBySubjectAndClass = (subject, classLevel) => {
+export const getContentBySubjectAndClass = (
+  subject,
+  classLevel,
+  board = "CBSE"
+) => {
   // Determine the group
   let group = "";
   if (classLevel === "Pre-school") group = "Pre-school";
@@ -502,14 +1397,14 @@ export const getContentBySubjectAndClass = (subject, classLevel) => {
 
     return {
       id: `${classLevel}-${subject}-${index}`,
-      title: topic,
+      title: board === "CBSE" ? topic : `[${board}] ${topic}`,
       thumbnail: imageUrl,
       backdrop: imageUrl,
       genre: subject,
       year: 2024,
       duration: "45m", // Mock duration
       rating: (4 + Math.random()).toFixed(1), // Mock rating 4.0-5.0
-      description: `Learn about ${topic} in this comprehensive module designed for Class ${classLevel}.`,
+      description: `Learn about ${topic} in this comprehensive module designed for Class ${classLevel} (${board}).`,
       instructor: "Veertri Faculty",
       featured: Math.random() > 0.8,
       videoUrl: youtubeUrl, // Use YouTube Embed URL
