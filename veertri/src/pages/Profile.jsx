@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { User, Mail, Lock, CreditCard, Bell, Tv, LogOut } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("account");
+  const { logout, user } = useAuth();
 
   const profiles = [
     {
       id: 1,
-      name: "Lorem Ipsum",
+      name: user?.name || "Lorem Ipsum",
       avatar:
+        user?.avatar ||
         "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
       isKids: false,
     },
@@ -137,7 +140,10 @@ const Profile = () => {
                     </p>
                   </div>
                 </div>
-                <button className="text-red-500 hover:text-red-400 transition">
+                <button
+                  onClick={logout}
+                  className="text-red-500 hover:text-red-400 transition"
+                >
                   Sign Out
                 </button>
               </div>

@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, Suspense, lazy } from "react";
 import { Play, Plus, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
-import { getContentById, educationalVideos, courses } from "../data/mockData";
+import { getContentById } from "../data/content";
+import { educationalVideos, courses } from "../data/education";
 
 const VideoPlayer = lazy(() => import("../components/VideoPlayer"));
 

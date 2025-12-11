@@ -1,12 +1,11 @@
 import HeroSection from "../components/HeroSection";
 import bgImage from "../assets/bgImage2.jpg";
+import { categories, getFeaturedContent } from "../data/education";
 import {
-  categories,
   getContentBySubjectAndClass,
-  getFeaturedContent,
-  getContentById,
   getSubjectHeaderImage,
-} from "../data/mockData";
+} from "../data/subjects";
+import { getContentById } from "../data/content";
 import { useEffect, useState, useRef } from "react";
 import {
   ChevronLeft,

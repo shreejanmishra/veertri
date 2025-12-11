@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getEntertainmentContent } from "../data/mockData";
+import { getEntertainmentContent } from "../data/entertainment";
 import MovieCard from "../components/MovieCard";
 import { ArrowLeft } from "lucide-react";
 

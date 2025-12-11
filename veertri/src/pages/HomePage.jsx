@@ -3,7 +3,7 @@ import {
   getFeaturedContent,
   educationalVideos,
   courses,
-} from "../data/mockData";
+} from "../data/education";
 import { useEffect, useState, Suspense, lazy } from "react";
 import bgImage from "../assets/bgImage2.jpg";
 

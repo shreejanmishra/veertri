@@ -11,7 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { educationalVideos, courses } from "../data/mockData";
+import { educationalVideos, courses } from "../data/education";
 import myCorner from "../assets/myCorner.jpg";
 
 const MyCornerRow = ({ title, items, onRemove, isSubscription = false }) => {

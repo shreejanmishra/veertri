@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getContentBySubjectAndClass } from "../data/mockData";
+import { getContentBySubjectAndClass } from "../data/subjects";
 import MovieCard from "../components/MovieCard";
 import { ChevronLeft } from "lucide-react";
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Trash2, Play, Clock, Star, Calendar, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
-import { educationalVideos, courses } from "../data/mockData";
+import { educationalVideos, courses } from "../data/education";
 
 const MyList = () => {
   const [activeTab, setActiveTab] = useState("list"); // 'list' or 'subscriptions'
