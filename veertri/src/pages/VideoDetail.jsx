@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { Play, Plus, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
-import VideoPlayer from "../components/VideoPlayer";
 import { getContentById, educationalVideos, courses } from "../data/mockData";
+
+const VideoPlayer = lazy(() => import("../components/VideoPlayer"));
 
 const VideoDetail = () => {
   const { id } = useParams();
@@ -42,11 +43,19 @@ const VideoDetail = () => {
       {/* Video Player or Hero Image */}
       <div className="relative">
         {isPlaying ? (
-          <VideoPlayer
-            videoUrl={content.videoUrl}
-            thumbnail={content.backdrop}
-            title={content.title}
-          />
+          <Suspense
+            fallback={
+              <div className="w-full h-screen bg-black flex items-center justify-center">
+                <div className="w-10 h-10 border-4 border-[#FAD502] border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            }
+          >
+            <VideoPlayer
+              videoUrl={content.videoUrl}
+              thumbnail={content.backdrop}
+              title={content.title}
+            />
+          </Suspense>
         ) : (
           <div className="relative h-screen">
             <img

@@ -1,12 +1,13 @@
 import HeroSection from "../components/HeroSection";
-import CategoryRow from "../components/CategoryRow";
 import {
   getFeaturedContent,
   educationalVideos,
   courses,
 } from "../data/mockData";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense, lazy } from "react";
 import bgImage from "../assets/bgImage2.jpg";
+
+const CategoryRow = lazy(() => import("../components/CategoryRow"));
 
 const HomePage = () => {
   const [featuredContent, setFeaturedContent] = useState(null);
@@ -61,15 +62,23 @@ const HomePage = () => {
 
         {/* Category Rows */}
         <div>
-          {homeCategories.map((category) => (
-            <CategoryRow
-              key={category.id}
-              title={category.name}
-              items={category.items}
-              isLarge={category.id === 1}
-              linkTo={category.link}
-            />
-          ))}
+          <Suspense
+            fallback={
+              <div className="flex justify-center py-10">
+                <div className="w-10 h-10 border-4 border-[#FAD502] border-t-transparent rounded-full animate-spin"></div>
+              </div>
+            }
+          >
+            {homeCategories.map((category) => (
+              <CategoryRow
+                key={category.id}
+                title={category.name}
+                items={category.items}
+                isLarge={category.id === 1}
+                linkTo={category.link}
+              />
+            ))}
+          </Suspense>
         </div>
       </div>
     </div>
