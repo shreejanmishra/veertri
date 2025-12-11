@@ -1,11 +1,158 @@
-import { useState } from "react";
-import { Trash2, Play, Clock, Star, Calendar, CheckCircle } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import {
+  Trash2,
+  Play,
+  Clock,
+  Star,
+  Calendar,
+  CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  ArrowRight,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { educationalVideos, courses } from "../data/mockData";
 import myCorner from "../assets/myCorner.jpg";
 
+const MyCornerRow = ({ title, items, onRemove, isSubscription = false }) => {
+  const rowRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (rowRef.current) {
+      const scrollAmount = direction === "left" ? -800 : 800;
+      rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  if (items.length === 0) {
+    return (
+      <div className="px-4 md:px-16 mb-12">
+        <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-8 text-center shadow-xl">
+          <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold mb-4">
+            {title}
+          </h2>
+          <p className="dark:text-gray-300 text-gray-600 text-lg mb-4">
+            Your list is empty
+          </p>
+          <Link
+            to="/subjects"
+            className="inline-block bg-[#FAD502] text-black font-semibold px-6 py-2 rounded-full hover:bg-[#FAD502]/80 transition"
+          >
+            Browse Content
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="px-4 md:px-16 mb-12">
+      <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
+        {/* Header */}
+        <div className="mb-4 px-1 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3">
+              <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
+              {title}
+            </h2>
+          </div>
+        </div>
+
+        {/* Scroll Buttons */}
+        <button
+          onClick={() => scroll("left")}
+          className="hidden md:block absolute left-2 top-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+          <ChevronLeft size={24} />
+        </button>
+
+        <button
+          onClick={() => scroll("right")}
+          className="hidden md:block absolute right-2 top-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+        >
+          <ChevronRight size={24} />
+        </button>
+
+        {/* Content Row */}
+        <div
+          ref={rowRef}
+          className="flex gap-6 overflow-x-scroll scrollbar-hide scroll-smooth pb-4"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {items.map((item) => (
+            <div
+              key={item.id}
+              className="flex-shrink-0 w-64 md:w-72 group/card relative flex flex-col h-full bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+            >
+              {/* Remove Button */}
+              {!isSubscription && onRemove && (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onRemove(item.id);
+                  }}
+                  className="absolute top-3 left-3 z-10 bg-white/90 p-2 rounded-full text-red-500 hover:bg-red-50 transition-colors shadow-sm opacity-0 group-hover/card:opacity-100"
+                  title="Remove from list"
+                >
+                  <Trash2 size={18} />
+                </button>
+              )}
+
+              <Link to={`/watch/${item.id}`} className="block h-full">
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={item.thumbnail}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+                  />
+                  <div className="absolute top-3 right-3 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-[#FAD502] shadow-sm">
+                    {item.genre}
+                  </div>
+
+                  {/* Play Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="bg-[#FAD502] p-3 rounded-full transform scale-0 group-hover/card:scale-100 transition-transform duration-300">
+                      <Play size={24} className="text-black fill-black" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="text-gray-900 dark:text-white font-bold text-lg mb-2 line-clamp-1 group-hover/card:text-[#FAD502] transition-colors">
+                    {item.title}
+                  </h3>
+
+                  <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    <div className="flex items-center gap-1">
+                      <Star
+                        size={14}
+                        className="text-[#FAD502] fill-[#FAD502]"
+                      />
+                      <span>{item.rating}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock size={14} />
+                      <span>{item.duration}</span>
+                    </div>
+                  </div>
+
+                  {isSubscription && (
+                    <div className="mt-auto flex items-center gap-2 text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30 p-2 rounded-lg text-xs">
+                      <CheckCircle size={14} />
+                      <span className="font-medium">Active</span>
+                    </div>
+                  )}
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const MyCorner = () => {
-  const [activeTab, setActiveTab] = useState("list"); // 'list' or 'subscriptions'
   // In a real app, this would come from user's saved data
   const [myList, setMyList] = useState([
     ...educationalVideos.slice(0, 3),
@@ -23,198 +170,16 @@ const MyCorner = () => {
       className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url(${myCorner})` }}
     >
-      <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 px-4 md:px-16 pb-12">
-        {/* Tabs */}
-        <div className="flex gap-6 mb-8 border-b dark:border-gray-800 border-gray-200">
-          <button
-            onClick={() => setActiveTab("list")}
-            className={`pb-4 text-lg font-bold transition-colors relative ${
-              activeTab === "list"
-                ? "text-[#FAD502]"
-                : "text-white dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-          >
-            My List
-            {activeTab === "list" && (
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#FAD502] rounded-t-full" />
-            )}
-          </button>
-          <button
-            onClick={() => setActiveTab("subscriptions")}
-            className={`pb-4 text-lg font-bold transition-colors relative ${
-              activeTab === "subscriptions"
-                ? "text-[#FAD502]"
-                : "text-white dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-            }`}
-          >
-            My Subscriptions
-            {activeTab === "subscriptions" && (
-              <span className="absolute bottom-0 left-0 w-full h-1 bg-[#FAD502] rounded-t-full" />
-            )}
-          </button>
-        </div>
-
+      <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
         {/* My List Section */}
-        {activeTab === "list" && (
-          <div className="mb-16">
-            {myList.length === 0 ? (
-              <div className="text-center py-10 dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-sm border dark:border-gray-800 border-gray-100 transition-colors duration-300">
-                <p className="dark:text-gray-300 text-gray-600 text-xl mb-4 transition-colors duration-300">
-                  Your list is empty
-                </p>
-                <Link
-                  to="/subjects"
-                  className="dark:text-white text-[#090D0E] underline hover:text-[#FAD502] transition"
-                >
-                  Browse content to add to your list
-                </Link>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {myList.map((item) => (
-                  <div
-                    key={item.id}
-                    className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
-                  >
-                    {/* Remove Button */}
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        removeFromList(item.id);
-                      }}
-                      className="absolute top-4 left-4 z-10 bg-white/90 p-2 rounded-full text-red-500 hover:bg-red-50 transition-colors shadow-sm"
-                      title="Remove from list"
-                    >
-                      <Trash2 size={18} />
-                    </button>
-
-                    <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                      />
-                      <div className="absolute top-4 right-4 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#FAD502] shadow-sm">
-                        {item.genre}
-                      </div>
-                    </div>
-
-                    <div className="p-6 flex-1 flex flex-col">
-                      <div className="mb-4">
-                        <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-2 line-clamp-2 transition-colors duration-300">
-                          {item.title}
-                        </h2>
-                        <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
-                          Instructor: {item.instructor || "Veertri Expert"}
-                        </p>
-                      </div>
-
-                      <p className="dark:text-gray-300 text-gray-600 mb-6 line-clamp-3 flex-1 transition-colors duration-300">
-                        {item.description}
-                      </p>
-
-                      <div className="space-y-3 border-t dark:border-gray-800 border-gray-100 pt-4 transition-colors duration-300">
-                        <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                          <Star size={18} className="text-yellow-500 mr-2" />
-                          <span className="font-semibold">
-                            {item.rating} Rating
-                          </span>
-                        </div>
-                        <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                          <Clock size={18} className="text-blue-600 mr-2" />
-                          <span>
-                            {item.duration || `${item.modules} Modules`}
-                          </span>
-                        </div>
-                        <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                          <Calendar
-                            size={18}
-                            className="text-purple-600 mr-2"
-                          />
-                          <span>{item.year}</span>
-                        </div>
-                      </div>
-
-                      <Link
-                        to={`/watch/${item.id}`}
-                        className="w-full mt-6 bg-[#FAD502] text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#FAD502]/80 transition-colors duration-200 flex items-center justify-center gap-2"
-                      >
-                        <Play size={18} />
-                        Watch Now
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+        <MyCornerRow title="My List" items={myList} onRemove={removeFromList} />
 
         {/* My Subscriptions Section */}
-        {activeTab === "subscriptions" && (
-          <div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {mySubscriptions.map((item) => (
-                <div
-                  key={item.id}
-                  className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full relative group"
-                >
-                  <div
-                    className="absolute top-4 left-4 z-10 bg-green-100 p-2 rounded-full text-green-600 shadow-sm"
-                    title="Subscribed"
-                  >
-                    <CheckCircle size={18} />
-                  </div>
-
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                    <div className="absolute top-4 right-4 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#FAD502] shadow-sm">
-                      {item.genre}
-                    </div>
-                  </div>
-
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="mb-4">
-                      <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-2 line-clamp-2 transition-colors duration-300">
-                        {item.title}
-                      </h2>
-                      <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
-                        Instructor: {item.instructor || "Veertri Expert"}
-                      </p>
-                    </div>
-
-                    <p className="dark:text-gray-300 text-gray-600 mb-6 line-clamp-3 flex-1 transition-colors duration-300">
-                      {item.description}
-                    </p>
-
-                    <div className="space-y-3 border-t dark:border-gray-800 border-gray-100 pt-4 transition-colors duration-300">
-                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                        <Star size={18} className="text-yellow-500 mr-2" />
-                        <span className="font-semibold">
-                          {item.rating} Rating
-                        </span>
-                      </div>
-                      <div className="flex items-center dark:text-gray-300 text-gray-700 transition-colors duration-300">
-                        <Clock size={18} className="text-blue-600 mr-2" />
-                        <span>
-                          {item.duration || `${item.modules} Modules`}
-                        </span>
-                      </div>
-                    </div>
-
-                    <button className="w-full mt-6 border-2 dark:border-white border-[#090D0E] dark:text-white text-[#090D0E] py-2 rounded-lg font-medium hover:bg-[#090D0E] hover:text-[#FAD502] dark:hover:bg-white dark:hover:text-black transition-colors duration-200 flex items-center justify-center gap-2">
-                      View Course
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <MyCornerRow
+          title="My Subscriptions"
+          items={mySubscriptions}
+          isSubscription={true}
+        />
       </div>
     </div>
   );
