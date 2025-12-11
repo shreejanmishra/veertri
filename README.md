@@ -92,11 +92,3 @@ veertri/
 ├── tailwind.config.js
 └── vite.config.js
 ```
-
-## 🤝 Contributing
-
-The project is under development and the data used in the app is mock data. The backend will be developed in January to March 2026 timeframe. Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License.
