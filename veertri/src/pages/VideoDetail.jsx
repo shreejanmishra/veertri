@@ -1,7 +1,16 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, Suspense, lazy } from "react";
-import { Play, Plus, ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
-import { getContentById, educationalVideos, courses } from "../data/mockData";
+import {
+  Play,
+  Plus,
+  ThumbsUp,
+  ThumbsDown,
+  Share2,
+  FileText,
+  ClipboardCheck,
+} from "lucide-react";
+import { getContentById } from "../data/content";
+import { educationalVideos, courses } from "../data/education";
 
 const VideoPlayer = lazy(() => import("../components/VideoPlayer"));
 
@@ -77,6 +86,16 @@ const VideoDetail = () => {
                 >
                   <Play size={24} fill="currentColor" />
                   <span>Play</span>
+                </button>
+
+                <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-6 py-2 md:py-3 rounded-md flex items-center gap-2 transition">
+                  <FileText size={20} />
+                  <span>Exercises</span>
+                </button>
+
+                <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-6 py-2 md:py-3 rounded-md flex items-center gap-2 transition">
+                  <ClipboardCheck size={20} />
+                  <span>Take Test</span>
                 </button>
 
                 <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-3 transition">

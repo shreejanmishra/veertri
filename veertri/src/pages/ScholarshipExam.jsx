@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { scholarships } from "../data/mockData";
+import { scholarships } from "../data/education";
 import { Award, XCircle, Clock, AlertCircle } from "lucide-react";
 
 export default function ScholarshipExam() {

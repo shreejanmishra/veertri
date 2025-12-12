@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from "react";
 import HeroSection from "../components/HeroSection";
-import { getEntertainmentContent } from "../data/mockData";
+import { getEntertainmentContent } from "../data/entertainment";
 import entertainmentBg from "../assets/entertainmentBg2.png";
 
 const CategoryRow = lazy(() => import("../components/CategoryRow"));
@@ -41,6 +41,8 @@ const Entertainment = () => {
                 title={category.title}
                 items={category.items}
                 linkTo={`/entertainment/${category.id}`}
+                bgImage={entertainmentBg}
+                isEntertainment={true}
               />
             ))}
           </Suspense>
