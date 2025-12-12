@@ -3,7 +3,14 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 
-const CategoryRow = ({ title, items, isLarge = false, linkTo }) => {
+const CategoryRow = ({
+  title,
+  items,
+  isLarge = false,
+  linkTo,
+  bgImage,
+  isEntertainment = false,
+}) => {
   const rowRef = useRef(null);
 
   const scroll = (direction) => {
@@ -22,8 +29,12 @@ const CategoryRow = ({ title, items, isLarge = false, linkTo }) => {
         {/* Header */}
         <div className="mb-4 px-1 flex items-center justify-between">
           {linkTo ? (
-            <Link to={linkTo} className="group/title flex items-center gap-3">
-              <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300 group-hover/title:text-[#FAD502]">
+            <Link
+              to={linkTo}
+              state={{ bgImage }}
+              className="group/title flex items-center gap-3"
+            >
+              <h2 className="dark:text-white text-white text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300 group-hover/title:text-[#FAD502]">
                 <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
                 {title}
               </h2>
@@ -61,7 +72,13 @@ const CategoryRow = ({ title, items, isLarge = false, linkTo }) => {
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           {items.map((item) => (
-            <MovieCard key={item.id} item={item} isLarge={isLarge} />
+            <MovieCard
+              key={item.id}
+              item={item}
+              isLarge={isLarge}
+              bgImage={bgImage}
+              isEntertainment={isEntertainment}
+            />
           ))}
         </div>
       </div>

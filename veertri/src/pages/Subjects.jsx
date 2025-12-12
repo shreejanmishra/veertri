@@ -18,24 +18,71 @@ import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
 
 const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const boards = ["CBSE", "ICSE", "IB", "Maharashtra Board"];
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="px-4 md:px-16 mb-6 flex justify-start">
-      <div className="relative inline-block text-left w-full md:w-64">
-        <label className="block text-sm font-medium text-gray-100 dark:text-gray-300 mb-1">
+    <div className="px-4 md:px-16 mb-6 flex justify-start relative z-30">
+      <div
+        className="relative inline-block text-left w-full md:w-64"
+        ref={dropdownRef}
+      >
+        <label className="block text-sm font-medium text-gray-100 dark:text-gray-300 mb-2 ml-1">
           Select Board
         </label>
-        <select
-          value={selectedBoard}
-          onChange={(e) => onSelectBoard(e.target.value)}
-          className="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-[#FAD502] focus:border-[#FAD502] sm:text-sm rounded-md dark:bg-gray-800 dark:text-white bg-white text-gray-900 shadow-sm"
+
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-full pl-4 pr-10 py-3 text-left text-base border border-white/20 dark:border-gray-600/30 rounded-2xl dark:bg-gray-900/60 bg-white/90 backdrop-blur-md text-gray-900 dark:text-white shadow-lg hover:shadow-xl hover:border-[#FAD502]/50 focus:outline-none focus:ring-2 focus:ring-[#FAD502]/50 transition-all duration-300 group"
         >
-          {boards.map((board) => (
-            <option key={board} value={board}>
-              {board}
-            </option>
-          ))}
-        </select>
+          <span className="block truncate font-medium">{selectedBoard}</span>
+          <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+            <ChevronDown
+              className={`h-5 w-5 text-gray-400 group-hover:text-[#FAD502] transition-transform duration-300 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
+          </span>
+        </button>
+
+        {isOpen && (
+          <div className="absolute mt-2 w-full rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-2xl ring-1 ring-black/5 focus:outline-none z-50 overflow-hidden border border-gray-100 dark:border-gray-700/50 origin-top animate-in fade-in zoom-in-95 duration-200">
+            <div className="py-2 max-h-60 overflow-auto scrollbar-hide">
+              {boards.map((board) => (
+                <button
+                  key={board}
+                  onClick={() => {
+                    onSelectBoard(board);
+                    setIsOpen(false);
+                  }}
+                  className={`
+                    w-full text-left px-4 py-3 text-sm transition-all duration-200
+                    ${
+                      selectedBoard === board
+                        ? "bg-[#FAD502]/10 text-[#FAD502] font-bold"
+                        : "text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:pl-6"
+                    }
+                  `}
+                >
+                  {board}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -168,7 +215,7 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
             onClick={(e) => e.stopPropagation()}
             className="group/title flex items-center gap-3"
           >
-            <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300 group-hover/title:text-[#FAD502]">
+            <h2 className="dark:text-white text-gray-200 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3 transition-colors duration-300 group-hover/title:text-[#FAD502]">
               <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
               {title}
             </h2>

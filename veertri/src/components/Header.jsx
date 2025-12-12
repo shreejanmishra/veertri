@@ -145,7 +145,7 @@ const Header = () => {
                   isScrolled ? "dark:text-white text-gray-900" : "text-white"
                 } hover:text-[#FAD502] dark:hover:text-[#FAD502]`}
               >
-                <Search size={20} />
+                <Search size={20} className="mt-1" />
               </button>
             )}
           </div>

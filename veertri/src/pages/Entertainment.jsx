@@ -41,6 +41,8 @@ const Entertainment = () => {
                 title={category.title}
                 items={category.items}
                 linkTo={`/entertainment/${category.id}`}
+                bgImage={entertainmentBg}
+                isEntertainment={true}
               />
             ))}
           </Suspense>

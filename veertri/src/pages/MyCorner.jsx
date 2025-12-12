@@ -51,7 +51,7 @@ const MyCornerRow = ({ title, items, onRemove, isSubscription = false }) => {
         {/* Header */}
         <div className="mb-4 px-1 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h2 className="dark:text-white text-gray-900 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3">
+            <h2 className="dark:text-white text-gray-200 text-xl md:text-2xl font-bold tracking-wide uppercase flex items-center gap-3">
               <span className="w-1.5 h-6 md:h-8 bg-[#FAD502] rounded-full block shadow-[0_0_10px_#FAD502]"></span>
               {title}
             </h2>

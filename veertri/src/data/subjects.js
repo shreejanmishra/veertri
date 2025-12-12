@@ -128,6 +128,7 @@ const subjectVideoMap = {
 };
 
 const topicVideoMap = {
+  // Class 10 Science
   "Chemical Reactions and Equations": "6nsucLqXC9Q",
   "Acids, Bases and Salts": "j3IGjkNDmQM",
   "Metals and Non-metals": "V67eJZ5YFsQ",
@@ -136,6 +137,8 @@ const topicVideoMap = {
   "Control and Coordination": "wGW8hcpIWMc",
   "How do Organisms Reproduce?": "a12g-nTzgXw",
   "Light – Reflection and Refraction": "gV-7L1Oguwc",
+
+  // Class 10 Maths
   "Real Numbers": "8v-RddLy5RQ",
   Polynomials: "iLV5p7feIo0",
   "Pair of Linear Equations in Two Variables": "Sn3iXEoTQso",
@@ -144,9 +147,77 @@ const topicVideoMap = {
   Triangles: "vvJNmUtKWiY",
   "Coordinate Geometry": "_K-DkxxE-X0",
   "Introduction to Trigonometry": "q5L9Y-oj9bU",
+
+  // Pre-school Rhymes
+  "Twinkle Twinkle Little Star": "yCjJyiqpAuU",
+  "Baa Baa Black Sheep": "C3c8fzbsfOE",
+  "Humpty Dumpty": "nrv495corBc",
+  "Jack and Jill": "r5u-rbpU8_k",
+  "Johny Johny Yes Papa": "F4tHL8reNCs",
+
+  // Pre-school Stories
+  "The Thirsty Crow": "7D4ePZ6yE5c",
+  "The Lion and the Mouse": "GxcGVCEEdcU",
+  "The Hare and the Tortoise": "2hlb1a89H9o",
+  "The Fox and the Grapes": "zFh7yX4s5W8",
+
+  // Pre-school Alphabets
+  "A for Apple": "hq3yfQnllfQ",
+  "B for Ball": "hq3yfQnllfQ",
+  "C for Cat": "hq3yfQnllfQ",
+  "D for Dog": "hq3yfQnllfQ",
+  "Vowels and Consonants": "4gJ4y5o5r_I",
+
+  // Pre-school Numbers
+  "Counting 1 to 10": "DR-cfDsHCGA",
+  "Counting 1 to 20": "D0Ajq682yrA",
+  Shapes: "WTkqI59jGRk",
+  Colors: "jYAWf8Y91hA",
+  "Big and Small": "37w9JjUWK4c",
+
+  // Pre-school General Knowledge
+  "Parts of Body": "h4eueDYPTIg",
+  "Fruits and Vegetables": "RE5tvaveVak",
+  "Animals and Birds": "pWepfJ-8XU0",
+  Vehicles: "B1yDcdVpI88",
+  Seasons: "8ZjpI6fgYSY",
+  "Good Habits": "d1Z1s5d7cUM",
+  "My Family": "FHaObkHEkHQ",
+
+  // Class 1 Maths
   "Shapes and Space": "RkEP-1JXKqc",
   "Numbers from One to Nine": "pQq4PfUJ544",
   "Addition & Subtraction": "OgOZ5rLX_n0",
+  "Numbers from Ten to Twenty": "1Kq8Q5y5bM0",
+  Time: "HrxZWNu72WI",
+  Measurement: "b1a3f5c7g9i",
+  "Data Handling": "n1o3p5q7r9s",
+
+  // Class 1 EVS
+  "About Me": "QkHQ0CYwjaI",
+  "My Home": "XyZ1a2b3c4d",
+  "Our Food": "E5f6g7h8i9j",
+  "Clothes We Wear": "K1l2m3n4o5p",
+  "Water & Air": "U6v7w8x9y0z",
+  "Plants Around Us": "A1b2c3d4e5f",
+
+  // Class 1 English
+  "A Happy Child": "G6h7i8j9k0l",
+  "Three Little Pigs": "M1n2o3p4q5r",
+  "After a Bath": "S6t7u8v9w0x",
+  "The Bubble, the Straw and the Shoe": "Y1z2a3b4c5d",
+  "One Little Kitten": "E6f7g8h9i0j",
+  "Lalu and Peelu": "K1l2m3n4o5p",
+  "Once I Saw a Little Bird": "Q6r7s8t9u0v",
+
+  // Class 1 Hindi
+  Jhoola: "W1x2y3z4a5b",
+  "Aam ki Kahani": "C6d7e8f9g0h",
+  "Aam ki Tokri": "I1j2k3l4m5n",
+  "Patte hi Patte": "O6p7q8r9s0t",
+  Pakodi: "U1v2w3x4y5z",
+  "Chuk Chuk Gaadi": "A6b7c8d9e0f",
+  "Rasoi Ghar": "G1h2i3j4k5l",
 };
 
 // Helper to get a random image from a category

@@ -7,6 +7,8 @@ const MovieCard = ({
   isLarge = false,
   className = "",
   onToggleComplete,
+  bgImage,
+  isEntertainment = false,
 }) => {
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -40,12 +42,22 @@ const MovieCard = ({
     }
   };
 
+  let widthClass = "";
+  if (className) {
+    widthClass = className;
+  } else if (isEntertainment) {
+    widthClass = isLarge
+      ? "w-[85vw] md:w-[40vw] lg:w-[35vw]"
+      : "w-[80vw] md:w-[45vw] lg:w-[28vw]";
+  } else {
+    widthClass = isLarge ? "w-80 md:w-96" : "w-64 md:w-72";
+  }
+
   return (
     <Link
       to={`/watch/${item.id}`}
-      className={`group/card relative flex flex-col h-full bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${
-        className ? className : isLarge ? "w-80 md:w-96" : "w-64 md:w-72"
-      } flex-shrink-0`}
+      state={{ bgImage }}
+      className={`group/card relative flex flex-col h-full bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${widthClass} flex-shrink-0`}
     >
       {/* Thumbnail Container */}
       <div className="relative aspect-video overflow-hidden">
@@ -98,6 +110,12 @@ const MovieCard = ({
             <Clock size={12} />
             <span>{item.duration || `${item.seasons} Seasons`}</span>
           </div>
+          <span className="text-xs font-medium text-gray-500 dark:text-gray-400 px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+            HD
+          </span>
+          <span className="text-xs font-medium text-gray-500 dark:text-gray-400 px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
+            EN
+          </span>
         </div>
 
         {/* Description - Optional, if available in item */}
@@ -106,12 +124,6 @@ const MovieCard = ({
             {item.description}
           </p>
         )}
-
-        <div className="mt-auto pt-3 border-t border-gray-200 dark:border-gray-700 flex items-center justify-between">
-          <span className="text-xs font-medium text-gray-500 dark:text-gray-400 px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded">
-            HD
-          </span>
-        </div>
       </div>
     </Link>
   );
