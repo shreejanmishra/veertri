@@ -17,6 +17,42 @@ import {
 import MovieCard from "../components/MovieCard";
 import { Link } from "react-router-dom";
 
+const ProgressDonut = ({ completed, total, percentage, color, label }) => (
+  <div className="flex flex-col items-center gap-1">
+    <div className="relative w-12 h-12">
+      <svg className="w-full h-full transform -rotate-90">
+        <circle
+          cx="24"
+          cy="24"
+          r="18"
+          stroke="currentColor"
+          strokeWidth="4"
+          fill="transparent"
+          className="text-gray-200 dark:text-gray-700"
+        />
+        <circle
+          cx="24"
+          cy="24"
+          r="18"
+          stroke={color}
+          strokeWidth="4"
+          fill="transparent"
+          strokeDasharray={2 * Math.PI * 18}
+          strokeDashoffset={2 * Math.PI * 18 * (1 - percentage / 100)}
+          strokeLinecap="round"
+          className="transition-all duration-500 ease-out"
+        />
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold dark:text-white text-gray-900">
+        {completed}/{total}
+      </div>
+    </div>
+    <span className="text-[10px] font-medium text-gray-200 dark:text-gray-400 uppercase tracking-wider">
+      {label}
+    </span>
+  </div>
+);
+
 const BoardSelector = ({ selectedBoard, onSelectBoard }) => {
   const [isOpen, setIsOpen] = useState(false);
   const boards = ["CBSE", "ICSE", "IB", "Maharashtra Board"];
@@ -158,23 +194,60 @@ const ClassSelector = ({ selectedClass, onSelectClass }) => {
 
 const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
   const [items, setItems] = useState([]);
-  const [stats, setStats] = useState({ completed: 0, total: 0, percentage: 0 });
+  const [stats, setStats] = useState({
+    videos: { completed: 0, total: 0, percentage: 0 },
+    exercises: { completed: 0, total: 0, percentage: 0 },
+    tests: { completed: 0, total: 0, percentage: 0 },
+  });
   const [isExpanded, setIsExpanded] = useState(true);
   const rowRef = useRef(null);
 
   const calculateStats = (currentItems) => {
     if (!currentItems || currentItems.length === 0)
-      return { completed: 0, total: 0, percentage: 0 };
+      return {
+        videos: { completed: 0, total: 0, percentage: 0 },
+        exercises: { completed: 0, total: 0, percentage: 0 },
+        tests: { completed: 0, total: 0, percentage: 0 },
+      };
+
     const completedVideos = JSON.parse(
       localStorage.getItem("completedVideos") || "[]"
     );
-    const completedCount = currentItems.filter((item) =>
+    const completedExercises = JSON.parse(
+      localStorage.getItem("completedExercises") || "[]"
+    );
+    const completedTests = JSON.parse(
+      localStorage.getItem("completedTests") || "[]"
+    );
+
+    const videoCount = currentItems.filter((item) =>
       completedVideos.includes(item.id)
     ).length;
+    const exerciseCount = currentItems.filter((item) =>
+      completedExercises.includes(item.id)
+    ).length;
+    const testCount = currentItems.filter((item) =>
+      completedTests.includes(item.id)
+    ).length;
+
+    const total = currentItems.length;
+
     return {
-      completed: completedCount,
-      total: currentItems.length,
-      percentage: Math.round((completedCount / currentItems.length) * 100),
+      videos: {
+        completed: videoCount,
+        total,
+        percentage: Math.round((videoCount / total) * 100),
+      },
+      exercises: {
+        completed: exerciseCount,
+        total,
+        percentage: Math.round((exerciseCount / total) * 100),
+      },
+      tests: {
+        completed: testCount,
+        total,
+        percentage: Math.round((testCount / total) * 100),
+      },
     };
   };
 
@@ -224,37 +297,30 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
             </span>
           </Link>
 
-          <div className="flex items-center gap-4">
-            {/* Progress Donut */}
-            <div className="relative w-12 h-12">
-              <svg className="w-full h-full transform -rotate-90">
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="18"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                  fill="transparent"
-                  className="text-gray-200 dark:text-gray-700"
-                />
-                <circle
-                  cx="24"
-                  cy="24"
-                  r="18"
-                  stroke="#FAD502"
-                  strokeWidth="4"
-                  fill="transparent"
-                  strokeDasharray={2 * Math.PI * 18}
-                  strokeDashoffset={
-                    2 * Math.PI * 18 * (1 - stats.percentage / 100)
-                  }
-                  strokeLinecap="round"
-                  className="transition-all duration-500 ease-out"
-                />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold dark:text-white text-gray-900">
-                {stats.completed}/{stats.total}
-              </div>
+          <div className="flex items-center gap-6">
+            {/* Progress Donuts */}
+            <div className="flex items-center gap-4">
+              <ProgressDonut
+                completed={stats.videos.completed}
+                total={stats.videos.total}
+                percentage={stats.videos.percentage}
+                color="#FAD502"
+                label="Videos"
+              />
+              <ProgressDonut
+                completed={stats.exercises.completed}
+                total={stats.exercises.total}
+                percentage={stats.exercises.percentage}
+                color="#3B82F6"
+                label="Exercises"
+              />
+              <ProgressDonut
+                completed={stats.tests.completed}
+                total={stats.tests.total}
+                percentage={stats.tests.percentage}
+                color="#10B981"
+                label="Tests"
+              />
             </div>
 
             {/* Chevron */}

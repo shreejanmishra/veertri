@@ -1,3 +1,5 @@
+import { topicImageMap } from "./topicImages";
+
 // Image mappings for subjects
 const subjectImageMap = {
   math: [
@@ -221,7 +223,15 @@ const topicVideoMap = {
 };
 
 // Helper to get a random image from a category
-const getImage = (category, index = 0) => {
+const getImage = (category, index = 0, topic = null) => {
+  if (topic && topicImageMap[topic]) {
+    const url = topicImageMap[topic];
+    // Handle Pixabay webpage links (not direct images) by falling back to a placeholder
+    if (url.includes("pixabay.com/photos/")) {
+      return `https://placehold.co/600x400?text=${encodeURIComponent(topic)}`;
+    }
+    return url;
+  }
   const images = subjectImageMap[category] || subjectImageMap.default;
   return images[index % images.length];
 };
@@ -237,7 +247,7 @@ const getVideo = (topic, category, index = 0) => {
 const generateTopics = (topicList, imageCategory) => {
   return topicList.map((topic, index) => ({
     title: topic,
-    image: getImage(imageCategory, index),
+    image: getImage(imageCategory, index, topic),
     videoId: getVideo(topic, imageCategory, index),
     description: `Learn about ${topic} in this comprehensive module.`,
   }));
