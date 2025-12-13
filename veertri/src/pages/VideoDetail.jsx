@@ -19,6 +19,8 @@ const VideoDetail = () => {
   const [content, setContent] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [similarContent, setSimilarContent] = useState([]);
+  const [isExerciseCompleted, setIsExerciseCompleted] = useState(false);
+  const [isTestCompleted, setIsTestCompleted] = useState(false);
 
   useEffect(() => {
     const item = getContentById(id);
@@ -27,6 +29,17 @@ const VideoDetail = () => {
     // Save to last viewed
     if (item) {
       localStorage.setItem("lastViewedVideoId", item.id);
+
+      // Check completion status
+      const completedExercises = JSON.parse(
+        localStorage.getItem("completedExercises") || "[]"
+      );
+      setIsExerciseCompleted(completedExercises.includes(item.id));
+
+      const completedTests = JSON.parse(
+        localStorage.getItem("completedTests") || "[]"
+      );
+      setIsTestCompleted(completedTests.includes(item.id));
     }
 
     // Get similar content (same genre)
@@ -38,6 +51,36 @@ const VideoDetail = () => {
       setSimilarContent(similar);
     }
   }, [id]);
+
+  const toggleExercise = () => {
+    if (!content) return;
+    const completedExercises = JSON.parse(
+      localStorage.getItem("completedExercises") || "[]"
+    );
+    let newCompleted;
+    if (isExerciseCompleted) {
+      newCompleted = completedExercises.filter((i) => i !== content.id);
+    } else {
+      newCompleted = [...completedExercises, content.id];
+    }
+    localStorage.setItem("completedExercises", JSON.stringify(newCompleted));
+    setIsExerciseCompleted(!isExerciseCompleted);
+  };
+
+  const toggleTest = () => {
+    if (!content) return;
+    const completedTests = JSON.parse(
+      localStorage.getItem("completedTests") || "[]"
+    );
+    let newCompleted;
+    if (isTestCompleted) {
+      newCompleted = completedTests.filter((i) => i !== content.id);
+    } else {
+      newCompleted = [...completedTests, content.id];
+    }
+    localStorage.setItem("completedTests", JSON.stringify(newCompleted));
+    setIsTestCompleted(!isTestCompleted);
+  };
 
   if (!content) {
     return (
@@ -88,14 +131,30 @@ const VideoDetail = () => {
                   <span>Play</span>
                 </button>
 
-                <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-6 py-2 md:py-3 rounded-md flex items-center gap-2 transition">
+                <button
+                  onClick={toggleExercise}
+                  className={`${
+                    isExerciseCompleted
+                      ? "bg-blue-600 hover:bg-blue-700"
+                      : "bg-white/20 hover:bg-white/30"
+                  } backdrop-blur-sm text-white font-semibold px-6 py-2 md:py-3 rounded-md flex items-center gap-2 transition`}
+                >
                   <FileText size={20} />
-                  <span>Exercises</span>
+                  <span>
+                    {isExerciseCompleted ? "Exercises Done" : "Exercises"}
+                  </span>
                 </button>
 
-                <button className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-6 py-2 md:py-3 rounded-md flex items-center gap-2 transition">
+                <button
+                  onClick={toggleTest}
+                  className={`${
+                    isTestCompleted
+                      ? "bg-green-600 hover:bg-green-700"
+                      : "bg-white/20 hover:bg-white/30"
+                  } backdrop-blur-sm text-white font-semibold px-6 py-2 md:py-3 rounded-md flex items-center gap-2 transition`}
+                >
                   <ClipboardCheck size={20} />
-                  <span>Take Test</span>
+                  <span>{isTestCompleted ? "Test Taken" : "Take Test"}</span>
                 </button>
 
                 <button className="bg-[#090D0E] hover:bg-[#090D0E]/80 text-[#FAD502] rounded-full p-3 transition">
