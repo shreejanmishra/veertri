@@ -207,7 +207,7 @@ const Profile = () => {
                     <p className="text-gray-400">Premium - 4K + HDR</p>
                   </div>
                 </div>
-                <span className="text-white text-xl font-bold">₹499.99/mo</span>
+                <span className="text-white text-xl font-bold">₹49.99/mo</span>
               </div>
               <div className="text-gray-400 text-sm space-y-2">
                 <p>✓ Watch on 4 devices at once</p>
